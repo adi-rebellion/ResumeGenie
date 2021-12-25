@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="theme/dist/assets/media/logos/favicon.png">
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+  <link href="theme/dist/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+  <link href="theme/dist/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+  <link href="theme/dist/assets/css/typewriter.css" rel="stylesheet" type="text/css" />
+  <link href="theme/dist/assets/css/custom_genie.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app">
+      <router-view></router-view>
+    </div>
+    <!-- built files will be auto injected -->
+  </body>
+  <script>
+    var hostUrl = "theme/dist/assets/";
+  </script>
+  <!--begin::Javascript-->
+  <!--begin::Global Javascript Bundle(used by all pages)-->
+  <script src="theme/dist/assets/plugins/global/plugins.bundle.js"></script>
+  <script src="theme/dist/assets/js/scripts.bundle.js"></script>
+  
+  <!-- <script src="theme/dist/assets/js/typewriter.js"></script> -->
+  
+  <!--end::Global Javascript Bundle-->
+  <!--begin::Page Vendors Javascript(used by this page)-->
+  <script src="theme/dist/assets/plugins/custom/fslightbox/fslightbox.bundle.js"></script>
+  <script src="theme/dist/assets/plugins/custom/typedjs/typedjs.bundle.js"></script>
+  <!--end::Page Vendors Javascript-->
+  <!--begin::Page Custom Javascript(used by this page)-->
+  <script src="theme/dist/assets/js/custom/landing.js"></script>
+  <!-- <script src="theme/dist/assets/js/custom/pages/company/pricing.js"></script>
+  <script src="theme/dist/assets/js/custom/modals/create-account.js"></script>
+  <script src="theme/dist/assets/js/custom/widgets.js"></script>
+  <script src="theme/dist/assets/js/custom/apps/chat/chat.js"></script>
+		<script src="theme/dist/assets/js/custom/modals/create-app.js"></script>
+		<script src="theme/dist/assets/js/custom/modals/upgrade-plan.js"></script> -->
+ 
+</html>
+
+		
