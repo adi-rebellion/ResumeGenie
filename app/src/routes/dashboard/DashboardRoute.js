@@ -1,7 +1,7 @@
 import home from '../../components/dashboard/UserHome.vue'
 import CreateResume from '../../components/dashboard/CreateResume.vue'
 import DashboardAside from '../../components/UserDashboard/layout/DashboardAside.vue'
-import DashboardStructure from '../../components/UserDashboard/DashboardStructure.vue'
+import DashboardPage from '../../components/UserDashboard/DashboardPage.vue'
 
 const dashboardRoutes = [
     {
@@ -11,9 +11,9 @@ const dashboardRoutes = [
         meta: { requiresAuth: true }
     },
     {
-        path: "/Dashboard",
-        name: "DashboardStructure",
-        component: DashboardStructure,
+        path: "/dashboard",
+        name: "DashboardPage",
+        component: DashboardPage,
         meta: { requiresAuth: false }
     },
 
