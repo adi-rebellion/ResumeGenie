@@ -6,10 +6,10 @@
       <div class="text-dark order-2 order-md-1">
         <span class="text-gray-400 fw-bold me-1">Created by</span>
         <a
-          href="https://keenthemes.com"
+          href="https://thehiringco.com"
           target="_blank"
           class="text-muted text-hover-primary fw-bold me-2 fs-6"
-          >Keenthemes</a
+          >thehiringco</a
         >
       </div>
       <!--end::Copyright-->
@@ -17,7 +17,7 @@
       <ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
         <li class="menu-item">
           <a
-            href="https://keenthemes.com"
+            href="https://thehiringco.com"
             target="_blank"
             class="menu-link px-2"
             >About</a
@@ -25,7 +25,7 @@
         </li>
         <li class="menu-item">
           <a
-            href="https://keenthemes.com/support"
+            href="https://thehiringco.com/support"
             target="_blank"
             class="menu-link px-2"
             >Support</a

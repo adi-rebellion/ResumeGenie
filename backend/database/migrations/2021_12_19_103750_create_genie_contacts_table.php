@@ -16,9 +16,10 @@ class CreateGenieContactsTable extends Migration
         Schema::create('genie_contacts', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->String('email');
-            $table->String('phone');
-            $table->String('url');
+            $table->String('email')->nullable();
+            $table->String('phone')->nullable();
+            $table->String('url')->nullable();
+            $table->String('address')->nullable();
 
             // "email": "john@gmail.com",
             // "phone": "(912) 555-4321",

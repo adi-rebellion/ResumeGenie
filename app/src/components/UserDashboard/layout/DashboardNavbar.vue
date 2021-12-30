@@ -3039,12 +3039,11 @@
             </div>
             <!--end::Menu-->
           </div>
-          <a
-            href="#"
+          <router-link
+           :to="{ name: 'GenieBasic' }"
             class="btn btn-primary"
-            data-bs-target="#kt_modal_create_app"
-            data-bs-toggle="modal"
-            >New Goal</a
+            
+            >New Goal</router-link
           >
         </div>
         <!--end::Action-->

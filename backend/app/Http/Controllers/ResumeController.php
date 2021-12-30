@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\GenieAward;
 use App\GenieBasic;
+use App\GenieContact;
 use App\GenieEducation;
 use App\GenieLanguage;
 use App\GenieProject;
@@ -21,20 +22,18 @@ class ResumeController extends Controller
     public function resume_genie_basic(Request $request)
     {
         // return auth()->user();
-        $request->validate([
-            'name' => ['required'],
-            'label' => ['required'],
-            // 'location' => ['required'],
-            'summary' => ['required']
-
-        ]);
+       
 
         $genie_basic = GenieBasic::where('user_id',auth()->user()->id)->first();
         if($genie_basic)
         {
-            $genie_basic->name = $request->name;
-            $genie_basic->label = $request->label;
+            $genie_basic->name = $request->first_name;
+            $genie_basic->label = $request->current_position;
             $genie_basic->summary = $request->summary;
+            $imageName = time().'.'.$request->avatar->getClientOriginalExtension();
+            $request->avatar->move(public_path('images'), $imageName);
+            
+           
             $genie_basic->save();
 
         }
@@ -64,20 +63,12 @@ class ResumeController extends Controller
     public function add_resume_work_exp(Request $request)
     {
         // return auth()->user();
-        $request->validate([
-             'name' => ['required'],
-             'position' => ['required'],
-             'startDate' => ['required'],
-             'endDate' => ['required'],
-             'summary' => ['required'],
-             'url' => ['required']
-
-        ]);
+       
 
         $genie_work_exp = new GenieWorkExp();
         // $genie_work_exp->user_id = auth()->user()->id;
         $genie_work_exp->user_id = 1;
-        $genie_work_exp->name = $request->name;
+        $genie_work_exp->name = $request->company;
         $genie_work_exp->position = $request->position;
         // $genie_work_exp->startDate = $request->startDate;
         // $genie_work_exp->endDate = $request->endDate;
@@ -85,7 +76,7 @@ class ResumeController extends Controller
         $genie_work_exp->endDate = Carbon::now();
         $genie_work_exp->summary = $request->summary;
         $genie_work_exp->status = 1;
-        $genie_work_exp->url = $request->url;
+        $genie_work_exp->url = $request->website;
         $genie_work_exp->save();
 
         return  Response::json([
@@ -138,6 +129,13 @@ class ResumeController extends Controller
         }
     }
 
+    public function genie_all_work_exp(Request $request)
+    {
+        $genie_work_exp = GenieWorkExp::where('user_id',1)->get();
+        return $genie_work_exp;  
+        //sort by enddate
+    } 
+
 
     public function add_resume_genie_education(Request $request)
     {
@@ -152,7 +150,7 @@ class ResumeController extends Controller
         $genie_new_education->studyType = $request->studyType;
         $genie_new_education->startDate = Carbon::now();
         $genie_new_education->endDate = Carbon::now();
-        $genie_new_education->score = $request->score;
+        $genie_new_education->score = $request->gpa;
         $genie_new_education->courses = $request->courses;
         $genie_new_education->status = '1';
         $genie_new_education->save();
@@ -208,6 +206,13 @@ class ResumeController extends Controller
         }
     }
 
+    public function genie_all_education(Request $request)
+    {
+        $genie_education = GenieEducation::where('user_id',1)->get();
+        return $genie_education;  
+        //sort by enddate
+    }
+
 
     public function add_resume_genie_award(Request $request)
     {
@@ -215,10 +220,12 @@ class ResumeController extends Controller
         // $genie_new_education->user_id = auth()->user()->id;
         $genie_new_award->user_id = 1;
         $genie_new_award->title = $request->title;
-        $genie_new_award->date = $request->date;
-        // $genie_new_education->endDate = $request->endDate;
-        $genie_new_award->endDate = Carbon::now();
+        $genie_new_award->url = $request->url;
+        // $genie_new_award->date = $request->date;
+        $genie_new_award->date = Carbon::now();
+      
         $genie_new_award->awarder = $request->awarder;
+        $genie_new_award->summary = $request->summary;
         $genie_new_award->status = '1';
         $genie_new_award->save();
 
@@ -262,29 +269,36 @@ class ResumeController extends Controller
         }
     }
 
+    public function genie_all_award(Request $request)
+    {
+        $genie_award = GenieAward::where('user_id',1)->get();
+        return $genie_award;  
+    }
+
 
     public function add_resume_genie_project(Request $request)
     {
-        $genie_new_award = new GenieAward();
+        $genie_new_project = new GenieProject();
         // $genie_new_education->user_id = auth()->user()->id;
-        $genie_new_award->user_id = 1;
-        $genie_new_award->name = $request->name;
-        $genie_new_award->description = $request->description;
-        $genie_new_award->keywords = $request->keywords;
+        $genie_new_project->user_id = 1;
+        $genie_new_project->name = $request->project_name;
+        $genie_new_project->company_name = $request->company_name;
+        $genie_new_project->summary = $request->summary;
+        // $genie_new_award->keywords = $request->keywords;
         // $genie_new_education->endDate = $request->endDate;
         // $genie_new_education->startDate = $request->startDate;
-        $genie_new_award->endDate = Carbon::now();
-        $genie_new_award->startDate = Carbon::now();
-        $genie_new_award->url = $request->url;
-        $genie_new_award->roles = $request->roles;
-        $genie_new_award->entity = $request->entity;
-        $genie_new_award->type = $request->type;
-        $genie_new_award->status = '1';
-        $genie_new_award->save();
+        $genie_new_project->endDate = Carbon::now();
+        $genie_new_project->startDate = Carbon::now();
+        $genie_new_project->url = $request->url;
+        // $genie_new_award->roles = $request->roles;
+        // $genie_new_award->entity = $request->entity;
+        // $genie_new_award->type = $request->type;
+        $genie_new_project->status = '1';
+        $genie_new_project->save();
 
         return  Response::json([
             'status' => 200,
-            'message' => "Genie award added succesfully"
+            'message' => "Genie project added succesfully"
         ], 200);
 
         // $table->String('name');
@@ -333,14 +347,20 @@ class ResumeController extends Controller
         }
     }
 
+    public function genie_all_project(Request $request)
+    {
+        $genie_project = GenieProject::where('user_id',1)->get();
+        return $genie_project;  
+    }
+
     public function add_resume_genie_skill(Request $request)
     {
         $genie_new_skill = new GenieSkill();
         // $genie_new_education->user_id = auth()->user()->id;
         $genie_new_skill->user_id = 1;
-        $genie_new_skill->name = $request->name;
-        $genie_new_skill->level = $request->level;
-        $genie_new_skill->keywords = $request->keywords;
+        $genie_new_skill->name = $request->skill_name;
+        // $genie_new_skill->level = $request->level;
+        // $genie_new_skill->keywords = $request->keywords;
         // $genie_new_education->endDate = $request->endDate;
         // $genie_new_education->startDate = $request->startDate;
        
@@ -396,6 +416,93 @@ class ResumeController extends Controller
             ], 200);
         }
     }
+
+    public function genie_all_skill(Request $request)
+    {
+        $genie_skill = GenieSkill::where('user_id',1)->get();
+        return $genie_skill;  
+    }
+
+    public function add_resume_genie_contact(Request $request)
+    {
+       
+        $genie_contact = GenieContact::where('user_id',1)->first();
+        if($genie_contact)
+        {
+            $genie_contact->email = $request->email;
+            $genie_contact->user_id = 1;
+            $genie_contact->phone = $request->phone;
+            $genie_contact->url = $request->website;
+            $genie_contact->address = $request->address;
+         
+         
+            
+           
+            $genie_contact->save();
+
+        }
+        else
+        {
+            $genie_contact_new = new GenieContact();
+            $genie_contact_new->email = $request->email;
+            $genie_contact_new->user_id = 1;
+            $genie_contact_new->phone = $request->phone;
+            $genie_contact_new->url = $request->website;
+            $genie_contact_new->address = $request->address;
+            $genie_contact_new->save();
+        }
+
+       
+
+            return  Response::json([
+                'status' => 200,
+                'message' => "Genie contact details updated succesfully"
+            ], 200);
+      
+
+    }
+
+    
+    public function update_resume_genie_contact(Request $request)
+    {
+        // $resume_genie_contact_id = $request->skill_id;
+        $genie_contact = GenieContact::where('user_id',1)->first();
+        if($genie_contact)
+        {
+            if($genie_contact->user_id != auth()->user()->id)
+            {
+                return  Response::json([
+                    'status' => 200,
+                    'message' => "Genie contact authentication error"
+                ], 200);
+            }
+            else
+            {
+                $genie_contact->status = $request->requested_status;
+                $genie_contact->save();
+                return  Response::json([
+                    'status' => 200,
+                    'message' => "Genie contact status updated succesfully"
+                ], 200);
+            }
+
+        }
+        else
+        {
+            return  Response::json([
+                'status' => 403,
+                'message' => "Genie project not found"
+            ], 200);
+        }
+    }
+
+    public function genie_all_contact(Request $request)
+    {
+        $genie_contact = GenieContact::where('user_id',1)->first();
+        return $genie_contact;  
+    }
+
+    
 
 
     public function add_resume_genie_language(Request $request)

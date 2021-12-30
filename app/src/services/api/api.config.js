@@ -56,6 +56,102 @@ const apiConfig = {
                 return true
             }
         },
+        'WORK_EXP': {
+            "METHOD": "post",
+            "URL": "/api/insert/genie/work",
+            validateParams() {
+                return true
+            }
+        },
+        'EDUCATION': {
+            "METHOD": "post",
+            "URL": "/api/insert/genie/education",
+            validateParams() {
+                return true
+            }
+        },
+        'GET_ALL_WORK_EXP':
+        {
+            "METHOD": "get",
+            "URL": "/api/get/all/genie/work",
+            validateParams() {
+                return true
+            }
+        },
+        'GET_ALL_EDUCATION':
+        {
+            "METHOD": "get",
+            "URL": "/api/get/all/genie/education",
+            validateParams() {
+                return true
+            }
+        },
+        'GET_ALL_AWARD':
+        {
+            "METHOD": "get",
+            "URL": "/api/get/all/genie/award",
+            validateParams() {
+                return true
+            }
+        },
+        'AWARD':
+        {
+            "METHOD": "post",
+            "URL": "/api/insert/genie/award",
+            validateParams() {
+                return true
+            }
+        },
+        'GET_ALL_PROJECT':
+        {
+            "METHOD": "get",
+            "URL": "/api/get/all/genie/project",
+            validateParams() {
+                return true
+            }
+        },
+        'PROJECT':
+        {
+            "METHOD": "post",
+            "URL": "/api/insert/genie/project",
+            validateParams() {
+                return true
+            }
+        },
+        'GET_ALL_SKILL':
+        {
+            "METHOD": "get",
+            "URL": "/api/get/all/genie/skill",
+            validateParams() {
+                return true
+            }
+        },
+        'SKILL':
+        {
+            "METHOD": "post",
+            "URL": "/api/insert/genie/skill",
+            validateParams() {
+                return true
+            }
+        },
+        'GET_ALL_CONTACT':
+        {
+            "METHOD": "get",
+            "URL": "/api/get/all/genie/contact",
+            validateParams() {
+                return true
+            }
+        },
+        'CONTACT':
+        {
+            "METHOD": "post",
+            "URL": "/api/insert/genie/contact",
+            validateParams() {
+                return true
+            }
+        }
+
+
     }
 }
 

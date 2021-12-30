@@ -15,16 +15,16 @@ class CreateGenieEducationTable extends Migration
     {
         Schema::create('genie_education', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->String('institution');
-            $table->String('url');
-            $table->String('area');
-            $table->String('studyType');
-            $table->date('startDate');
-            $table->date('endDate');
-            $table->float('score');
-            $table->String('courses');
-            $table->enum('status',[0,1,2]);
+            $table->integer('user_id')->nullable();
+            $table->String('institution')->nullable();
+            $table->String('url')->nullable();
+            $table->String('area')->nullable();
+            $table->String('studyType')->nullable();
+            $table->date('startDate')->nullable();
+            $table->date('endDate')->nullable();
+            $table->float('score')->nullable();
+            $table->String('courses')->nullable();
+            $table->enum('status',[0,1,2])->nullable();
             $table->timestamps();
             // "education": [{
             //     "institution": "University",

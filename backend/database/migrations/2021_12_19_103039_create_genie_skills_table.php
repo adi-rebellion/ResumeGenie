@@ -17,8 +17,8 @@ class CreateGenieSkillsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->String('name');
-            $table->String('level');
-            $table->String('keywords');
+            $table->String('level')->nullable();
+            $table->String('keywords')->nullable();
             // "skills": [{
             //     "name": "Web Development",
             //     "level": "Master",

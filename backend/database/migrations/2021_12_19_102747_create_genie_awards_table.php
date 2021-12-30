@@ -15,11 +15,14 @@ class CreateGenieAwardsTable extends Migration
     {
         Schema::create('genie_awards', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
             $table->String('title');
+            $table->String('url');
             $table->date('date');
-            $table->date('endDate');
+          
             $table->String('awarder');
             $table->String('summary');
+            $table->enum('status',[0,1,2])->nullable();
             // "awards": [{
             //     "title": "Award",
             //     "date": "2014-11-01",

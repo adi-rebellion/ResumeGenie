@@ -30,15 +30,14 @@
                 d-flex
                 flex-column flex-center
                 w-100
-                min-h-350px min-h-lg-500px
                 px-9
               "
             >
               <img
                 alt="Logo"
-                src="theme/dist/assets/media/logos/ResumeGenie.gif"
-                width="250px"
-                class="logo-default"
+                src="theme/dist/assets/media/logos/ResumeGenieLight.png"
+               width="350"
+                class="logo-default "
               />
               <!--begin::Heading-->
               <div class="text-center mb-5 mb-lg-10 py-lg-20">
@@ -46,22 +45,23 @@
 
                 <h1
                   class="text-white lh-base fw-bolder fs-2x fs-lg-3x mb-15"
-                  style="text-transform: capitalize"
+                  
                 >
-                  A way better resume maker <br />with
+                  A way better resume maker <br />
                   <span
-                    style="
-                      background: linear-gradient(
+                    style="color:white;
+                     
+                    "
+                  >
+                   <!-- background: linear-gradient(
                         to right,
                         #12ce5d 0%,
                         #ffd80c 100%
                       );
                       -webkit-background-clip: text;
-                      -webkit-text-fill-color: transparent;
-                    "
-                  >
-                    <span id="kt_landing_hero_text"
-                      >coz that resume is your entry-ticket to the job
+                      -webkit-text-fill-color: transparent; -->
+                    <span
+                      >because that resume is your entry-ticket to the job
                       interview</span
                     >
                   </span>
@@ -78,7 +78,7 @@
                 >
                 <br /><br />
                 <!--end::Action-->
-                <h3>Get your resume in under 10 minutes</h3>
+                <h3 class="text-white">Get your resume in under 10 minutes</h3>
               </div>
 
               <!--end::Heading-->

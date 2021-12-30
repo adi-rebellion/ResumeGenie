@@ -42,16 +42,16 @@
           <!--end::Mobile menu toggle-->
           <!--begin::Logo image-->
           <router-link :to="{name: 'landing_page'}">
-            <img
+            <!-- <img
               alt="Logo"
               src= "theme/dist/assets/media/logos/ResumeFoot.png"
                width="200px"
                 style="margin-top:10px;"
               class="logo-default "
-            />
+            /> -->
             <img
               alt="Logo"
-              src= "theme/dist/assets/media/logos/ResumeGenie.png"
+              src= "theme/dist/assets/media/logos/ResumeGenieDark.png"
               height="150px"
                
                 
@@ -145,9 +145,9 @@
                     <router-link v-if="$store.state.auth.hasAuth"
                   
                   :to="{ name: 'home' }"
-                  class="btn bg-rg-green"  style="border-radius: 50%;"
+                  class="btn bg-rg-yellow"  
                   
-                  >{{$store.state.auth.user.user_name.charAt(0)}}</router-link>
+                  >{{$store.state.auth.user.user_name}}</router-link>
                   &nbsp;
                   
                 
@@ -195,13 +195,13 @@
 												</router-link>
 											</div>
                       &nbsp; &nbsp; &nbsp; -->
-											
+											&nbsp; &nbsp; &nbsp;
                       	<div data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="" data-bs-original-title="Logout">
 												<router-link v-if="$store.state.auth.hasAuth"
                       :to="{ name: 'logout' }" class="btn btn-sm btn-icon btn-active-color-success">
 												
 													<span class="svg-icon svg-icon-2x">
-													<img src="https://img.icons8.com/wired/32/000000/exit.png"/>
+												<img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/50/000000/external-exit-emergency-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png"/>
 													</span>
 													
 												</router-link>

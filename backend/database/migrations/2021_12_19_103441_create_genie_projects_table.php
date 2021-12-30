@@ -15,16 +15,20 @@ class CreateGenieProjectsTable extends Migration
     {
         Schema::create('genie_projects', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
             $table->String('name');
-            $table->String('description');
-            $table->String('highlights');
-            $table->String('keywords');
+            $table->String('company_name');
+            $table->String('summary');
             $table->date('startDate');
             $table->date('endDate');
             $table->String('url');
-            $table->String('roles');
-            $table->String('entity');
-            $table->String('type');
+            $table->String('highlights')->nullable();
+            $table->String('keywords')->nullable();
+            
+            $table->enum('status',[0,1,2])->nullable();
+            $table->String('roles')->nullable();
+            $table->String('entity')->nullable();
+            $table->String('type')->nullable();
 
             // "projects": [{
             //     "name": "Project",

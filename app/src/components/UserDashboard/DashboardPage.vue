@@ -4215,6 +4215,28 @@ export default {
   components: {
     DashboardLayout,
   },
-  mounted() {},
+  async mounted() {
+
+         let recaptchaScript = document.createElement('script')
+      recaptchaScript.setAttribute('src', './theme/dist/assets/js/scripts.bundle.js')
+      document.head.appendChild(recaptchaScript)
+
+          let recaptchaScript2 = document.createElement('script')
+      recaptchaScript.setAttribute('src', './theme/dist/assets/plugins/global/plugins.bundle.js')
+      document.head.appendChild(recaptchaScript2)
+
+        let recaptchaScript3 = document.createElement('script')
+      recaptchaScript.setAttribute('src', './theme/dist/assets/plugins/custom/leaflet/leaflet.bundle.js')
+      document.head.appendChild(recaptchaScript3)
+
+      let recaptchaScript4 = document.createElement('script')
+      recaptchaScript.setAttribute('src', './theme/dist/assets/js/custom/widgets.js')
+      document.head.appendChild(recaptchaScript4)
+
+     
+  
+
+      
+    },
 };
 </script>
