@@ -2,26 +2,26 @@ version: '3.5'
 services:
 
   # Image--infrastructure:mariadb
-  mariadb:
-    image: mariadb:10.5.9
-    hostname: mariadb
-    container_name: mariadb
-    restart: always
-    environment:
-      MYSQL_DATABASE: hearecho
-    networks:
-      - nodelocal-private
-    ports:
-      - '23306:3306'
-    volumes:
-      - ./conf/init:/docker-entrypoint-initdb.d/:ro
-      - type: bind
-        source: ./conf/mariadb.cnf
-        target: /etc/mysql/conf.d/docker.cnf
-        read_only: true
-      - type: volume
-        source: mariadb
-        target: /var/lib/mysql
+  # mariadb:
+  #   image: mariadb:10.5.9
+  #   hostname: mariadb
+  #   container_name: mariadb
+  #   restart: always
+  #   environment:
+  #     MYSQL_DATABASE: resumegeni
+  #   networks:
+  #     - nodelocal-private
+  #   ports:
+  #     - '23306:3306'
+  #   volumes:
+  #     - ./conf/init:/docker-entrypoint-initdb.d/:ro
+  #     - type: bind
+  #       source: ./conf/mariadb.cnf
+  #       target: /etc/mysql/conf.d/docker.cnf
+  #       read_only: true
+  #     - type: volume
+  #       source: mariadb
+  #       target: /var/lib/mysql
 
   # # Image--infrastructure:redis
   # redis:
@@ -33,30 +33,30 @@ services:
   #       source: redis
   #       target: /data
 
-  # Image--app:hearecho_app
-  hearecho_app:
-    build:
-      context: ../app
-      dockerfile: Dockerfile_app
-    hostname: hearecho_app
-    restart: always
-    ports:
-      - '127.0.0.1:8880:3000'
-    command: sh -c 'serve -s dist'
-    volumes:
-      - type: bind
-        source: ../app
-        target: /app
-    networks:
-      - nodelocal
-      - nodelocal-private
+  # Image--app:resumegeni_app
+  # resumegeni_app:
+  #   build:
+  #     context: ../app
+  #     dockerfile: Dockerfile_app
+  #   hostname: resumegeni_app
+  #   restart: always
+  #   ports:
+  #     - '127.0.0.1:8880:3000'
+  #   command: sh -c 'serve -s dist'
+  #   volumes:
+  #     - type: bind
+  #       source: ../app
+  #       target: /app
+  #   networks:
+  #     - nodelocal
+  #     - nodelocal-private
 
-  # Image--app:hearecho_backend
-  hearecho_backend:
+  # Image--app:resumegeni_backend
+  resumegeni_backend:
     build:
       context: ../backend
       dockerfile: Dockerfile_backend
-    hostname: hearecho_backend
+    hostname: resumegeni_backend
     restart: always
     ports:
       - '127.0.0.1:8000:8000'
@@ -71,26 +71,26 @@ services:
     networks:
       - nodelocal
       - nodelocal-private
-    depends_on:
-      - mariadb
+    # depends_on:
+    #   - mariadb
 
   # Image--infrastructure:pma
-  pma:
-    image: phpmyadmin/phpmyadmin:4.7.9-1
-    container_name: rbr-phpMyAdmin
-    environment:
-      PMA_HOST: mariadb
-    networks:
-      - nodelocal-private
-    ports:
-      - '2082:80'
-    volumes:
-      - type: bind
-        source: ./conf/pma.config.user.inc.php
-        target: /etc/phpmyadmin/config.user.inc.php
-        read_only: true
-    depends_on:
-      - mariadb
+  # pma:
+  #   image: phpmyadmin/phpmyadmin:4.7.9-1
+  #   container_name: rbr-phpMyAdmin
+  #   environment:
+  #     PMA_HOST: mariadb
+  #   networks:
+  #     - nodelocal-private
+  #   ports:
+  #     - '2082:80'
+  #   volumes:
+  #     - type: bind
+  #       source: ./conf/pma.config.user.inc.php
+  #       target: /etc/phpmyadmin/config.user.inc.php
+  #       read_only: true
+  #   depends_on:
+  #     - mariadb
 
   #   # Service--CoderCloudDevelopment
   # code-server:
