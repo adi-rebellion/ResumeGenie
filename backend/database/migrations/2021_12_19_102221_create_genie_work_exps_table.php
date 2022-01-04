@@ -16,11 +16,12 @@ class CreateGenieWorkExpsTable extends Migration
         Schema::create('genie_work_exps', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->String('name');
+            $table->String('company');
             $table->String('position');
-            $table->String('url');
-            $table->date('startDate');
-            $table->date('endDate');
+            $table->String('location');
+            $table->String('website');
+            $table->date('start_date');
+            $table->date('end_date')->nullable();
             $table->enum('status',['0','1','2']);
             $table->String('summary');
             $table->String('highlights')->nullable();

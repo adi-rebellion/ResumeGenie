@@ -56,6 +56,14 @@ const apiConfig = {
                 return true
             }
         },
+        'GET_BASIC':
+        {
+            "METHOD": "get",
+            "URL": "/api/get/genie/basic",
+            validateParams() {
+                return true
+            }
+        },
         'WORK_EXP': {
             "METHOD": "post",
             "URL": "/api/insert/genie/work",
@@ -63,9 +71,37 @@ const apiConfig = {
                 return true
             }
         },
+        'UPDATE_WORK_EXP': {
+            "METHOD": "post",
+            "URL": "/api/update/genie/work",
+            validateParams() {
+                return true
+            }
+        },
+        'TOGGLE_WORK_EXP':{
+            "METHOD": "post",
+            "URL": "/api/toggle/genie/work",
+            validateParams() {
+                return true
+            }
+        },
         'EDUCATION': {
             "METHOD": "post",
             "URL": "/api/insert/genie/education",
+            validateParams() {
+                return true
+            }
+        },
+        'TOGGLE_WORK_EDUCATION':{
+            "METHOD": "post",
+            "URL": "/api/toggle/genie/education",
+            validateParams() {
+                return true
+            }
+        },
+        'UPDATE_EDUCATION': {
+            "METHOD": "post",
+            "URL": "/api/update/genie/education",
             validateParams() {
                 return true
             }
@@ -102,6 +138,20 @@ const apiConfig = {
                 return true
             }
         },
+        'TOGGLE_AWARD':{
+            "METHOD": "post",
+            "URL": "/api/toggle/genie/award",
+            validateParams() {
+                return true
+            }
+        },
+        'UPDATE_AWARD': {
+            "METHOD": "post",
+            "URL": "/api/update/genie/award",
+            validateParams() {
+                return true
+            }
+        },
         'GET_ALL_PROJECT':
         {
             "METHOD": "get",
@@ -118,6 +168,20 @@ const apiConfig = {
                 return true
             }
         },
+        'TOGGLE_PROJECT':{
+            "METHOD": "post",
+            "URL": "/api/toggle/genie/project",
+            validateParams() {
+                return true
+            }
+        },
+        'UPDATE_PROJECT': {
+            "METHOD": "post",
+            "URL": "/api/update/genie/project",
+            validateParams() {
+                return true
+            }
+        },
         'GET_ALL_SKILL':
         {
             "METHOD": "get",
@@ -130,6 +194,20 @@ const apiConfig = {
         {
             "METHOD": "post",
             "URL": "/api/insert/genie/skill",
+            validateParams() {
+                return true
+            }
+        },
+        'TOGGLE_SKILL':{
+            "METHOD": "post",
+            "URL": "/api/toggle/genie/skill",
+            validateParams() {
+                return true
+            }
+        },
+        'UPDATE_SKILL': {
+            "METHOD": "post",
+            "URL": "/api/update/genie/skill",
             validateParams() {
                 return true
             }

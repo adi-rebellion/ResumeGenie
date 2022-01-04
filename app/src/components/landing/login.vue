@@ -10,27 +10,21 @@
 			<!--begin::Authentication - Sign-in -->
 			<div class="d-flex flex-column flex-lg-row flex-column-fluid">
 				<!--begin::Aside-->
-				<div class="d-flex flex-column flex-lg-row-auto w-xl-600px positon-xl-relative" style="background-color: #F2C98A">
+				<div class="d-flex flex-column flex-lg-row-auto w-xl-600px positon-xl-relative" style="background-color: #434343">
 					<!--begin::Wrapper-->
 					<div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y">
 						<!--begin::Content-->
 						<div class="d-flex flex-row-fluid flex-column text-center p-10 pt-lg-20">
 							<!--begin::Logo-->
 							<a href="../../demo9/dist/index.html" class="py-9 mb-5">
-								<img alt="Logo" src="theme/dist/assets/media/logos/ResumeGenieDark.png" width="100" class="h-80px">
+								<img alt="Logo" src="theme/dist/assets/media/logos/ResumeGenieLight.png"  height="200">
 							</a>
 							<!--end::Logo-->
-							<!--begin::Title-->
-							<h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #986923;">Welcome to ResumeGenie</h1>
-							<!--end::Title-->
-							<!--begin::Description-->
-							<p class="fw-bold fs-2" style="color: #986923;">Discover Amazing ResumeGenie
-							<br>with great build tools</p>
-							<!--end::Description-->
+							
 						</div>
 						<!--end::Content-->
 						<!--begin::Illustration-->
-						<div class="d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-350px" style="background-image: url(theme/dist/assets/media/illustrations/sigma-1/13.png"></div>
+						<div class="d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-550px" style="background-image: url(theme/dist/assets/media/illustrations/rg/Login.png"></div>
 						<!--end::Illustration-->
 					</div>
 					<!--end::Wrapper-->
@@ -48,7 +42,7 @@
 								<br><br><br><br><br><br><br><br><br><br>
 								<div class="text-center mb-10">
 									<!--begin::Title-->
-									<h1 class="text-dark mb-3">Sign In to ResumeGenie</h1>
+									<!-- <h1 class="text-dark mb-3">Sign In to ResumeGenie</h1> -->
 									<!--end::Title-->
 									<!--begin::Link-->
 									<div class="text-gray-400 fw-bold fs-4">New Here?
@@ -85,13 +79,35 @@
 								<!--end::Input group-->
 								<!--begin::Actions-->
 								<div class="text-center">
-									<!--begin::Submit button-->
-									<button type="submit" id="kt_sign_in_submit" class="btn btn-lg btn-primary w-100 mb-5" @click.prevent="loginUser">
-										<span class="indicator-label">Continue</span>
-										<span class="indicator-progress">Please wait...
-										<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-									</button>
-									<!--end::Submit button-->
+									  <button
+                    type="button"
+                    id="kt_sign_up_submit"
+                    class="btn btn-lg btn-primary"
+                    @click.prevent="loginUser"
+                  >
+                    <span v-if="!showLoginLoading">Login</span>
+                    <span v-if="showLoginLoading"
+                      >Please wait...
+                      <span
+                        class="
+                          spinner-border spinner-border-sm
+                          align-middle
+                          ms-2
+                        "
+                      ></span
+                    ></span>
+                    <!-- <span >Submit</span>
+                    <span 
+                      >Please wait...
+                      <span
+                        class="
+                          spinner-border spinner-border-sm
+                          align-middle
+                          ms-2
+                        "
+                      ></span
+                    ></span> -->
+                  </button>
 									<!--begin::Separator-->
 									<div class="text-center text-muted text-uppercase fw-bolder mb-5">or</div>
 									<!--end::Separator-->
@@ -147,6 +163,7 @@ export default {
   },
   data() {
     return {
+		showLoginLoading: false,
       login: {
         email: "",
         password: "",
@@ -166,12 +183,14 @@ export default {
         this.$toast.error("Error", "Password field is required.");
         return;
       }
+	   this.showLoginLoading = true;
       const loginStatus = await this.$store.dispatch("login", this.login);
       console.log({
         loginStatus,
       });
       if (loginStatus.status == "success") {
         await this.$store.dispatch("getUser");
+		 this.showLoginLoading = false;
         this.$router.push("dashboard");
       } else {
         this.$toast.error("Error", " Incorrect username or password.");

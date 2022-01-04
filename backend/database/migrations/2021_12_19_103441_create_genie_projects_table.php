@@ -19,8 +19,8 @@ class CreateGenieProjectsTable extends Migration
             $table->String('name');
             $table->String('company_name');
             $table->String('summary');
-            $table->date('startDate');
-            $table->date('endDate');
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->String('url');
             $table->String('highlights')->nullable();
             $table->String('keywords')->nullable();

@@ -18,6 +18,7 @@ class CreateGenieBasicsTable extends Migration
             $table->integer('user_id');
             $table->String('name')->nullable();
             $table->String('label')->nullable();
+            $table->String('location')->nullable();
             $table->String('image')->nullable();
             $table->String('summary')->nullable();
             $table->timestamps();

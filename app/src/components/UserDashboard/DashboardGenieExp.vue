@@ -4,132 +4,181 @@
       <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <!--begin::Container-->
         <div class="container-xxl" id="kt_content_container">
-			  <div v-if="all_work_exp.length > 0" class="card mb-5 mb-xl-10">
-								<!--begin::Card header-->
-								<div class="card-header card-header-stretch pb-0">
-									<!--begin::Title-->
-									<div class="card-title">
-										<h3 class="m-0">My Work Experiences</h3>
-									</div>
-									<!--end::Title-->
-									<!--begin::Toolbar-->
-									<div class="card-toolbar m-0">
-										<!--begin::Tab nav-->
-										<ul class="nav nav-stretch nav-line-tabs border-transparent" role="tablist">
-											<!--begin::Tab item-->
-											<!-- <li class="nav-item" role="presentation">
+          <div v-if="all_work_exp.length > 0" class="card mb-5 mb-xl-10">
+            <!--begin::Card header-->
+            <div class="card-header card-header-stretch pb-0">
+              <!--begin::Title-->
+              <div class="card-title">
+                <h3 class="m-0">Work Experience(s)</h3>
+              </div>
+              <!--end::Title-->
+              <!--begin::Toolbar-->
+              <div class="card-toolbar m-0">
+                <!--begin::Tab nav-->
+                <ul
+                  class="nav nav-stretch nav-line-tabs border-transparent"
+                  role="tablist"
+                >
+                  <!--begin::Tab item-->
+                  <!-- <li class="nav-item" role="presentation">
 												<a id="kt_billing_creditcard_tab" class="nav-link fs-5 fw-bolder me-5 active" data-bs-toggle="tab" role="tab" href="#kt_billing_creditcard">Credit / Debit Card</a>
 											</li> -->
-											<!--end::Tab item-->
-											<!--begin::Tab item-->
-											<!-- <li class="nav-item" role="presentation">
+                  <!--end::Tab item-->
+                  <!--begin::Tab item-->
+                  <!-- <li class="nav-item" role="presentation">
 												<a id="kt_billing_paypal_tab" class="nav-link fs-5 fw-bolder" data-bs-toggle="tab" role="tab" href="#kt_billing_paypal">Paypal</a>
 											</li> -->
-											<!--end::Tab item-->
-										</ul>
-										<!--end::Tab nav-->
-									</div>
-									<!--end::Toolbar-->
-								</div>
-								<!--end::Card header-->
-								<!--begin::Tab content-->
-								<div id="kt_billing_payment_tab_content" class="card-body tab-content">
-									<!--begin::Tab panel-->
-									<div id="kt_billing_creditcard" class="tab-pane fade show active" role="tabpanel">
-										<!--begin::Title-->
-										
-										<!--end::Title-->
-										<!--begin::Row-->
-										<div class="row gx-9 gy-6">
-											<!--begin::Col-->
-											<div v-for="exp in all_work_exp" :key="exp.id" class="col-xl-6">
-												<!--begin::Card-->
-												<div class="card card-dashed h-xl-100 flex-row flex-stack flex-wrap p-6">
-													<!--begin::Info-->
-													<div class="d-flex flex-column py-2">
-														<!--begin::Owner-->
-														<div class="d-flex align-items-center fs-4 fw-bolder mb-5">{{ exp.position  }} | {{ exp.name  }}<br> ({{ exp.url  }})
-														<!-- <span class="badge badge-light-success fs-7 ms-2">{{ exp.position  }}</span> -->
-														</div>
-														<!--end::Owner-->
-														<!--begin::Wrapper-->
-														<div class="d-flex align-items-center">
-															<!--begin::Icon-->
-															<img src="assets/media/svg/card-logos/visa.svg" alt="" class="me-4">
-															<!--end::Icon-->
-															<!--begin::Details-->
-															<div>
-																<div class="badge badge-light-success fs-4 fw-bolder">{{ exp.startDate}} - {{exp.endDate}} @ {{exp.location}}</div>
-																<div class="fs-6 fw-bold text-gray-400">{{ exp.summary  }}</div><br>
-																<!-- <div class="fs-6 fw-bold text-gray-400">Start Date: {{ exp.startDate  }}</div>
-																<div class="fs-6 fw-bold text-gray-400">End Date: {{ exp.endDate  }}</div> -->
-															</div>
-															<!--end::Details-->
-														</div>
-														<!--end::Wrapper-->
-													</div>
-													<!--end::Info-->
-													<!--begin::Actions-->
-													<div class="d-flex align-items-center py-2">
-														<button type="reset" class="btn btn-sm btn-light btn-active-light-primary me-3">Delete</button>
-														<button class="btn btn-sm btn-light btn-active-light-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_new_card">Edit</button>
-													</div>
-													<!--end::Actions-->
-												</div>
-												<!--end::Card-->
-											</div>
-											<div class="col-6">
-											<div class="card card-stretch">
-												<a href="#add_new_work_exp" class="btn btn-flex btn-text-gray-800 btn-icon-gray-400 btn-active-color-primary bg-body flex-column justfiy-content-start align-items-start text-start w-100 p-10">
-													<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
-													<span class="svg-icon svg-icon-3x mb-5">
-														<img src="https://img.icons8.com/doodle/100/000000/plus--v1.png" style="margin-left: 40px;"/>
-													</span>
-													<!--end::Svg Icon-->
-													<span class="fs-4 fw-bolder">Add work Experiences</span>
-												</a>
-											</div>
-										</div>
-											<!--end::Col-->
-											
-										</div>
-										<!--end::Row-->
-									</div>
-									<!--end::Tab panel-->
-									<!--begin::Tab panel-->
-									<div id="kt_billing_paypal" class="tab-pane fade" role="tabpanel" aria-labelledby="kt_billing_paypal_tab">
-										<!--begin::Title-->
-										<h3 class="mb-5">My Paypal</h3>
-										<!--end::Title-->
-										<!--begin::Description-->
-										<div class="text-gray-600 fs-6 fw-bold mb-5">To use PayPal as your payment method, you will need to make pre-payments each month before your bill is due.</div>
-										<!--end::Description-->
-										<!--begin::Form-->
-										<form class="form">
-											<!--begin::Input group-->
-											<div class="mb-7 mw-350px">
-												<select name="timezone" data-control="select2" data-placeholder="Select an option" data-hide-search="true" class="form-select form-select-solid form-select-lg fw-bold fs-6 text-gray-700 select2-hidden-accessible" data-select2-id="select2-data-7-3rey" tabindex="-1" aria-hidden="true">
-													<option data-select2-id="select2-data-9-imk7">Select an option</option>
-													<option value="25">US $25.00</option>
-													<option value="50">US $50.00</option>
-													<option value="100">US $100.00</option>
-													<option value="125">US $125.00</option>
-													<option value="150">US $150.00</option>
-												</select><span class="select2 select2-container select2-container--bootstrap5" dir="ltr" data-select2-id="select2-data-8-fxli" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single form-select form-select-solid form-select-lg fw-bold fs-6 text-gray-700" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-timezone-xp-container" aria-controls="select2-timezone-xp-container"><span class="select2-selection__rendered" id="select2-timezone-xp-container" role="textbox" aria-readonly="true" title="Select an option">Select an option</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-											</div>
-											<!--end::Input group-->
-											<button type="submit" class="btn btn-primary">Pay with Paypal</button>
-										</form>
-										<!--end::Form-->
-									</div>
-									<!--end::Tab panel-->
-								</div>
-								<!--end::Tab content-->
-				</div>
+                  <!--end::Tab item-->
+                </ul>
+                <!--end::Tab nav-->
+              </div>
+              <!--end::Toolbar-->
+            </div>
+            <!--end::Card header-->
+            <!--begin::Tab content-->
+            <div
+              id="kt_billing_payment_tab_content"
+              class="card-body tab-content"
+            >
+              <!--begin::Tab panel-->
+              <div
+                id="kt_billing_creditcard"
+                class="tab-pane fade show active"
+                role="tabpanel"
+              >
+                <!--begin::Title-->
+
+                <!--end::Title-->
+                <!--begin::Row-->
+                <div class="row gx-9 gy-6">
+                     <div class="col-6">
+                    <div class="card card-stretch">
+                      <a
+                        href="#add_new_work_exp"
+                        class="
+                          btn
+                          btn-flex
+                          btn-text-gray-800
+                          btn-icon-gray-400
+                          btn-active-color-primary
+                          bg-body
+                          flex-column
+                          justfiy-content-start
+                          align-items-start
+                          text-start
+                          w-100
+                          p-10
+                        "
+                      >
+                        <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
+                        <span class="svg-icon svg-icon-3x mb-5" style="margin-left:auto; margin-right:auto;">
+                        <img src="https://img.icons8.com/dusk/80/000000/add--v1.png"  />
+                       
+                        </span>
+                        <!--end::Svg Icon-->
+                          <span class="fs-4 fw-bolder" style="margin-left:auto; margin-right:auto;">Add an experience</span>
+                       
+                      </a>
+                    </div>
+                  </div>
+                  <!--begin::Col-->
+                  <div
+                    v-for="exp in all_work_exp"
+                    :key="exp.id"
+                    class="col-xl-6"
+                  >
+                    <!--begin::Card-->
+                    <div class="card card-flush shadow-sm">
+                      <div class="card-header ribbon ribbon-end ribbon-clip">
+                        <div v-if="exp.status == 0" class="ribbon-label">
+                          <i class="far fa-eye text-white"></i>
+                          <span class="ribbon-inner bg-success"></span>
+                        </div>
+                        <div v-if="exp.status == 1" class="ribbon-label">
+                          <i class="fas fa-eye-slash text-white"></i>
+                          <span class="ribbon-inner bg-info"></span>
+                        </div>
+                        <div v-if="exp.status == 2" class="ribbon-label">
+                          <i class="fas fa-trash text-white"></i>
+                          <span class="ribbon-inner bg-danger"></span>
+                        </div>
+                        <div class="card-title fw-bolder mb-5">
+                          {{ exp.position  }} | {{ exp.company}}
+                        </div>
+
+                        <span class="fs-7"
+                          >{{exp.website}}
+                          <div class="badge badge-light-success fs-7 fw-bolder">
+                            {{ exp.start_date}} -
+                            <span v-if="exp.end_date">{{exp.end_date}}</span>
+                            <span v-if="!exp.end_date">Current</span> @
+                            {{exp.location}}
+                          </div>
+                        </span>
+                      </div>
+                      <div class="card-body">
+                        {{ exp.summary  }}
+                      </div>
+
+                      <div v-if="exp.status != 2" class="card-footer">
+                        <button
+                          v-if="exp.status==1"
+                          type="reset"
+                          class="
+                            btn btn-sm btn-light btn-active-light-primary
+                            me-3
+                          "
+                          @click.prevent="toogle_work_exp(exp.id,'0')"
+                        >
+                          <i class="far fa-eye"></i>
+                        </button>
+                        <button
+                          v-if="exp.status==0"
+                          type="reset"
+                          class="
+                            btn btn-sm btn-light btn-active-light-primary
+                            me-3
+                          "
+                          @click.prevent="toogle_work_exp(exp.id,'1')"
+                        >
+                          <i class="fas fa-eye-slash"></i>
+                        </button>
+                        <button
+                          type="reset"
+                          class="
+                            btn btn-sm btn-light btn-active-light-primary
+                            me-3
+                          "
+                          @click.prevent="toogle_work_exp(exp.id,'2')"
+                        >
+                          <i class="fas fa-trash"></i>
+                        </button>
+                        <button
+                          class="btn btn-sm btn-light btn-active-light-primary"
+                          @click.prevent="edit_work_exp(exp.id)"
+                        >
+                          <i class="far fa-edit"></i>
+                        </button>
+                      </div>
+                    </div>
+
+                    <!--end::Card-->
+                  </div>
+               
+                  <!--end::Col-->
+                </div>
+                <!--end::Row-->
+              </div>
+              <!--end::Tab panel-->
+              
+            </div>
+            <!--end::Tab content-->
+          </div>
           <!--begin::Basic info-->
-          <div class="card mb-5 mb-xl-10" >
+          <div class="card mb-5 mb-xl-10">
             <!--begin::Card header-->
-            <div id="add_new_work_exp"	
+            <div
+              id="add_new_work_exp"
               class="card-header border-0 cursor-pointer"
               role="button"
               data-bs-toggle="collapse"
@@ -139,7 +188,7 @@
             >
               <!--begin::Card title-->
               <div class="card-title m-0">
-                <h3 class="fw-bolder m-0">Work GenieExperience Details</h3>
+                <h3 class="fw-bolder m-0">Adding a work experience</h3>
               </div>
               <!--end::Card title-->
             </div>
@@ -174,7 +223,7 @@
                               form-control form-control-lg form-control-solid
                               mb-3 mb-lg-0
                             "
-                            placeholder="Position"
+                            placeholder="Your job title"
                             v-model="genie_work.position"
                           />
                           <div
@@ -204,7 +253,7 @@
                         type="text"
                         name="company"
                         class="form-control form-control-lg form-control-solid"
-                        placeholder="Company"
+                        placeholder="Your employer name"
                         v-model="genie_work.company"
                       />
                       <div
@@ -215,11 +264,11 @@
                   </div>
                   <!--end::Input group-->
 
-				   <!--begin::Input group-->
+                  <!--begin::Input group-->
                   <div class="row mb-6">
                     <!--begin::Label-->
-                    <label class="col-lg-4 col-form-label required fw-bold fs-6"
-                      >Comapny Website</label
+                    <label class="col-lg-4 col-form-label fw-bold fs-6"
+                      >Comapny website</label
                     >
                     <!--end::Label-->
                     <!--begin::Col-->
@@ -235,7 +284,7 @@
                               form-control form-control-lg form-control-solid
                               mb-3 mb-lg-0
                             "
-                            placeholder="Website"
+                            placeholder="The URL for the employer's website(e.g. https://site.url/ )"
                             v-model="genie_work.website"
                           />
                           <div
@@ -256,7 +305,7 @@
                   <!--begin::Input group-->
                   <div class="row mb-6">
                     <!--begin::Label-->
-                    <label class="col-lg-4 col-form-label required fw-bold fs-6"
+                    <label class="col-lg-4 col-form-label fw-bold fs-6"
                       >Location</label
                     >
                     <!--end::Label-->
@@ -266,7 +315,7 @@
                         type="text"
                         name="location"
                         class="form-control form-control-lg form-control-solid"
-                        placeholder="Location"
+                        placeholder="City name where you worked"
                         v-model="genie_work.location"
                       />
                     </div>
@@ -278,20 +327,40 @@
                   <div class="row mb-6">
                     <!--begin::Label-->
                     <label class="col-lg-4 col-form-label required fw-bold fs-6"
-                      >Start Date</label
+                      >Start date</label
+                    >
+                    <!--end::Label-->
+                    <!--begin::Col-->
+                    <div class="col-lg-8 fv-row">
+                      <input
+                        type="date"
+                        placeholder="Pick date rage"
+                        name="start_date"
+                        class="form-control form-control-lg form-control-solid"
+                        v-model="genie_work.start_date"
+                      />
+
+                     
+                    </div>
+                  </div>
+                  <!--end::Input group-->
+                  <!--begin::Input group-->
+                  <div v-if="!genie_work.end_date_accept" class="row mb-6">
+                    <!--begin::Label-->
+                    <label class="col-lg-4 col-form-label required fw-bold fs-6"
+                      >End date</label
                     >
                     <!--end::Label-->
                     <!--begin::Col-->
                     <div class="col-lg-8 fv-row">
                       <input
                         placeholder="Pick date rage"
-                        id="rg_datepicker_work_start"
-                        name="start_date"
+                        type="date"
+                        name="end_date"
                         class="form-control form-control-lg form-control-solid"
-                        v-model="genie_work.start_date"
-                      /><br />
-
-                      <!--begin::Option-->
+                        v-model="genie_work.end_date"
+                      />
+                       <!--begin::Option-->
                       <label
                         class="form-check form-check-inline form-check-solid"
                       >
@@ -299,33 +368,13 @@
                           class="form-check-input"
                           name="communication[]"
                           type="checkbox"
-						  v-model="genie_work.end_date_accept"
-                          
+                          v-model="genie_work.end_date_accept"
                         />
                         <span class="fw-bold ps-2 fs-6"
                           >I currently work here</span
                         >
                       </label>
                       <!--end::Option-->
-                    </div>
-                  </div>
-                  <!--end::Input group-->
-                  <!--begin::Input group-->
-                  <div v-if ="!genie_work.end_date_accept" class="row mb-6">
-                    <!--begin::Label-->
-                    <label class="col-lg-4 col-form-label required fw-bold fs-6"
-                      >End Date</label
-                    >
-                    <!--end::Label-->
-                    <!--begin::Col-->
-                    <div class="col-lg-8 fv-row">
-                      <input 
-                        placeholder="Pick date rage"
-                        id="rg_datepicker_work_end"
-                        name="end_date"
-                        class="form-control form-control-lg form-control-solid"
-                        v-model="genie_work.end_date"
-                      />
                     </div>
                     <!--end::Col-->
                   </div>
@@ -344,7 +393,7 @@
                         class="form-control form-control-solid"
                         rows="3"
                         name="summary"
-                        placeholder="Summary"
+                        placeholder="A one-sentence to one-paragraph summary of this employer or position"
                         v-model="genie_work.summary"
                       ></textarea>
                     </div>
@@ -361,13 +410,24 @@
                   >
                     Discard
                   </button>
-                  <button
+                  
+                   <button
+                    v-if="add_new_work_exp"
                     type="submit"
-                    class="btn btn-primary"
+                    class="btn bg-rg-yellow"
                     id="kt_account_profile_details_submit"
                     @click.prevent="submitButton"
                   >
-                    Save Changes
+                    Save
+                  </button>
+                  <button
+                    v-if="!add_new_work_exp"
+                    type="submit"
+                    class="btn btn-primary"
+                    id="kt_account_profile_details_submit"
+                    @click.prevent="updateButton"
+                  >
+                    Update Changes
                   </button>
                 </div>
                 <!--end::Actions-->
@@ -377,15 +437,11 @@
               <!--end::Form-->
             </div>
             <!--end::Content-->
-			
           </div>
           <!--end::Basic info-->
-		
         </div>
         <!--end::Container-->
-		
       </div>
-	  
     </template>
   </DashboardLayout>
 </template>
@@ -407,11 +463,14 @@ export default {
             // users: null,
             // urlInputs: null,
             // domainInputs: null,
+      add_new_work_exp:true,
+
 			 all_work_exp: [],
            avatar: "",
             genie_work: {
+                update_work_id: "",
                 position: "",
-				website: "",
+				        website: "",
                 company: "",
                 location: "",
                 summary: "",
@@ -424,11 +483,98 @@ export default {
         };
     },
     methods: {
-        
+
+      async edit_work_exp(work_id)
+      {
+
+
+        this.add_new_work_exp = false;
+        this.genie_work = this.all_work_exp[work_id-1];
+        this.genie_work.update_work_id = work_id;
+
+
+      },
+       async toogle_work_exp(work_id,status)
+      {
+
+
+
+
+        const work_exp = {toogle_work_id:work_id , status:status}
+          await API.ToggleGenieWork(work_exp).then((result) => {
+
+
+              // this.genie_work = this.all_work_exp[work_id-1];
+              this.all_work_exp[work_id-1].status = status;
+              this.all_work_exp = res.data.work_experience;
+
+            })
+
+
+      },
+
+
 
 
        async submitButton() {
-		  
+
+                 if(this.genie_work.position == "")
+                {
+                      this.$toast.error("Error", "Position is a required feild");
+                    return "Error";
+                }
+                if (this.genie_work.company == "") {
+                    this.$toast.error("Error", "Company is a required feild");
+                    return "Error";
+                }
+                //  if (this.genie_work.location == "") {
+                //     this.$toast.error("Error", "Location is a required feild");
+                //     return "Error";
+                // }
+                 if (this.genie_work.start_date == "") {
+                    this.$toast.error("Error", "Start date is a required feild");
+                    return "Error";
+                }
+               
+                 if (this.genie_work.summary == "") {
+                    this.$toast.error("Error", "About is a required feild");
+                    return "Error";
+                }
+
+
+                await API.GenieWork(this.genie_work)
+                .then((res) => {
+                    if (res.status == 200) {
+                        this.all_work_exp = res.data.work_experience;
+                       this.genie_work.position = '';
+                       this.genie_work.website = '';
+                       this.genie_work.location = '';
+                        this.genie_work.company = '';
+                       this.genie_work.start_date = '';
+                        this.genie_work.end_date = '';
+                       this.genie_work.end_date_accept = '';
+                        this.genie_work.summary = '';
+                      
+                        this.$toast.success("Success", "Genie work experience added succesfully");
+
+                    } else {
+                        this.$toast.error("Error", "Oops error while updating genie work experience");
+                    }
+                })
+                .catch((error) => {
+                    // this.showNewOrgLoading = false;
+                    if (error.response.status == 422) {
+                        this.errors = error.response.data.errors;
+                    } else {
+                        console.log(error.message);
+                    }
+                });
+
+
+
+        },
+         async updateButton() {
+
                  if(this.genie_work.position == "")
                 {
                       this.$toast.error("Error", "Position is a required feild");
@@ -442,27 +588,24 @@ export default {
                     this.$toast.error("Error", "Location is a required feild");
                     return "Error";
                 }
-                //  if (this.genie_work.start_date == "") {
-                //     this.$toast.error("Error", "Start date is a required feild");
-                //     return "Error";
-                // }
-                //  if (this.genie_work.current_location == "") {
-                //     this.$toast.error("Error", "Current Location is a required feild");
-                //     return "Error";
-                // }
-                //  if (this.genie_work.summary == "") {
-                //     this.$toast.error("Error", "About is a required feild");
-                //     return "Error";
-                // }
-               
+                 if (this.genie_work.start_date == "") {
+                    this.$toast.error("Error", "Start date is a required feild");
+                    return "Error";
+                }
 
-                await API.GenieWork(this.genie_work)
+                 if (this.genie_work.summary == "") {
+                    this.$toast.error("Error", "Summary is a required feild");
+                    return "Error";
+                }
+
+
+                await API.UpdateGenieWork(this.genie_work)
                 .then((res) => {
                     if (res.status == 200) {
-                        this.$toast.success("Success", "Organization created succesfully");
+                        this.$toast.success("Success", "Genie work experience updated succesfully");
 
                     } else {
-                        this.$toast.error("Error", "Oops error creating an organization");
+                        this.$toast.error("Error", "Oops error while updating genie work experience");
                     }
                 })
                 .catch((error) => {
@@ -499,47 +642,20 @@ export default {
       document.head.appendChild(recaptchaScript4)
 
 
-	$("#rg_datepicker_work_start").daterangepicker({
-	autoUpdateInput: true,
-      locale: {
-          cancelLabel: 'Clear'
-      },
-        singleDatePicker: true,
 
-        showDropdowns: true,
-        minYear: 1901,
-        maxYear: parseInt(moment().format("YYYY"),10)
-    }, function(start, end, label) {
 
-    }
-
-);
-$("#rg_datepicker_work_end").daterangepicker({
-	autoUpdateInput: true,
-      locale: {
-          cancelLabel: 'Clear'
-      },
-        singleDatePicker: true,
-        showDropdowns: true,
-        minYear: 1901,
-        maxYear: parseInt(moment().format("YYYY"),10)
-    }, function(start, end, label) {
-
-    }
-
-);
 
 
     },
 
 	async created() {
 		 await API.GetAllWorkExp().then((result) => {
-                
+
               console.log('question',result.data);
                 this.all_work_exp = result.data;
-               
-               
-               
+
+
+
             })
 	}
 };

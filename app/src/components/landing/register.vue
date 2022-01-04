@@ -9,7 +9,7 @@
 			<!--begin::Authentication - Sign-up -->
 			<div class="d-flex flex-column flex-lg-row flex-column-fluid">
 				<!--begin::Aside-->
-				<div class="d-flex flex-column flex-lg-row-auto w-xl-600px positon-xl-relative" style="background-color: #F2C98A">
+				<div class="d-flex flex-column flex-lg-row-auto w-xl-600px positon-xl-relative" style="background-color: #434343">
 					<!--begin::Wrapper-->
 					<div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y">
 						<!--begin::Content-->
@@ -50,12 +50,12 @@
 									<!--end::Title-->
 									<!--begin::Link-->
 									<div class="text-gray-400 fw-bold fs-4">Already have an account?
-									<a href="../../demo9/dist/authentication/flows/aside/sign-in.html" class="link-primary fw-bolder">Sign in here</a></div>
+									<router-link :to="{ name: 'landing_login' }"  class="txt-rg-yellow fw-bolder">Sign in here</router-link></div>
 									<!--end::Link-->
 								</div>
 								<!--end::Heading-->
 								<!--begin::Action-->
-								<button type="button" class="btn btn-light-primary fw-bolder w-100 mb-10">
+								<button type="button" class="btn bg-rg-yellow fw-bolder w-100 mb-10">
 								<img alt="Logo" src="theme/dist/assets/media/svg/brand-logos/google-icon.svg" class="h-20px me-3">Sign in with Google</button>
 								<!--end::Action-->
                 	<!--begin::Google link-->
@@ -128,19 +128,43 @@
 									<label class="form-check form-check-custom form-check-solid form-check-inline">
 										<input class="form-check-input" type="checkbox" name="toc" value="1">
 										<span class="form-check-label fw-bold text-gray-700 fs-6">I Agree
-										<a href="#" class="ms-1 link-primary">Terms and conditions</a>.</span>
+										<a href="#" class="ms-1 txt-rg-yellow">Terms and conditions</a>.</span>
 									</label>
 								<div class="fv-plugins-message-container invalid-feedback"></div></div>
 								<!--end::Input group-->
-								<!--begin::Actions-->
-								<div class="text-center">
-									<button type="button" id="kt_sign_up_submit" class="btn btn-lg btn-primary" @click.prevent="registerUser">
-										<span class="indicator-label" v-if="!showRegisterLoading">Submit</span>
-										<span class="indicator-progress" v-if="showRegisterLoading">Please wait...
-										<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-									</button>
-								</div>
-								<!--end::Actions-->
+								  <!--begin::Actions-->
+                <div class="text-center">
+                  <button
+                    type="button"
+                    id="kt_sign_up_submit"
+                    class="btn btn-lg bg-rg-yellow"
+                    @click.prevent="registerUser"
+                  >
+                    <span v-if="!showRegisterLoading">Create Account</span>
+                    <span v-if="showRegisterLoading"
+                      >Please wait...
+                      <span
+                        class="
+                          spinner-border spinner-border-sm
+                          align-middle
+                          ms-2
+                        "
+                      ></span
+                    ></span>
+                    <!-- <span >Submit</span>
+                    <span 
+                      >Please wait...
+                      <span
+                        class="
+                          spinner-border spinner-border-sm
+                          align-middle
+                          ms-2
+                        "
+                      ></span
+                    ></span> -->
+                  </button>
+                </div>
+                <!--end::Actions-->
 							<div></div></form>
 							<!--end::Form-->
 						</div>

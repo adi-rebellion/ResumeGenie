@@ -21,56 +21,56 @@ const dashboardRoutes = [
         path: "/dashboard",
         name: "DashboardPage",
         component: DashboardPage,
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
     },
 
     {
         path: "/genie-basic",
         name: "GenieBasic",
         component: DashboardGenieBasic,
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
     },
 
     {
         path: "/genie-experience",
         name: "GenieExperience",
         component: DashboardGenieExp,
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
     },
 
     {
         path: "/genie-education",
         name: "GenieEducation",
         component: DashboardGenieEdu,
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
     },
 
     {
         path: "/genie-award",
         name: "GenieAward",
         component: DashboardGenieAward,
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
     },
 
     {
         path: "/genie-project",
         name: "GenieProject",
         component: DashboardGenieProject,
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
     },
 
     {
         path: "/genie-skill",
         name: "GenieSkill",
         component: DashboardGenieSkill,
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
     },
 
     {
         path: "/genie-contact",
         name: "GenieContact",
         component: DashboardGenieContact,
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
     },
     
 

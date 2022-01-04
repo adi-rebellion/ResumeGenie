@@ -9,7 +9,44 @@
     background-color: #F1A81A;
 }
 
+.txt-rg-yellow
+{
+    color: #F1A81A;
+}
+
 .landing-dark-bg
 {
     background-color: #434343;
 }
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    height: 240px;
+    background-color: #434343;
+}
+.card .card-footer {
+    padding: 1rem 2.25rem;
+    background-color: transparent;
+    border-top: 1px solid #eff2f5;
+}
+
+
+
+.landing-dark-color {
+    color: #434343;
+}
+
+/* .card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+    min-height: 70px;
+    padding: 0 2.25rem;
+    background-color: transparent;
+    border-bottom: 1px solid #eff2f5;
+} */

@@ -12,13 +12,13 @@
   >
     <!--begin::Logo-->
     <div class="aside-logo flex-column-auto pt-10 pt-lg-20" id="kt_aside_logo">
-      <a href="../../../../public/theme/dist/index.html">
+      <router-link :to="{ name: 'DashboardPage' }">
         <img
           alt="Logo"
           src="../../../../public/theme/dist/assets/media/logos/RG.png"
           class="h-80px"
         />
-      </a>
+      </router-link>
     </div>
     <!--end::Logo-->
     <!--begin::Nav-->

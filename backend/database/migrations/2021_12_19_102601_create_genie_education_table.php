@@ -20,24 +20,25 @@ class CreateGenieEducationTable extends Migration
             $table->String('url')->nullable();
             $table->String('area')->nullable();
             $table->String('studyType')->nullable();
-            $table->date('startDate')->nullable();
-            $table->date('endDate')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->float('score')->nullable();
             $table->String('courses')->nullable();
             $table->enum('status',[0,1,2])->nullable();
             $table->timestamps();
-            // "education": [{
-            //     "institution": "University",
-            //     "url": "https://institution.com/",
-            //     "area": "Software Development",
-            //     "studyType": "Bachelor",
-            //     "startDate": "2011-01-01",
-            //     "endDate": "2013-01-01",
-            //     "score": "4.0",
-            //     "courses": [
-            //       "DB1101 - Basic SQL"
-            //     ]
-            //   }],
+            // "education": [
+            //     {
+            //       "institution": "Your school name",
+            //       "area": "Your area of study or degree earned",
+            //       "studyType": "",
+            //       "startDate": "Your start date, in YYYY-MM-DD format",
+            //       "endDate": "Your completion date, in YYYY-MM-DD format",
+            //       "gpa": "",
+            //       "courses": [
+            //         ""
+            //       ]
+            //     }
+            //   ],
         });
     }
 
