@@ -85,3 +85,6 @@ RUN rm -f composer-setup.php;
 
 RUN chmod -f -R  777 storage
 RUN chmod -f -R  777 bootstrap/cache
+
+RUN sudo npm install --save --unsafe-perm=true -g resume-cli
+run npm install --save -g jsonresume-theme-even

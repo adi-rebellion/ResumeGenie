@@ -12,6 +12,7 @@
     "izitoast": "^1.4.0",
     "laravel-vue-pagination": "^2.3.1",
     "puppeteer": "^13.0.1",
+    "resume-cli": "^3.0.5",
     "typewriter-effect": "^2.18.2",
     "vue": "^2.6.11",
     "vue-izitoast": "^1.2.1",
