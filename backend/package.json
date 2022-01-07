@@ -17,5 +17,9 @@
         "resolve-url-loader": "^3.1.0",
         "sass": "^1.15.2",
         "sass-loader": "^8.0.0"
+    },
+    "dependencies": {
+        "jsonresume-theme-even": "^0.16.1",
+        "resume-cli": "^3.0.5"
     }
 }

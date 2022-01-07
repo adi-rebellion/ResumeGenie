@@ -12,8 +12,10 @@ use App\GenieSill;
 use App\GenieSkill;
 use App\GenieWorkExp;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Response;
+use Illuminate\Support\Facades\Storage;
 
 class ResumeController extends Controller
 {
@@ -24,9 +26,8 @@ class ResumeController extends Controller
         // return auth()->user();
        
 
-        $genie_basic = GenieBasic::where('user_id',auth()->user()->id)->first();
-        if($genie_basic)
-        {
+        $genie_basic = GenieBasic::where('user_id', auth()->user()->id)->first();
+        if ($genie_basic) {
             $genie_basic->name = $request->first_name;
             $genie_basic->label = $request->current_position;
             $genie_basic->summary = $request->summary;
@@ -35,10 +36,7 @@ class ResumeController extends Controller
             
            
             $genie_basic->save();
-
-        }
-        else
-        {
+        } else {
             $genie_basic_new = new GenieBasic();
             $genie_basic_new->name = $request->name;
             $genie_basic_new->label = $request->label;
@@ -49,15 +47,10 @@ class ResumeController extends Controller
 
        
 
-            return  Response::json([
+        return  Response::json([
                 'status' => 200,
                 'message' => "Genie basic details updated succesfully"
             ], 200);
-      
-
-
-
-
     }
 
     public function add_resume_work_exp(Request $request)
@@ -83,34 +76,20 @@ class ResumeController extends Controller
             'status' => 200,
             'message' => "Genie work experience added succesfully"
         ], 200);
-
-
-
-
-        
-      
-
-
-
-
     }
 
     public function update_resume_work_exp(Request $request)
     {
         $genie_work_exp_id = $request->genie_work_exp_id;
-        $genie_work_exp = GenieWorkExp::where('id',$genie_work_exp_id)->first();
+        $genie_work_exp = GenieWorkExp::where('id', $genie_work_exp_id)->first();
        
-        if($genie_work_exp)
-        {
-            if($genie_work_exp->user_id != auth()->user()->id)
-            {
+        if ($genie_work_exp) {
+            if ($genie_work_exp->user_id != auth()->user()->id) {
                 return  Response::json([
                     'status' => 200,
                     'message' => "Genie work experience authentication error"
                 ], 200);
-            }
-            else
-            {
+            } else {
                 $genie_work_exp->status = $request->requested_status;
                 $genie_work_exp->save();
                 return  Response::json([
@@ -118,10 +97,7 @@ class ResumeController extends Controller
                     'message' => "Genie work experience status updated succesfully"
                 ], 200);
             }
-            
-        }
-        else
-        {
+        } else {
             return  Response::json([
                 'status' => 403,
                 'message' => "Genie work experience not found"
@@ -131,10 +107,10 @@ class ResumeController extends Controller
 
     public function genie_all_work_exp(Request $request)
     {
-        $genie_work_exp = GenieWorkExp::where('user_id',1)->get();
-        return $genie_work_exp;  
+        $genie_work_exp = GenieWorkExp::where('user_id', 1)->get();
+        return $genie_work_exp;
         //sort by enddate
-    } 
+    }
 
 
     public function add_resume_genie_education(Request $request)
@@ -169,25 +145,20 @@ class ResumeController extends Controller
         //     $table->float('score');
         //     $table->String('courses');
         //     $table->timestamps();
-
     }
 
 
     public function update_resume_genie_education(Request $request)
     {
         $resume_genie_education_id = $request->education_id;
-        $genie_education = GenieEducation::where('id',$resume_genie_education_id)->first();
-        if($genie_education)
-        {
-            if($genie_education->user_id != auth()->user()->id)
-            {
+        $genie_education = GenieEducation::where('id', $resume_genie_education_id)->first();
+        if ($genie_education) {
+            if ($genie_education->user_id != auth()->user()->id) {
                 return  Response::json([
                     'status' => 200,
                     'message' => "Genie education authentication error"
                 ], 200);
-            }
-            else
-            {
+            } else {
                 $genie_education->status = $request->requested_status;
                 $genie_education->save();
                 return  Response::json([
@@ -195,10 +166,7 @@ class ResumeController extends Controller
                     'message' => "Genie education status updated succesfully"
                 ], 200);
             }
-
-        }
-        else
-        {
+        } else {
             return  Response::json([
                 'status' => 403,
                 'message' => "Genie education not found"
@@ -208,8 +176,8 @@ class ResumeController extends Controller
 
     public function genie_all_education(Request $request)
     {
-        $genie_education = GenieEducation::where('user_id',1)->get();
-        return $genie_education;  
+        $genie_education = GenieEducation::where('user_id', 1)->get();
+        return $genie_education;
         //sort by enddate
     }
 
@@ -239,18 +207,14 @@ class ResumeController extends Controller
     public function update_resume_genie_award(Request $request)
     {
         $resume_genie_award_id = $request->award_id;
-        $genie_award = GenieAward::where('id',$resume_genie_award_id)->first();
-        if($genie_award)
-        {
-            if($genie_award->user_id != auth()->user()->id)
-            {
+        $genie_award = GenieAward::where('id', $resume_genie_award_id)->first();
+        if ($genie_award) {
+            if ($genie_award->user_id != auth()->user()->id) {
                 return  Response::json([
                     'status' => 200,
                     'message' => "Genie award authentication error"
                 ], 200);
-            }
-            else
-            {
+            } else {
                 $genie_award->status = $request->requested_status;
                 $genie_award->save();
                 return  Response::json([
@@ -258,10 +222,7 @@ class ResumeController extends Controller
                     'message' => "Genie award status updated succesfully"
                 ], 200);
             }
-
-        }
-        else
-        {
+        } else {
             return  Response::json([
                 'status' => 403,
                 'message' => "Genie award not found"
@@ -271,8 +232,8 @@ class ResumeController extends Controller
 
     public function genie_all_award(Request $request)
     {
-        $genie_award = GenieAward::where('user_id',1)->get();
-        return $genie_award;  
+        $genie_award = GenieAward::where('user_id', 1)->get();
+        return $genie_award;
     }
 
 
@@ -317,18 +278,14 @@ class ResumeController extends Controller
     public function update_resume_genie_project(Request $request)
     {
         $resume_genie_project_id = $request->project_id;
-        $genie_project = GenieProject::where('id',$resume_genie_project_id)->first();
-        if($genie_project)
-        {
-            if($genie_project->user_id != auth()->user()->id)
-            {
+        $genie_project = GenieProject::where('id', $resume_genie_project_id)->first();
+        if ($genie_project) {
+            if ($genie_project->user_id != auth()->user()->id) {
                 return  Response::json([
                     'status' => 200,
                     'message' => "Genie project authentication error"
                 ], 200);
-            }
-            else
-            {
+            } else {
                 $genie_project->status = $request->requested_status;
                 $genie_project->save();
                 return  Response::json([
@@ -336,10 +293,7 @@ class ResumeController extends Controller
                     'message' => "Genie project status updated succesfully"
                 ], 200);
             }
-
-        }
-        else
-        {
+        } else {
             return  Response::json([
                 'status' => 403,
                 'message' => "Genie project not found"
@@ -349,8 +303,8 @@ class ResumeController extends Controller
 
     public function genie_all_project(Request $request)
     {
-        $genie_project = GenieProject::where('user_id',1)->get();
-        return $genie_project;  
+        $genie_project = GenieProject::where('user_id', 1)->get();
+        return $genie_project;
     }
 
     public function add_resume_genie_skill(Request $request)
@@ -387,18 +341,14 @@ class ResumeController extends Controller
     public function update_resume_genie_skill(Request $request)
     {
         $resume_genie_skill_id = $request->skill_id;
-        $genie_skill = GenieSkill::where('id',$resume_genie_skill_id)->first();
-        if($genie_skill)
-        {
-            if($genie_skill->user_id != auth()->user()->id)
-            {
+        $genie_skill = GenieSkill::where('id', $resume_genie_skill_id)->first();
+        if ($genie_skill) {
+            if ($genie_skill->user_id != auth()->user()->id) {
                 return  Response::json([
                     'status' => 200,
                     'message' => "Genie skill authentication error"
                 ], 200);
-            }
-            else
-            {
+            } else {
                 $genie_skill->status = $request->requested_status;
                 $genie_skill->save();
                 return  Response::json([
@@ -406,10 +356,7 @@ class ResumeController extends Controller
                     'message' => "Genie skill status updated succesfully"
                 ], 200);
             }
-
-        }
-        else
-        {
+        } else {
             return  Response::json([
                 'status' => 403,
                 'message' => "Genie project not found"
@@ -419,16 +366,14 @@ class ResumeController extends Controller
 
     public function genie_all_skill(Request $request)
     {
-        $genie_skill = GenieSkill::where('user_id',1)->get();
-        return $genie_skill;  
+        $genie_skill = GenieSkill::where('user_id', 1)->get();
+        return $genie_skill;
     }
 
     public function add_resume_genie_contact(Request $request)
     {
-       
-        $genie_contact = GenieContact::where('user_id',1)->first();
-        if($genie_contact)
-        {
+        $genie_contact = GenieContact::where('user_id', 1)->first();
+        if ($genie_contact) {
             $genie_contact->email = $request->email;
             $genie_contact->user_id = 1;
             $genie_contact->phone = $request->phone;
@@ -439,10 +384,7 @@ class ResumeController extends Controller
             
            
             $genie_contact->save();
-
-        }
-        else
-        {
+        } else {
             $genie_contact_new = new GenieContact();
             $genie_contact_new->email = $request->email;
             $genie_contact_new->user_id = 1;
@@ -454,30 +396,24 @@ class ResumeController extends Controller
 
        
 
-            return  Response::json([
+        return  Response::json([
                 'status' => 200,
                 'message' => "Genie contact details updated succesfully"
             ], 200);
-      
-
     }
 
     
     public function update_resume_genie_contact(Request $request)
     {
         // $resume_genie_contact_id = $request->skill_id;
-        $genie_contact = GenieContact::where('user_id',1)->first();
-        if($genie_contact)
-        {
-            if($genie_contact->user_id != auth()->user()->id)
-            {
+        $genie_contact = GenieContact::where('user_id', 1)->first();
+        if ($genie_contact) {
+            if ($genie_contact->user_id != auth()->user()->id) {
                 return  Response::json([
                     'status' => 200,
                     'message' => "Genie contact authentication error"
                 ], 200);
-            }
-            else
-            {
+            } else {
                 $genie_contact->status = $request->requested_status;
                 $genie_contact->save();
                 return  Response::json([
@@ -485,10 +421,7 @@ class ResumeController extends Controller
                     'message' => "Genie contact status updated succesfully"
                 ], 200);
             }
-
-        }
-        else
-        {
+        } else {
             return  Response::json([
                 'status' => 403,
                 'message' => "Genie project not found"
@@ -498,8 +431,8 @@ class ResumeController extends Controller
 
     public function genie_all_contact(Request $request)
     {
-        $genie_contact = GenieContact::where('user_id',1)->first();
-        return $genie_contact;  
+        $genie_contact = GenieContact::where('user_id', 1)->first();
+        return $genie_contact;
     }
 
     
@@ -517,26 +450,20 @@ class ResumeController extends Controller
             'status' => 200,
             'message' => "Genie language added succesfully"
         ], 200);
-
-
     }
     
 
     public function update_resume_genie_language(Request $request)
     {
         $resume_genie_language_id = $request->language_id;
-        $genie_language = GenieLanguage::where('id',$resume_genie_language_id)->first();
-        if($genie_language)
-        {
-            if($genie_language->user_id != auth()->user()->id)
-            {
+        $genie_language = GenieLanguage::where('id', $resume_genie_language_id)->first();
+        if ($genie_language) {
+            if ($genie_language->user_id != auth()->user()->id) {
                 return  Response::json([
                     'status' => 200,
                     'message' => "Genie skill authentication error"
                 ], 200);
-            }
-            else
-            {
+            } else {
                 $genie_language->status = $request->requested_status;
                 $genie_language->save();
                 return  Response::json([
@@ -544,10 +471,7 @@ class ResumeController extends Controller
                     'message' => "Genie skill status updated succesfully"
                 ], 200);
             }
-
-        }
-        else
-        {
+        } else {
             return  Response::json([
                 'status' => 403,
                 'message' => "Genie project not found"
@@ -555,7 +479,25 @@ class ResumeController extends Controller
         }
     }
 
+    public function add_user_json(Request $request)
+    {
+        Storage::makeDirectory('data/1');
 
+        Storage::makeDirectory('data/1');
 
+        try {
+            Storage::copy("resume.json", "data/1/resume.json");
+        } catch (Exception $e) {
+        }
+       
 
+        return "echo /user/preview/json to view resume.";
+    }
+
+    public function preview_json(Request $request)
+    {
+        exec("cd ../storage/app/data/1;resume export index.html", $output);
+        $html = Storage::get('data/1/index.html');
+        echo($html);
+    }
 }

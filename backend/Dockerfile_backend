@@ -46,11 +46,6 @@ RUN apk add --update \
 	php7-zlib ;
   
 RUN apk add --update \
-  apache2 		\
-	apache2-ssl 	\
-	apache2-utils 	\
-	ca-certificates \
-	ttf-freefont	\
 	dcron 			\
 	php7-apache2	\
 	runit 			\
@@ -86,5 +81,8 @@ RUN rm -f composer-setup.php;
 RUN chmod -f -R  777 storage
 RUN chmod -f -R  777 bootstrap/cache
 
-RUN sudo npm install --save --unsafe-perm=true -g resume-cli
-run npm install --save -g jsonresume-theme-even
+# RUN composer install
+# RUN sudo npm install
+
+# RUN sudo npm install --save --unsafe-perm=true -g resume-cli
+# run npm install --save -g jsonresume-theme-even
