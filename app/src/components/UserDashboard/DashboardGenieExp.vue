@@ -89,10 +89,10 @@
                   >
                     <!--begin::Card-->
                     <div class="card card-flush shadow-sm">
-                      <div class="card-header ribbon ribbon-end ribbon-clip">
+                      <div class="card-header ribbon  ribbon-end ribbon-clip">
                         <div v-if="exp.status == 0" class="ribbon-label">
-                          <i class="far fa-eye text-white"></i>
-                          <span class="ribbon-inner bg-success"></span>
+                          <i class="far fa-eye text-white "></i>
+                          <span class="ribbon-inner  bg-success"></span>
                         </div>
                         <div v-if="exp.status == 1" class="ribbon-label">
                           <i class="fas fa-eye-slash text-white"></i>

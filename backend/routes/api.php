@@ -79,8 +79,15 @@ Route::post('update/genie/skill','ResumeController@update_resume_genie_skill');
 Route::post('toggle/genie/skill','ResumeController@toggle_resume_skill');
 Route::get('get/all/genie/skill','ResumeController@genie_all_skill');
 
+
 Route::post('insert/genie/contact','ResumeController@add_resume_genie_contact');
 Route::post('update/genie/contact','ResumeController@update_resume_genie_contact');
 Route::get('get/all/genie/contact','ResumeController@genie_all_contact');
 
 Route::get('get/all/genie/active','ResumeController@get_all_active_areas');
+Route::post('get/all/genie/skill','ResumeController@fetch_genie_skills');
+Route::get('get/all/genie/connect','ResumeController@fetch_genie_connect');
+
+Route::post('insert/genie/social','ResumeController@add_resume_genie_social');
+Route::post('update/genie/social','ResumeController@update_resume_genie_social');
+Route::get('get/all/genie/social','ResumeController@genie_all_social');

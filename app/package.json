@@ -4,20 +4,24 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --watch",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "build:pdf": "resume export resume.html"
   },
   "dependencies": {
+    "@vueform/slider": "^2.0.8",
     "axios": "^0.23.0",
-    "core-js": "^3.6.5",
+    "core-js": "^3.20.2",
     "izitoast": "^1.4.0",
     "laravel-vue-pagination": "^2.3.1",
     "puppeteer": "^13.0.1",
     "resume-cli": "^3.0.5",
     "typewriter-effect": "^2.18.2",
     "vue": "^2.6.11",
+    "vue-dynamic-select": "^1.0.16",
     "vue-izitoast": "^1.2.1",
     "vue-meta": "^2.4.0",
     "vue-router": "^3.5.2",
+    "vue3-slider": "^1.6.8",
     "vuex": "^3.6.2"
   },
   "devDependencies": {
@@ -27,7 +31,8 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "resume-cli": "^3.0.5"
   },
   "eslintConfig": {
     "root": true,

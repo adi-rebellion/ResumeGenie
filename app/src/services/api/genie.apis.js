@@ -120,6 +120,39 @@ const GetAllContact = () => {
     return getApi('GENIE', 'GET_ALL_CONTACT')
 }
 
+
+const GetAllActiveCompo = () => {
+    return getApi('GENIE', 'ALL_ACTIVE_COMPO')
+}
+
+const GetGenieSkillSelect = (key) => {
+    return getApi('GENIE', 'GENIE_SKILL_SELECT',key)
+}
+
+const GetGenieConnect = () => {
+    return getApi('GENIE', 'GENIE_CONNECT')
+}
+
+//////////////////////////////////Genie Socail////////////////////
+const GetAllSocial = () => {
+    return getApi('GENIE', 'GET_ALL_SOCIAL')
+}
+
+const GenieSocial = (genie_social) => {
+    return getApi('GENIE','SOCIAL',genie_social)
+}
+
+const ToggleGenieSocial = (genie_social_id,status) => {
+    return getApi('GENIE', 'TOGGLE_SOCIAL', genie_social_id,status)
+}
+
+const UpdateGenieSocial = (genie_social_id) => {
+    return getApi('GENIE', 'UPDATE_SOCIAL', genie_social_id)
+}
+
+//////////////////////////////////Genie Socail////////////////////
+
+
 module.exports = {
     GenieBasic ,
     GenieWork,
@@ -144,7 +177,14 @@ module.exports = {
     ToggleGenieProject,
     UpdateGenieProject,
     ToggleGenieSkill,
-    UpdateGenieSkill
+    UpdateGenieSkill,
+    GetAllActiveCompo,
+    GetGenieSkillSelect,
+    GetGenieConnect,
+    GetAllSocial,
+    GenieSocial,
+    ToggleGenieSocial,
+    UpdateGenieSocial
 
     
 

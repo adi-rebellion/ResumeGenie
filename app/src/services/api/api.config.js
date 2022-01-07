@@ -227,7 +227,71 @@ const apiConfig = {
             validateParams() {
                 return true
             }
-        }
+        },
+        'ALL_ACTIVE_COMPO' :
+        {
+            "METHOD": "get",
+            "URL": "/api/get/all/genie/active",
+            validateParams() {
+                return true
+            }
+        },
+        'GENIE_SKILL_SELECT' :
+        {
+            "METHOD": "post",
+            "URL": "/api/get/all/genie/skill",
+            validateParams() {
+                return true
+            }
+        },
+        'GENIE_CONNECT' :
+        {
+            "METHOD": "get",
+            "URL": "/api/get/all/genie/connect",
+            validateParams() {
+                return true
+            }
+        },
+        // 'GET_ALL_SOCIAL':
+        // {
+        //     "METHOD": "get",
+        //     "URL": "/api/get/all/genie/social",
+        //     validateParams() {
+        //         return true
+        //     }
+        // },
+        'GET_ALL_SOCIAL':
+        {
+            "METHOD" : "get",
+            "URL" : "/api/get/all/genie/social",
+            validateParams()
+            {
+                return true
+            }
+        },
+        'SOCIAL':
+        {
+            "METHOD": "post",
+            "URL": "/api/insert/genie/social",
+            validateParams() {
+                return true
+            }
+        },
+        'TOGGLE_SOCIAL':{
+            "METHOD": "post",
+            "URL": "/api/toggle/genie/social",
+            validateParams() {
+                return true
+            }
+        },
+        'UPDATE_SOCIAL': {
+            "METHOD": "post",
+            "URL": "/api/update/genie/social",
+            validateParams() {
+                return true
+            }
+        },
+        
 
 
     }

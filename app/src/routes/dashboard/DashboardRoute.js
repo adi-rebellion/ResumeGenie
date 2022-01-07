@@ -9,6 +9,7 @@ import DashboardGenieAward from '../../components/UserDashboard/DashboardGenieAw
 import DashboardGenieProject from '../../components/UserDashboard/DashboardGenieProject.vue'
 import DashboardGenieSkill from '../../components/UserDashboard/DashboardGenieSkill.vue'
 import DashboardGenieContact from '../../components/UserDashboard/DashboardGenieContact.vue'
+import DashboardGenieSocial from '../../components/UserDashboard/DashboardGenieSocial.vue'
 
 const dashboardRoutes = [
     {
@@ -70,6 +71,13 @@ const dashboardRoutes = [
         path: "/genie-contact",
         name: "GenieContact",
         component: DashboardGenieContact,
+        meta: { requiresAuth: true }
+    },
+
+    {
+        path: "/genie-social",
+        name: "GenieSocial",
+        component: DashboardGenieSocial,
         meta: { requiresAuth: true }
     },
     

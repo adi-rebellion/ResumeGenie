@@ -484,11 +484,11 @@
                   <button
                     v-if="add_new_project"
                     type="submit"
-                    class="btn btn-primary"
+                    class="btn bg-rg-yellow"
                     id="kt_account_profile_details_submit"
                     @click.prevent="submitButton"
                   >
-                    Save Changes
+                    Save
                   </button>
                   <button
                     v-if="!add_new_project"

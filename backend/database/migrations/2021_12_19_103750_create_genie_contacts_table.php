@@ -18,8 +18,11 @@ class CreateGenieContactsTable extends Migration
             $table->integer('user_id');
             $table->String('email')->nullable();
             $table->String('phone')->nullable();
-            $table->String('url')->nullable();
+            $table->String('website')->nullable();
             $table->String('address')->nullable();
+            $table->String('areacode')->nullable();
+            $table->String('city')->nullable();
+            $table->String('country')->nullable();
 
             // "email": "john@gmail.com",
             // "phone": "(912) 555-4321",

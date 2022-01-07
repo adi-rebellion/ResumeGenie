@@ -8,33 +8,6 @@
 		<div class="d-flex flex-column flex-root">
 			<!--begin::Authentication - Sign-up -->
 			<div class="d-flex flex-column flex-lg-row flex-column-fluid">
-				<!--begin::Aside-->
-				<div class="d-flex flex-column flex-lg-row-auto w-xl-600px positon-xl-relative" style="background-color: #434343">
-					<!--begin::Wrapper-->
-					<div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y">
-						<!--begin::Content-->
-						<div class="d-flex flex-row-fluid flex-column text-center p-10 pt-lg-20">
-							<!--begin::Logo-->
-							<a href="../../demo9/dist/index.html" class="py-9 mb-5">
-								<img alt="Logo" src="theme/dist/assets/media/logos/ResumeGenieDark.png" class="h-80px">
-							</a>
-							<!--end::Logo-->
-							<!--begin::Title-->
-							<h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #986923;">Welcome to ResumeGenie</h1>
-							<!--end::Title-->
-							<!--begin::Description-->
-							<p class="fw-bold fs-2" style="color: #986923;">Discover Amazing ResumeGenie
-							<br>with great build tools</p>
-							<!--end::Description-->
-						</div>
-						<!--end::Content-->
-						<!--begin::Illustration-->
-						<div class="d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-350px" style="background-image: url(theme/dist/assets/media/illustrations/sigma-1/13.png"></div>
-						<!--end::Illustration-->
-					</div>
-					<!--end::Wrapper-->
-				</div>
-				<!--end::Aside-->
 				<!--begin::Body-->
 				<div class="d-flex flex-column flex-lg-row-fluid py-10">
 					<!--begin::Content-->
@@ -44,6 +17,16 @@
 							<!--begin::Form-->
 							<form class="form w-100 fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate" id="kt_sign_up_form">
 								<!--begin::Heading-->
+									<!--begin::Heading-->
+										<div class="text-center only-mobile-view" style="display:none;">
+							<!--begin::Logo-->
+							<a href="#" class="py-9 mb-5">
+								<img alt="Logo" src="theme/dist/assets/media/logos/ResumeGenieDark.png"  height="200">
+							</a>
+							<!--end::Logo-->
+							
+						</div>
+								<span class="no-mobile-view"><br><br></span>
 								<div class="mb-10 text-center">
 									<!--begin::Title-->
 									<h1 class="text-dark mb-3">Create an Account</h1>
@@ -174,6 +157,29 @@
 				
 				</div>
 				<!--end::Body-->
+					<!--begin::Aside-->
+				<div class="d-flex flex-column flex-lg-row-auto w-xl-600px positon-xl-relative" >
+					<!--begin::Wrapper-->
+					<div class="no-mobile-view d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px " style="background-color: aliceblue;
+    height: 900px;">
+						<!--begin::Content-->
+						<div class="d-flex flex-row-fluid flex-column text-center p-10 pt-lg-20">
+							<!--begin::Logo-->
+							<a href="#" class="py-9 mb-5">
+								<img alt="Logo" src="theme/dist/assets/media/logos/ResumeGenieDark.png"  height="300">
+							</a>
+							<!--end::Logo-->
+							
+						</div>
+						<!--end::Content-->
+						<!--begin::Illustration-->
+						<div class="d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-550px" style="background-image: url(theme/dist/assets/media/illustrations/rg/Login.png; margin-top:-220px;"></div>
+						<!--end::Illustration-->
+					</div>
+					<!--end::Wrapper-->
+				</div>
+				<!--end::Aside-->
+				
 			</div>
 			<!--end::Authentication - Sign-up-->
 		</div>
@@ -186,10 +192,7 @@
     </template>
    
    
-    <template v-slot:landing-footer>
-    
-      <LandingFooter></LandingFooter>
-    </template>
+  
   </PublicPage>
 </template>
 
@@ -223,26 +226,26 @@ export default {
   },
   methods: {
     async registerUser() {
-      if(this.register.name == '')
-      {
-         this.$toast.error("Error",'Name field is required.');
-         return;
-      }
-      else if(this.register.email == '')
-      {
-         this.$toast.error("Error",'Email field is required.');
-          return;
-      }
-      else if(this.register.password == '')
-      {
-         this.$toast.error("Error",'Password field is required.');
-          return;
-      }
-      else if(this.register.password.length < 6)
-      {
-         this.$toast.error("Error",'Password strength is required to be more than 6 chars.');
-          return;
-      }
+    //   if(this.register.name == '')
+    //   {
+    //      this.$toast.error("Error",'Name field is required.');
+    //      return;
+    //   }
+    //   else if(this.register.email == '')
+    //   {
+    //      this.$toast.error("Error",'Email field is required.');
+    //       return;
+    //   }
+    //   else if(this.register.password == '')
+    //   {
+    //      this.$toast.error("Error",'Password field is required.');
+    //       return;
+    //   }
+    //   else if(this.register.password.length < 6)
+    //   {
+    //      this.$toast.error("Error",'Password strength is required to be more than 6 chars.');
+    //       return;
+    //   }
      
        this.showRegisterLoading = true;
         await API.register(this.register).then((res) => {
@@ -262,5 +265,28 @@ export default {
             
           },
   },
+  async mounted() {
+
+         let recaptchaScript = document.createElement('script')
+      recaptchaScript.setAttribute('src', './theme/dist/assets/js/scripts.bundle.js')
+      document.head.appendChild(recaptchaScript)
+
+          let recaptchaScript2 = document.createElement('script')
+      recaptchaScript.setAttribute('src', './theme/dist/assets/plugins/global/plugins.bundle.js')
+      document.head.appendChild(recaptchaScript2)
+
+        let recaptchaScript3 = document.createElement('script')
+      recaptchaScript.setAttribute('src', './theme/dist/assets/plugins/custom/leaflet/leaflet.bundle.js')
+      document.head.appendChild(recaptchaScript3)
+
+      let recaptchaScript4 = document.createElement('script')
+      recaptchaScript.setAttribute('src', './theme/dist/assets/js/custom/widgets.js')
+      document.head.appendChild(recaptchaScript4)
+
+     
+  
+
+      
+    },
 };
 </script>

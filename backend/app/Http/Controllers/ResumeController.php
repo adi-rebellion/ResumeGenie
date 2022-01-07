@@ -10,7 +10,10 @@ use App\GenieLanguage;
 use App\GenieProject;
 use App\GenieSill;
 use App\GenieSkill;
+use App\GenieSocial;
 use App\GenieWorkExp;
+use App\JobSkill;
+use App\SocialConnect;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Response;
@@ -666,7 +669,7 @@ class ResumeController extends Controller
 
     public function genie_all_skill(Request $request)
     {
-        $genie_skill = GenieSkill::where('user_id',1)->get();
+        $genie_skill = GenieSkill::where('user_id',auth()->user()->id)->get();
         return $genie_skill;  
     }
 
@@ -675,6 +678,7 @@ class ResumeController extends Controller
         $genie_new_skill = new GenieSkill();
         $genie_new_skill->user_id = auth()->user()->id;
         $genie_new_skill->name = $request->name;
+        $genie_new_skill->level = $request->level;
         $genie_new_skill->status = '1';
         $genie_new_skill->save();
         $created_skill = GenieSkill::where('user_id',auth()->user()->id)->get();
@@ -756,6 +760,7 @@ class ResumeController extends Controller
         
         // $genie_new_project->user_id = 1;
         $genie_skill->name = $request->name;
+        $genie_skill->level = $request->level;
         $genie_skill->save();
               
                 
@@ -784,7 +789,7 @@ class ResumeController extends Controller
 
 
 
-
+//////////////////////////////////////////////Genie Contact/////////////////////////////////////////
     public function add_resume_genie_contact(Request $request)
     {
        
@@ -794,8 +799,11 @@ class ResumeController extends Controller
             $genie_contact->email = $request->email;
             $genie_contact->user_id = auth()->user()->id;
             $genie_contact->phone = $request->phone;
-            $genie_contact->url = $request->website;
+            $genie_contact->website = $request->website;
             $genie_contact->address = $request->address;
+            $genie_contact->areacode = $request->areacode;
+            $genie_contact->city = $request->city;
+            $genie_contact->country = $request->country;
          
          
             
@@ -809,8 +817,12 @@ class ResumeController extends Controller
             $genie_contact_new->email = $request->email;
             $genie_contact_new->user_id = auth()->user()->id;
             $genie_contact_new->phone = $request->phone;
-            $genie_contact_new->url = $request->website;
+            $genie_contact_new->website = $request->website;
             $genie_contact_new->address = $request->address;
+            $genie_contact_new->areacode = $request->areacode;
+            $genie_contact_new->city = $request->city;
+            $genie_contact_new->country = $request->country;
+         
             $genie_contact_new->save();
         }
 
@@ -823,48 +835,151 @@ class ResumeController extends Controller
       
 
     }
-
-    
-    public function update_resume_genie_contact(Request $request)
-    {
-        // $resume_genie_contact_id = $request->skill_id;
-        $genie_contact = GenieContact::where('user_id',1)->first();
-        if($genie_contact)
-        {
-            if($genie_contact->user_id != auth()->user()->id)
-            {
-                return  Response::json([
-                    'status' => 200,
-                    'message' => "Genie contact authentication error"
-                ], 200);
-            }
-            else
-            {
-                $genie_contact->status = $request->requested_status;
-                $genie_contact->save();
-                return  Response::json([
-                    'status' => 200,
-                    'message' => "Genie contact status updated succesfully"
-                ], 200);
-            }
-
-        }
-        else
-        {
-            return  Response::json([
-                'status' => 403,
-                'message' => "Genie project not found"
-            ], 200);
-        }
-    }
-
+ 
     public function genie_all_contact(Request $request)
     {
         $genie_contact = GenieContact::where('user_id',1)->first();
         return $genie_contact;  
     }
 
+//////////////////////////////////////////////Genie Contact///////////////////////////////////////// 
+
+
+
+//////////////////////////////////////////////Genie Social/////////////////////////////////////////
+
+
+public function fetch_genie_connect(Request $request)
+{
+    $connects = SocialConnect::where('status','1')->get();
+    return $connects;
+}
+
+public function genie_all_social(Request $request)
+    {
+        $genie_social = GenieSocial::where('user_id',auth()->user()->id)->get();
+        return $genie_social;  
+    }
+
+public function add_resume_genie_social(Request $request)
+{
+    $new_genie_social = new GenieSocial();
+    $new_genie_social->user_id = auth()->user()->id;
+    $new_genie_social->network_id = $request->network_id;
+    $new_genie_social->user_name = $request->user_name;
+    $new_genie_social->url = $request->url;
+    $new_genie_social->status = '1';
+    $new_genie_social->save();
+
+    $connected_social = GenieSocial::where('user_id',auth()->user()->id)->get();
+
+    return  Response::json([
+        'status' => 200,
+        'network' => $connected_social,
+        'message' => "Genie social added succesfully"
+    ], 200);
+}
+
+public function update_resume_genie_social(Request $request)
+{
+    $genie_social_id = $request->update_social_id;
     
+    $genie_social = GenieSocial::where('id', $genie_social_id)->first();
+   
+    if($genie_social)
+    {
+        if($genie_social->user_id != auth()->user()->id)
+        {
+            return  Response::json([
+                'status' => 200,
+                'message' => "Genie social authentication error"
+            ], 200);
+        }
+        else
+        {
+           
+           
+    
+    // $genie_new_project->user_id = 1;
+    $genie_social->network_id = $request->network_id;
+    $genie_social->user_name = $request->user_name;
+    $genie_social->url = $request->url;
+    $genie_social->save();
+          
+            
+            
+            return  Response::json([
+                'status' => 200,
+                'message' => "Genie social status updated succesfully"
+            ], 200);
+        }
+        
+    }
+    else
+    {
+        return  Response::json([
+            'status' => 403,
+            'message' => "Genie social not found"
+        ], 200);
+    }
+}
+
+public function toggle_resume_social(Request $request)
+{
+    return 1;
+    $genie_social_id = $request->toogle_social_id;
+ 
+    $genie_social = GenieSocial::where('id',$genie_social_id)->first();
+   
+    if($genie_social)
+    {
+        if($genie_social->user_id != auth()->user()->id)
+        {
+            return  Response::json([
+                'status' => 200,
+                'message' => "Genie social authentication error"
+            ], 200);
+        }
+        else
+        {
+            $genie_social->status = $request->status;
+            $genie_social->save();
+            return  Response::json([
+                'status' => 200,
+                'message' => "Genie social status updated succesfully"
+            ], 200);
+        }
+        
+    }
+    else
+    {
+        return  Response::json([
+            'status' => 403,
+            'message' => "Genie social not found"
+        ], 200);
+    }
+
+
+
+
+    
+  
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////Genie Social/////////////////////////////////////////
 
 
     public function add_resume_genie_language(Request $request)
@@ -951,6 +1066,7 @@ class ResumeController extends Controller
             ['status','=','0']
         ])->get();
 
+        
         return  Response::json([
             'status' => 200,
             'message' => "Genie found",
@@ -960,9 +1076,29 @@ class ResumeController extends Controller
             'skill' => $genie_skill,
             'award' => $genie_award,
             'education' => $genie_education,
-            
         ], 200);
 
+
+    }
+
+    public function fetch_genie_skills(Request $request)
+    {
+       
+        $search = $request->name;
+        $data = [];
+        if($request->has('name')){
+            // $key = $request->value;
+            $skill = JobSkill::orderby('name','asc')->select('name')
+                    ->where([
+
+                        ['name', 'like', '%' .$search . '%'],
+
+
+                        ])
+                    ->get();
+                    return $skill;
+        }
+       
 
     }
 

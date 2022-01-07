@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\AccountsProfile;
+use App\AccountsUserpermission;
+use App\AuthUser;
 use App\Contact;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -10,11 +13,13 @@ use App\ContactItem;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\VerifyEmail;
+use Carbon\Carbon;
 use Exception;
 use Response;
 
 class RegisterController extends Controller
 {
+    
     public function register(Request $request)
     {
         $request->validate([
@@ -112,4 +117,72 @@ class RegisterController extends Controller
             }
         }
     }
+
+    // public function register(Request $request)
+    // {
+    //     $request->validate([
+    //         'name' => ['required'],
+    //         'email' => ['required','email'],
+    //         'password' => ['required','min:6'],
+
+
+    //     ]);
+    //     $check_user_exist = AuthUser::where('email',$request->email)->first();
+    //     if($check_user_exist)
+    //     {
+            
+    //         return Response::json([
+    //             'status' => 200,
+    //             'command' => 'error',
+    //              'message' => "User already exist."
+    //             //'message' => 'Please do verify your email'
+    //         ], 200);
+                       
+    //     }
+    //     else
+    //     {
+    //         $new_auth_user = new AuthUser();
+    //         $new_auth_user->is_superuser = 0;
+    //         $new_auth_user->username = $request->email;
+    //         // $password = 'test';
+    //         $salt = 'resumehiring'.$request->email;
+    //         $iterations = 216000;
+    //         $hash = base64_encode(hash_pbkdf2 ( 'sha256' , $request->password , $salt , $iterations, 32, true));
+    //         $django_password = 'pbkdf2_sha256'. '$' . $iterations. '$' . $salt . '$' . $hash;
+    //         $new_auth_user->password = $django_password;
+    //         $name = explode(" ",$request->name);
+    //         $new_auth_user->first_name = $name[0];
+    //         $new_auth_user->last_name = $name[1];
+    //         $new_auth_user->email = $request->email;
+    //         $new_auth_user->is_staff = 0;
+    //         $new_auth_user->is_active = 1;
+    //         $new_auth_user->date_joined = Carbon::now();
+    //         $new_auth_user->save();
+
+    //         $account_super_per = new AccountsUserpermission();
+    //         $account_super_per->entitytype  = 2;
+    //         $account_super_per->role = 1000;
+    //         $account_super_per->user_id = $new_auth_user->id;
+    //         $account_super_per->save();
+           
+
+    //         $account_profile = new AccountsProfile();
+    //         $account_profile->user_id = $new_auth_user->id;
+    //         $account_profile->job_search_status = 4;
+    //         $account_profile->save();
+
+    //         return Response::json([
+    //             'status' => 200,
+    //             'command' => 'success',
+    //              'message' => "User Created Successfully"
+    //             //'message' => 'Please do verify your email'
+    //         ], 200);
+            
+    //     }
+       
+
+       
+
+       
+    // }
 }

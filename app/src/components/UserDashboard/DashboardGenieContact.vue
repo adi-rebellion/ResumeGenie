@@ -4,7 +4,103 @@
       <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <!--begin::Container-->
         <div class="container-xxl" id="kt_content_container">
-			
+          <div v-if="genie_exist_contact" class="card mb-5 mb-xl-10" id="kt_profile_details_view">
+								<!--begin::Card header-->
+								<div class="card-header cursor-pointer">
+									<!--begin::Card title-->
+									<div class="card-title m-0">
+										<h3 class="fw-bolder m-0">Primary Contact Details</h3>
+									</div>
+									<!--end::Card title-->
+									<!--begin::Action-->
+									<button @click.prevent="edit_contact()" class="btn btn-primary align-self-center">Edit Profile</button>
+									<!--end::Action-->
+								</div>
+								<!--begin::Card header-->
+								<!--begin::Card body-->
+								<div class="card-body p-9">
+									<!--begin::Row-->
+									<div class="row mb-7">
+										<!--begin::Label-->
+										<label class="col-lg-4 fw-bold text-muted">Email</label>
+										<!--end::Label-->
+										<!--begin::Col-->
+										<div class="col-lg-8">
+											<span class="fw-bolder fs-6 text-gray-800"> {{ genie_exist_contact.email }}</span>
+										</div>
+										<!--end::Col-->
+									</div>
+									<!--end::Row-->
+								
+									<!--begin::Input group-->
+									<div class="row mb-7">
+										<!--begin::Label-->
+										<label class="col-lg-4 fw-bold text-muted">Contact Phone
+										</label>
+										<!--end::Label-->
+										<!--begin::Col-->
+										<div class="col-lg-8 d-flex align-items-center">
+											<span class="fw-bolder fs-6 text-gray-800 me-2">{{ genie_exist_contact.phone }}</span>
+								
+										</div>
+										<!--end::Col-->
+									</div>
+									<!--end::Input group-->
+									<!--begin::Input group-->
+									<div class="row mb-7">
+										<!--begin::Label-->
+										<label class="col-lg-4 fw-bold text-muted">Website</label>
+										<!--end::Label-->
+										<!--begin::Col-->
+										<div class="col-lg-8">
+											<a href="#" class="fw-bold fs-6 text-gray-800 text-hover-primary">{{ genie_exist_contact.website }}</a>
+										</div>
+										<!--end::Col-->
+									</div>
+									<!--end::Input group-->
+									<!--begin::Input group-->
+									<div class="row mb-7">
+										<!--begin::Label-->
+										<label class="col-lg-4 fw-bold text-muted">Address
+									</label>
+										<!--end::Label-->
+										<!--begin::Col-->
+										<div class="col-lg-8">
+											<span class="fw-bolder fs-6 text-gray-800">{{ genie_exist_contact.address }}<br>{{ genie_exist_contact.city }} {{ genie_exist_contact.areacode }}<br> {{ genie_exist_contact.country }}</span>
+										</div>
+										<!--end::Col-->
+									</div>
+									<!--end::Input group-->
+									
+									<!--begin::Notice-->
+									<div class="notice d-flex bg-light-warning rounded border-warning border border-dashed p-6">
+										<!--begin::Icon-->
+										<!--begin::Svg Icon | path: icons/duotune/general/gen044.svg-->
+										<span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+												<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="black"></rect>
+												<rect x="11" y="14" width="7" height="2" rx="1" transform="rotate(-90 11 14)" fill="black"></rect>
+												<rect x="11" y="17" width="2" height="2" rx="1" transform="rotate(-90 11 17)" fill="black"></rect>
+											</svg>
+										</span>
+										<!--end::Svg Icon-->
+										<!--end::Icon-->
+										<!--begin::Wrapper-->
+										<div class="d-flex flex-stack flex-grow-1">
+											<!--begin::Content-->
+											<div class="fw-bold">
+												<h4 class="text-gray-900 fw-bolder">We need your attention!</h4>
+												<div class="fs-6 text-gray-700">Your payment was declined. To start using tools, please
+												<a class="fw-bolder" href="../../demo9/dist/account/billing.html">Add Payment Method</a>.</div>
+											</div>
+											<!--end::Content-->
+										</div>
+										<!--end::Wrapper-->
+									</div>
+									<!--end::Notice-->
+								</div>
+								<!--end::Card body-->
+							</div>
             
 
                 
@@ -56,7 +152,7 @@
                               form-control form-control-lg form-control-solid
                               mb-3 mb-lg-0
                             "
-                            placeholder="Email"
+                            placeholder="Your email address"
                             v-model="genie_contact.email"
                           />
                           <div
@@ -93,8 +189,45 @@
                               form-control form-control-lg form-control-solid
                               mb-3 mb-lg-0
                             "
-                            placeholder="Phone"
+                            placeholder="A phone number, with any formatting you like. E.g. (555) 555-5555."
                             v-model="genie_contact.phone"
+                          />
+                          <div
+                            class="
+                              fv-plugins-message-container
+                              invalid-feedback
+                            "
+                          ></div>
+                        </div>
+                        <!--end::Col-->
+                      </div>
+                      <!--end::Row-->
+                    </div>
+                    <!--end::Col-->
+                  </div>
+                  <!--end::Input group-->
+                  <!--begin::Input group-->
+                  <div class="row mb-6">
+                    <!--begin::Label-->
+                    <label class="col-lg-4 col-form-label required fw-bold fs-6"
+                      >Website</label
+                    >
+                    <!--end::Label-->
+                    <!--begin::Col-->
+                    <div class="col-lg-8">
+                      <!--begin::Row-->
+                      <div class="row">
+                        <!--begin::Col-->
+                        <div class="col-lg-12 fv-row fv-plugins-icon-container">
+                          <input
+                            type="text"
+                            name="website"
+                            class="
+                              form-control form-control-lg form-control-solid
+                              mb-3 mb-lg-0
+                            "
+                            placeholder="Your website URL"
+                            v-model="genie_contact.website"
                           />
                           <div
                             class="
@@ -114,7 +247,7 @@
                   <div class="row mb-6">
                     <!--begin::Label-->
                     <label class="col-lg-4 col-form-label required fw-bold fs-6"
-                      >Phone</label
+                      >Address</label
                     >
                     <!--end::Label-->
                     <!--begin::Col-->
@@ -127,9 +260,81 @@
                         class="form-control form-control-solid"
                         rows="3"
                         name="address"
-                        placeholder="Address"
+                        placeholder="Your street address or mailing address"
                         v-model="genie_contact.address"
                       ></textarea>
+                          <div
+                            class="
+                              fv-plugins-message-container
+                              invalid-feedback
+                            "
+                          ></div>
+                        </div>
+                        <!--end::Col-->
+                      </div>
+                      <!--end::Row-->
+                       <!--begin::Row-->
+                      <div class="row">
+                        <!--begin::Col-->
+                        <div class="col-lg-12 fv-row fv-plugins-icon-container">
+                        <input
+                            type="text"
+                            name="areacode"
+                            class="
+                              form-control form-control-lg form-control-solid
+                              mb-3 mb-lg-0
+                            "
+                            placeholder="Your postal code (ZIP in the U.S.)"
+                            v-model="genie_contact.areacode"
+                          />
+                          <div
+                            class="
+                              fv-plugins-message-container
+                              invalid-feedback
+                            "
+                          ></div>
+                        </div>
+                        <!--end::Col-->
+                      </div>
+                      <!--end::Row-->
+                         <!--begin::Row-->
+                      <div class="row">
+                        <!--begin::Col-->
+                        <div class="col-lg-12 fv-row fv-plugins-icon-container">
+                        <input
+                            type="text"
+                            name="city"
+                            class="
+                              form-control form-control-lg form-control-solid
+                              mb-3 mb-lg-0
+                            "
+                            placeholder="Your city"
+                            v-model="genie_contact.city"
+                          />
+                          <div
+                            class="
+                              fv-plugins-message-container
+                              invalid-feedback
+                            "
+                          ></div>
+                        </div>
+                        <!--end::Col-->
+                      </div>
+                      <!--end::Row-->
+                         <!--begin::Row-->
+                      <div class="row">
+                        <!--begin::Col-->
+                        <div class="col-lg-12 fv-row fv-plugins-icon-container">
+                        <input
+                            type="text"
+                            name="country"
+                            class="
+                              form-control form-control-lg form-control-solid
+                              mb-3 mb-lg-0
+                            "
+                            placeholder="Your country (e.g. USA)"
+                            v-model="genie_contact.country"
+                          />
                           <div
                             class="
                               fv-plugins-message-container
@@ -163,12 +368,22 @@
                     Discard
                   </button>
                   <button
+                  v-if="add_new_contact"
                     type="submit"
-                    class="btn btn-primary"
+                    class="btn bg-rg-yellow"
                     id="kt_account_profile_details_submit"
                     @click.prevent="submitButton"
                   >
-                    Save Changes
+                    Save
+                  </button>
+                   <button
+                  v-if="!add_new_contact"
+                    type="submit"
+                    class="btn btn-primary"
+                    id="kt_account_profile_details_submit"
+                    @click.prevent="updateButton"
+                  >
+                    Update Changes
                   </button>
                 </div>
                 <!--end::Actions-->
@@ -204,7 +419,7 @@ export default {
   },
   data() {
         return {
-            // showNewOrgLoading: false,
+            add_new_contact: true,
             // users: null,
             // urlInputs: null,
             // domainInputs: null,
@@ -213,7 +428,11 @@ export default {
             genie_contact: {
                 email: "",
                 phone:"",
-                address:""
+                address:"",
+                areacode:"",
+                city:"",
+                country:"",
+                website:""
                 
 				
 
@@ -267,6 +486,56 @@ export default {
 
 
         },
+             async updateButton() {
+           
+               
+                if(this.genie_contact.email == "")
+                {
+                      this.$toast.error("Error", "Email is a required feild");
+                    return "Error";
+                }
+                if(this.genie_contact.phone == "")
+                {
+                      this.$toast.error("Error", "Phone is a required feild");
+                    return "Error";
+                }
+                 if(this.genie_contact.address == "")
+                {
+                      this.$toast.error("Error", "Address is a required feild");
+                    return "Error";
+                }
+
+                await API.GenieContact(this.genie_contact)
+                .then((res) => {
+                    if (res.status == 200) {
+                        this.$toast.success("Success", "Organization created succesfully");
+
+                    } else {
+                        this.$toast.error("Error", "Oops error creating an organization");
+                    }
+                })
+                .catch((error) => {
+                    // this.showNewOrgLoading = false;
+                    if (error.response.status == 422) {
+                        this.errors = error.response.data.errors;
+                    } else {
+                        console.log(error.message);
+                    }
+                });
+
+
+
+        },
+            async edit_contact()
+      {
+        
+       
+        this.add_new_contact = false;
+        this.genie_contact = this.genie_exist_contact;
+        // this.genie_award.update_award_id = award_id;
+
+
+      },
 
 
     },

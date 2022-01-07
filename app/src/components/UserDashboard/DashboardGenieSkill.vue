@@ -8,8 +8,8 @@
 										<!--begin::Header-->
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">Latest Products</span>
-												<span class="text-muted mt-1 fw-bold fs-7">More than 400 new products</span>
+												<span class="card-label fw-bolder fs-3 mb-1">Skill(s)</span>
+												<!-- <span class="text-muted mt-1 fw-bold fs-7">More than 400 new products</span> -->
 											</h3>
 											<!-- <div class="card-toolbar">
 												<ul class="nav">
@@ -59,6 +59,13 @@
 																	<td>
 																		<a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{skill.name}}</a>
 																	
+																	</td>
+																	<td>
+																		<div class="d-flex align-items-center ps-4" id="kt_toolbar">
+											<div id="kt_toolbar_slider" class="noUi-target noUi-target-primary w-75px w-xxl-150px noUi-sm noUi-ltr noUi-horizontal noUi-txt-dir-ltr"><div class="noUi-base"><div class="noUi-connects"><div class="noUi-connect" style="transform: translate(0%, 0px) scale(0.555556, 1);"></div></div><div class="noUi-origin" style="transform: translate(-444.444%, 0px); z-index: 4;"><div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="1.0" aria-valuemax="10.0" aria-valuenow="1.0" aria-valuetext="1.0"><div class="noUi-touch-area"></div></div></div></div></div>
+											<span v-if="skill.level<=40" id="kt_toolbar_slider_value" class="d-flex flex-center bg-danger rounded-circle w-35px h-35px ms-4 fs-7 fw-bolder text-white" style="font-size: 20px; !important">{{skill.level}}</span>
+												<span v-if="skill.level>40" id="kt_toolbar_slider_value" class="d-flex flex-center bg-success rounded-circle w-35px h-35px ms-4 fs-7 fw-bolder text-white" style="font-size: 20px; !important">{{skill.level}}</span>
+										</div>
 																	</td>
                                   									<td class="text-end">
 																		<span
@@ -432,17 +439,15 @@
                       <div class="row">
                         <!--begin::Col-->
                         <div class="col-lg-12 fv-row fv-plugins-icon-container">
-                          <input
-                            type="text"
-                            name="name"
-                            class="
-                              form-control form-control-lg form-control-solid
-                              mb-3 mb-lg-0
-                            "
-                            placeholder="Skill Name"
-                            v-model="genie_skill.name"
-                          />
-                          <div
+              <input class="form-control form-control-lg form-control-solid
+                              mb-3 mb-lg-0" list="browsers" id="myBrowser" v-model="genie_skill.name"  v-on:input="populateSkill" />
+<datalist id="browsers">
+  <option   v-for="skill in fetched_skills" :key="skill.name"  :value="skill.name"></option>
+  <!-- <option value="Firefox"></option>
+  <option value="Internet"></option> -->
+ 
+</datalist>
+						  <div
                             class="
                               fv-plugins-message-container
                               invalid-feedback
@@ -455,16 +460,51 @@
                     </div>
                     <!--end::Col-->
                   </div>
+              
+                  <div class="row mb-6">
+                    <!--begin::Label-->
+                    <label class="col-lg-4 col-form-label required fw-bold fs-6"
+                      >Rate your skill</label
+                    >
+                    <!--end::Label-->
+                    <!--begin::Col-->
+                    <div class="col-lg-8">
+                      <!--begin::Row-->
+                      <div class="row">
+                        <!--begin::Col-->
+                        <div class="col-lg-12 fv-row fv-plugins-icon-container">
+                          <div id="kt_slider_basic"></div>
+						  <input
+                            type="number"
+                            name="name"
+                            class="
+                              form-control form-control-lg form-control-solid
+                              mb-3 mb-lg-0
+                            "
+							id="kt_slider_basic_min"
+                            placeholder="Skill level"
+							min="0"
+                            v-model="genie_skill.level"
+                          />
+                          <!-- <div
+                            class="
+                              fv-plugins-message-container
+                              invalid-feedback
+                            "
+                          ></div> -->
+						  <!-- <div class="fw-bold mb-2" >Min:
+							  <input type="text" id="kt_slider_basic_min"   v-model="genie_skill.level" />
+							   
+							   </div> -->
+                        </div>
+                        <!--end::Col-->
+                      </div>
+                      <!--end::Row-->
+                    </div>
+                    <!--end::Col-->
+                  </div>
                   <!--end::Input group-->
-                  <div class="mb-0">
-    <label class="form-label">Example</label>
-    <div id="kt_slider_basic"></div>
-
-    <div class="pt-5">
-        <div class="fw-bold mb-2">Min: <span id="kt_slider_basic_min"></span></div>
-        <div class="fw-bold mb-2">Max: <span id="kt_slider_basic_max"></span></div>
-    </div>
-</div>
+                
 
                 
 
@@ -485,11 +525,11 @@
                  <button
                   v-if="add_new_skill"
                     type="submit"
-                    class="btn btn-primary"
+                    class="btn bg-rg-yellow"
                     id="kt_account_profile_details_submit"
                     @click.prevent="submitButton"
                   >
-                    Save Changes
+                    Save
                   </button>
                    <button
                   v-if="!add_new_skill"
@@ -529,10 +569,12 @@ const axios = require("axios").default;
 import { GetAllEducation } from '../../services/api';
 
 
-
 export default {
   components: {
     DashboardLayout,
+
+	
+
   },
   data() {
         return {
@@ -542,14 +584,22 @@ export default {
             // urlInputs: null,
             // domainInputs: null,
 			 all_skill: [],
-          
+			  key: {
+				  value: ""
+			  },
+         
             genie_skill: {
 				  update_skill_id: "",
-                name: "",
+					name: "",
+					level:""
+					
                 
 				
 
             },
+			fetched_skills : [],
+			
+			 
             errors: [],
         };
     },
@@ -579,6 +629,19 @@ export default {
 
         
       },
+	 async populateSkill (event) {
+   if(this.genie_skill.name.length > 3)
+   {
+	  await API.GetGenieSkillSelect(this.genie_skill).then((result) => {
+            
+               
+             
+			 this.fetched_skills = result.data;
+               
+            })	
+   }
+    },
+	 
 
 
        async submitButton() {
@@ -676,7 +739,63 @@ export default {
       let recaptchaScript4 = document.createElement('script')
       recaptchaScript.setAttribute('src', './theme/dist/assets/js/custom/widgets.js')
       document.head.appendChild(recaptchaScript4)
+ 
+// 	  $('#populateSkill').on("change",function(){
+    
+//    alert(1);
+// });
 
+// 	var slider = document.querySelector("#kt_slider_basic");
+// var valueMin = document.querySelector("#kt_slider_basic_min");
+// var valueMax = document.querySelector("#kt_slider_basic_max");
+
+// noUiSlider.create(slider, {
+//     start: [20, 80],
+//     connect: true,
+//     range: {
+//         "min": 0,
+//         "max": 100
+//     }
+// });
+
+// slider.noUiSlider.on("update", function (values, handle) {
+//     if (handle) {
+//         valueMax.innerHTML = values[handle];
+//     } else {
+//         valueMin.innerHTML = values[handle];
+//     }
+// });
+
+var connectSlider = document.getElementById('kt_slider_basic');
+
+var valueMin = document.querySelector("#kt_slider_basic_min"); 
+noUiSlider.create(connectSlider, {
+    start: 20,
+	step: 10,
+	tooltips: true,
+    connect: 'lower',
+    range: {
+        'min': 0,
+        'max': 100
+    }
+});
+
+connectSlider.noUiSlider.on("change", function (values, handle) {
+	
+	if (handle) {
+        valueMax.innerHTML = values[handle];
+    } else {
+        valueMin.value = values[handle];
+		// this.genie_skill.level = values[handle];
+		// this.genie_skill.name = "aditya";
+	
+    }
+	
+   
+});
+$(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
 
 	
 
@@ -693,8 +812,11 @@ export default {
                
                
             })
-	}
+	},
+	
+	
 	
 };
+
 
 </script>

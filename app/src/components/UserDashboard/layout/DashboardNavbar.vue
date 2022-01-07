@@ -7,7 +7,7 @@
     data-kt-sticky-offset="{lg: '300px'}"
   >
     <!--begin::Container-->
-    <div class="header-container container-xxl">
+    <div class="header-container container-xxl" >
       <!--begin::Page title-->
       <div
         class="
@@ -21,6 +21,7 @@
           py-3 py-lg-0
           me-3
         "
+        style="background-image: url(./theme/dist/assets/media/misc/taieri.svg)"
       >
         <!--begin::Heading-->
         <h1 class="d-flex flex-column text-dark fw-bolder my-1">
@@ -61,7 +62,7 @@
          
           <router-link
            :to="{ name: 'GenieBasic' }"
-            class="btn bg-rg-yellow"
+            class="btn btn-light-warning"
             
             >{{$store.state.auth.user.user_name}}</router-link
           >

@@ -8,10 +8,18 @@
 {
     background-color: #F1A81A;
 }
+.aside-menu .menu>.menu-item>.menu-link.active .menu-icon {
+    background-color: #F1A81A !important;
+}
+
+
+.noUi-target .noUi-connect {
+    background: #F1A81A;
+}
 
 .txt-rg-yellow
 {
-    color: #F1A81A;
+    color: #F1A81A !important;
 }
 
 .landing-dark-bg
@@ -50,3 +58,15 @@
     background-color: transparent;
     border-bottom: 1px solid #eff2f5;
 } */
+
+@media only screen and (max-width: 1000px) {
+    .no-mobile-view
+{
+    display: none !important;
+}
+.only-mobile-view
+{
+    display: block !important;
+}
+  }
+  /* <span class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 mt-4 start-50 animation-blink"></span> */
