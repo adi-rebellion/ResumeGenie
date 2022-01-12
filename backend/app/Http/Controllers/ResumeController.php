@@ -6,14 +6,20 @@ use App\GenieAward;
 use App\GenieBasic;
 use App\GenieContact;
 use App\GenieEducation;
+use App\GenieInterest;
 use App\GenieLanguage;
 use App\GenieProject;
+use App\GenieReference;
+use App\GenieResume;
+use App\GenieResumeComponent;
 use App\GenieSill;
 use App\GenieSkill;
 use App\GenieSocial;
+use App\GenieVolunteer;
 use App\GenieWorkExp;
 use App\JobSkill;
 use App\SocialConnect;
+use App\LanguageList;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
@@ -110,7 +116,7 @@ class ResumeController extends Controller
         $genie_work_exp->location = $request->location;
         $genie_work_exp->end_date = $request->end_date;
         $genie_work_exp->summary = $request->summary;
-        $genie_work_exp->status = 1;
+        $genie_work_exp->status = '0';
         $genie_work_exp->website = $request->website;
         $genie_work_exp->save();
         $created_work_exp = GenieWorkExp::where('user_id',auth()->user()->id)->get();
@@ -125,9 +131,14 @@ class ResumeController extends Controller
     public function toggle_resume_work_exp(Request $request)
     {
         
-        $genie_work_exp_id = $request->toogle_work_id;
-     
-        $genie_work_exp = GenieWorkExp::where('id',$genie_work_exp_id)->first();
+        $genie_work_exp_id = $request->toogle_work_id; 
+        
+        $genie_work_exp = GenieResumeComponent::where([
+            ['component','=',$request->component],
+            ['resume_id','=',$request->resume_id],
+            ['component_id','=',$request->toogle_work_id]
+        ])->first();
+       
        
         if($genie_work_exp)
         {
@@ -142,10 +153,11 @@ class ResumeController extends Controller
             {
                 $genie_work_exp->status = $request->status;
                 $genie_work_exp->save();
-                $created_work_exp = GenieWorkExp::where('user_id',auth()->user()->id)->get();
+
+                // $created_work_exp = GenieWorkExp::where('user_id',auth()->user()->id)->get();
                 return  Response::json([
                     'status' => 200,
-                    'work_experience' =>  $created_work_exp,
+                    // 'work_experience' =>  $created_work_exp,
                     'message' => "Genie work experience status updated succesfully"
                 ], 200);
             }
@@ -191,7 +203,7 @@ class ResumeController extends Controller
                 $genie_work_exp->end_date = $request->end_date;
                 $genie_work_exp->summary = $request->summary;
                 $genie_work_exp->location = $request->location;
-                $genie_work_exp->status = 1;
+                $genie_work_exp->status = '0';
                 $genie_work_exp->website = $request->website;
                 $genie_work_exp->save();
                 $created_work_exp = GenieWorkExp::where('user_id',auth()->user()->id)->get();
@@ -236,7 +248,7 @@ class ResumeController extends Controller
    
         $genie_new_education->score = $request->score;
         $genie_new_education->courses = $request->courses;
-        $genie_new_education->status = '1';
+        $genie_new_education->status = '0';
         $genie_new_education->save();
         $created_education = GenieEducation::where('user_id',auth()->user()->id)->get();
         return  Response::json([
@@ -332,7 +344,7 @@ class ResumeController extends Controller
         
                 $genie_education->score = $request->score;
                 $genie_education->courses = $request->courses;
-                $genie_education->status = '1';
+                $genie_education->status = '0';
                 $genie_education->save();
                 $created_education = GenieEducation::where('user_id',auth()->user()->id)->get();
                 return  Response::json([
@@ -375,7 +387,7 @@ class ResumeController extends Controller
       
         $genie_new_award->awarder = $request->awarder;
         $genie_new_award->summary = $request->summary;
-        $genie_new_award->status = '1';
+        $genie_new_award->status = '0';
         $genie_new_award->save();
         $created_awards = GenieAward::where('user_id',auth()->user()->id)->get();
 
@@ -462,7 +474,7 @@ class ResumeController extends Controller
               
                 $genie_award->awarder = $request->awarder;
                 $genie_award->summary = $request->summary;
-                $genie_award->status = '1';
+                $genie_award->status = '0';
                 $genie_award->save();
                 $created_awards = GenieAward::where('user_id',auth()->user()->id)->get();
                 
@@ -513,7 +525,7 @@ class ResumeController extends Controller
         // $genie_new_award->roles = $request->roles;
         // $genie_new_award->entity = $request->entity;
         // $genie_new_award->type = $request->type;
-        $genie_new_project->status = '1';
+        $genie_new_project->status = '0';
         $genie_new_project->save();
         $created_projects = GenieProject::where('user_id',auth()->user()->id)->get();
         return  Response::json([
@@ -615,7 +627,7 @@ class ResumeController extends Controller
         // $genie_new_award->roles = $request->roles;
         // $genie_new_award->entity = $request->entity;
         // $genie_new_award->type = $request->type;
-        $genie_project->status = '1';
+        $genie_project->status = '0';
         $genie_project->save();
         $created_projects = GenieProject::where('user_id',auth()->user()->id)->get();      
                 
@@ -657,7 +669,7 @@ class ResumeController extends Controller
         $genie_new_skill->user_id = auth()->user()->id;
         $genie_new_skill->name = $request->name;
         $genie_new_skill->level = $request->level;
-        $genie_new_skill->status = '1';
+        $genie_new_skill->status = '0';
         $genie_new_skill->save();
         $created_skill = GenieSkill::where('user_id',auth()->user()->id)->get();
 
@@ -839,7 +851,7 @@ public function add_resume_genie_social(Request $request)
     $new_genie_social->network_id = $request->network_id;
     $new_genie_social->user_name = $request->user_name;
     $new_genie_social->url = $request->url;
-    $new_genie_social->status = '1';
+    $new_genie_social->status = '0';
     $new_genie_social->save();
 
     $connected_social = GenieSocial::where('user_id',auth()->user()->id)->get();
@@ -897,8 +909,13 @@ public function update_resume_genie_social(Request $request)
 
 public function toggle_resume_social(Request $request)
 {
-    return 1;
+    
     $genie_social_id = $request->toogle_social_id;
+    // $genie_social = GenieResumeComponent::where([
+    //     ['component','=',$request->component],
+    //     ['resume_id','=',$request->resume_id],
+    //     ['component_id','=',$request->toogle_social_id]
+    // ])->first();
  
     $genie_social = GenieSocial::where('id',$genie_social_id)->first();
    
@@ -952,17 +969,44 @@ public function toggle_resume_social(Request $request)
 
 //////////////////////////////////////////////Genie Social/////////////////////////////////////////
 
+    public function fetch_genie_spoken(Request $request)
+    {
+        $spoken = LanguageList::all();
+        return $spoken;
+    }
+
+    public function genie_all_language(Request $request)
+    {
+        $genie_language = GenieLanguage::where('user_id',auth()->user()->id)->get();
+        return $genie_language;  
+    }
+
 
     public function add_resume_genie_language(Request $request)
     {
-        $genie_new_language = new GenieLanguage();
-        $genie_new_language->user_id = auth()->user()->id;
-        $genie_new_language->language = $request->language;
-        $genie_new_language->fluency = $request->fluency;
-        $genie_new_language->save();
+        $check_if_exist = GenieLanguage::where([
+            ['user_id','=',auth()->user()->id],
+            ['language','LIKE',$request->language]
+        ])->first();
+        if($check_if_exist)
+        {
+            $check_if_exist->fluency = $request->fluency;
+            $check_if_exist->save();
 
+        }
+        else
+        {
+            $genie_new_language = new GenieLanguage();
+            $genie_new_language->user_id = auth()->user()->id;
+            $genie_new_language->language = $request->language;
+            $genie_new_language->fluency = $request->fluency;
+            $genie_new_language->save();
+        }
+        
+        $languages = GenieLanguage::where('user_id',auth()->user()->id)->get();
         return  Response::json([
             'status' => 200,
+            'language' => $languages,
             'message' => "Genie language added succesfully"
         ], 200);
     }
@@ -994,14 +1038,227 @@ public function toggle_resume_social(Request $request)
         }
     }
 
+    //////////////////////////////////////////////Genie Reference/////////////////////////////////////////
+    public function genie_all_reference(Request $request)
+    {
+        $genie_reference = GenieReference::where('user_id',auth()->user()->id)->get();
+        return $genie_reference;  
+        //sort by enddate
+    } 
+
+    public function add_resume_reference(Request $request)
+    {
+        // return auth()->user();
+       
+
+        $genie_reference = new GenieReference();
+        $genie_reference->user_id = auth()->user()->id;
+        $genie_reference->company = $request->company;
+        $genie_reference->reference = $request->reference;
+        $genie_reference->name = $request->name;
+      
+        $genie_reference->save();
+        $created_reference = GenieReference::where('user_id',auth()->user()->id)->get();
+
+        return  Response::json([
+            'status' => 200,
+            'message' => "Genie reference added succesfully",
+            'reference' => $created_reference
+        ], 200);
+    }
+
+   
+
+    public function update_resume_reference(Request $request)
+    {
+        $genie_reference_id = $request->update_reference_id;
+        $genie_reference = GenieReference::where('id',$genie_reference_id)->first();
+       
+        if ($genie_reference) {
+            if ($genie_reference->user_id != auth()->user()->id) {
+                return  Response::json([
+                    'status' => 200,
+                    'message' => "Genie reference authentication error"
+                ], 200);
+            }
+            else
+            {
+                
+                $genie_reference->company = $request->company;
+                $genie_reference->reference = $request->reference;
+                $genie_reference->name = $request->name;
+               
+                $genie_reference->save();
+                $created_reference = GenieReference::where('user_id',auth()->user()->id)->get();
+                return  Response::json([
+                    'status' => 200,
+                    'reference' => $created_reference,
+                    'message' => "Genie reference  updated succesfully"
+                ], 200);
+            }
+        } else {
+            return  Response::json([
+                'status' => 403,
+                'message' => "Genie reference not found"
+            ], 200);
+        }
+    }
+//////////////////////////////////////////////Genie Reference/////////////////////////////////////////
+   
+
+
+   //////////////////////////////////////////////Genie volunteer/////////////////////////////////////////
+   public function genie_all_volunteer(Request $request)
+   {
+       $genie_volunteer = GenieVolunteer::where('user_id',auth()->user()->id)->get();
+       return $genie_volunteer;  
+       //sort by enddate
+   } 
+
+   public function add_resume_volunteer(Request $request)
+   {
+       // return auth()->user();
+      
+
+       $genie_volunteer = new GenieVolunteer();
+       $genie_volunteer->user_id = auth()->user()->id;
+       $genie_volunteer->organization = $request->organization;
+       $genie_volunteer->position = $request->position;
+       $genie_volunteer->url = $request->url;
+       $genie_volunteer->start_date = $request->start_date;
+       $genie_volunteer->end_date = $request->end_date;
+       $genie_volunteer->save();
+       $created_volunteer = GenieVolunteer::where('user_id',auth()->user()->id)->get();
+
+       return  Response::json([
+           'status' => 200,
+           'message' => "Genie volunteer added succesfully",
+           'volunteer' => $created_volunteer
+       ], 200);
+   }
+
+  
+
+   public function update_resume_volunteer(Request $request)
+   {
+       $genie_volunteer_id = $request->update_volunteer_id;
+       $genie_volunteer = GenieReference::where('id',$genie_volunteer_id)->first();
+      
+       if ($genie_volunteer) {
+           if ($genie_volunteer->user_id != auth()->user()->id) {
+               return  Response::json([
+                   'status' => 200,
+                   'message' => "Genie reference authentication error"
+               ], 200);
+           }
+           else
+           {
+               
+            $genie_volunteer->organization = $request->organization;
+            $genie_volunteer->position = $request->position;
+            $genie_volunteer->url = $request->url;
+            $genie_volunteer->start_date = $request->start_date;
+            $genie_volunteer->end_date = $request->end_date;
+              
+               $genie_volunteer->save();
+               $created_volunteer = GenieVolunteer::where('user_id',auth()->user()->id)->get();
+               return  Response::json([
+                   'status' => 200,
+                   'volunteer' => $created_volunteer,
+                   'message' => "Genie reference  updated succesfully"
+               ], 200);
+           }
+       } else {
+           return  Response::json([
+               'status' => 403,
+               'message' => "Genie reference not found"
+           ], 200);
+       }
+   }
+//////////////////////////////////////////////Genie volunteer/////////////////////////////////////////
+  
+
+//////////////////////////////////////////////Genie interest/////////////////////////////////////////
+    public function genie_all_interest(Request $request)
+    {
+        $genie_interest = GenieInterest::where('user_id',auth()->user()->id)->get();
+        return $genie_interest;  
+        //sort by enddate
+    } 
+
+    public function add_resume_interest(Request $request)
+    {
+        // return auth()->user();
+    
+        $genie_interest_exist = GenieInterest::where([
+            ['user_id','=',auth()->user()->id],
+            ['name','LIKE',$request->name]
+        ])->first();
+        if(!$genie_interest_exist)
+        {
+            $genie_interest = new GenieInterest();
+            $genie_interest->user_id = auth()->user()->id;
+            $genie_interest->name = $request->name;
+            $genie_interest->save();
+        }
+    
+        $created_interest= GenieInterest::where('user_id',auth()->user()->id)->get();
+
+        return  Response::json([
+            'status' => 200,
+            'message' => "Genie interest added succesfully",
+            'interest' => $created_interest
+        ], 200);
+    }
+
+
+
+    public function update_resume_interest(Request $request)
+    {
+        $genie_interest_id = $request->update_interest_id;
+        $genie_interest = GenieInterest::where('id',$genie_interest_id)->first();
+    
+        if ($genie_interest) {
+            if ($genie_interest->user_id != auth()->user()->id) {
+                return  Response::json([
+                    'status' => 200,
+                    'message' => "Genie interest authentication error"
+                ], 200);
+            }
+            else
+            {
+                
+            $genie_interest->name = $request->name;
+            
+            
+                $genie_interest->save();
+                $created_interest= GenieInterest::where('user_id',auth()->user()->id)->get();
+                return  Response::json([
+                    'status' => 200,
+                    'interest' => $created_interest,
+                    'message' => "Genie interest  updated succesfully"
+                ], 200);
+            }
+        } else {
+            return  Response::json([
+                'status' => 403,
+                'message' => "Genie interest not found"
+            ], 200);
+        }
+    }
+//////////////////////////////////////////////Genie interest/////////////////////////////////////////
+
+
+
+
     public function add_user_json(Request $request)
     {
-        Storage::makeDirectory('data/1');
+        Storage::makeDirectory('data/'.auth()->user()->id);
 
-        Storage::makeDirectory('data/1');
+        Storage::makeDirectory('data/'.auth()->user()->id);
 
         try {
-            Storage::copy("resume.json", "data/1/resume.json");
+            Storage::copy("resume.json", "data/".auth()->user()->id."/resume.json");
         } catch (Exception $e) {
         }
        
@@ -1011,37 +1268,43 @@ public function toggle_resume_social(Request $request)
 
     public function preview_json(Request $request)
     {
-        exec("cd ../storage/app/data/1;resume export index.html", $output);
-        $html = Storage::get('data/1/index.html');
+        exec("cd ../storage/app/data/".auth()->user()->id.";resume export index.html --theme even", $output);
+        $html = Storage::get('data/'.auth()->user()->id.'/index.html');
         echo($html);
     }
     public function get_all_active_areas(Request $request)
     {
         $genie_basic = GenieBasic::where('user_id',auth()->user()->id)->first();
+        $genie_contact = GenieContact::where('user_id',auth()->user()->id)->first();
 
         $genie_work_exp = GenieWorkExp::where([
             ['user_id','=',auth()->user()->id],
-            ['status','=','0']
+            // ['status','=','0']
+        ])->get();
+
+        $genie_social = GenieSocial::where([
+            ['user_id','=',auth()->user()->id],
+            // ['status','=','0']
         ])->get();
 
         $genie_education = GenieEducation::where([
             ['user_id','=',auth()->user()->id],
-            ['status','=','0']
+           // ['status','=','0']
         ])->get();
 
         $genie_award = GenieAward::where([
             ['user_id','=',auth()->user()->id],
-            ['status','=','0']
+            // ['status','=','0']
         ])->get();
 
         $genie_project = GenieProject::where([
             ['user_id','=',auth()->user()->id],
-            ['status','=','0']
+            // ['status','=','0']
         ])->get();
 
         $genie_skill = GenieSkill::where([
             ['user_id','=',auth()->user()->id],
-            ['status','=','0']
+            // ['status','=','0']
         ])->get();
 
         
@@ -1054,6 +1317,8 @@ public function toggle_resume_social(Request $request)
             'skill' => $genie_skill,
             'award' => $genie_award,
             'education' => $genie_education,
+            'social' => $genie_social,
+            'contact' => $genie_contact
         ], 200);
 
 
@@ -1078,6 +1343,195 @@ public function toggle_resume_social(Request $request)
         }
        
 
+    }
+
+    public function get_all_genie_resume(Request $request)
+    {
+        $all_resumes = GenieResume::where('user_id',auth()->user()->id)->get();
+        return $all_resumes;
+    }
+    public function add_genie_resume(Request $request)
+    {
+        $genie_resume = new GenieResume();
+        $genie_resume->name = $request->name;
+        $genie_resume->user_id = auth()->user()->id;
+        $genie_resume->theme_id = 1;
+        $genie_resume->status = '0';
+        $genie_resume->save();
+        
+        // $genie_work_exp = GenieWorkExp::where([
+        //     ['user_id','=',auth()->user()->id],
+        //     // ['status','=','0']
+        // ])->get();
+        // if($genie_work_exp)
+        // {
+            
+        //     foreach($genie_work_exp as $work)
+        //     {
+        //         $genie_work_register = new GenieResumeComponent();
+        //         $genie_work_register->resume_id = $genie_resume->id;
+        //         $genie_work_register->user_id = auth()->user()->id;
+        //         $genie_work_register->component = 1;
+        //         $genie_work_register->component_id = $work->id;
+        //         $genie_work_register->status = '0';
+        //         $genie_work_register->save();
+        //     }
+
+            
+        // }
+
+        // $genie_social = GenieSocial::where([
+        //     ['user_id','=',auth()->user()->id],
+        //     // ['status','=','0']
+        // ])->get();
+
+        // if($genie_social)
+        // {
+            
+        //     foreach($genie_social as $social)
+        //     {
+        //         $genie_social_register = new GenieResumeComponent();
+        //         $genie_social_register->user_id = auth()->user()->id;
+        //         $genie_social_register->resume_id = $genie_resume->id;
+        //         $genie_social_register->component = 2;
+        //         $genie_social_register->component_id = $social->id;
+        //         $genie_social_register->status = '0';
+        //         $genie_social_register->save();
+        //     }
+
+            
+        // }
+
+        // $genie_education = GenieEducation::where([
+        //     ['user_id','=',auth()->user()->id],
+        //    // ['status','=','0']
+        // ])->get();
+
+        // if($genie_education)
+        // {
+            
+        //     foreach($genie_education as $education)
+        //     {
+        //         $genie_education_register = new GenieResumeComponent();
+        //         $genie_education_register->resume_id = $genie_resume->id;
+        //         $genie_education_register->user_id = auth()->user()->id;
+        //         $genie_education_register->component = 3;
+        //         $genie_education_register->component_id = $education->id;
+        //         $genie_education_register->status = '0';
+        //         $genie_education_register->save();
+        //     }
+
+            
+        // }
+
+        // $genie_award = GenieAward::where([
+        //     ['user_id','=',auth()->user()->id],
+        //     // ['status','=','0']
+        // ])->get();
+        // if($genie_award)
+        // {
+            
+        //     foreach($genie_award as $award)
+        //     {
+        //         $genie_award_register = new GenieResumeComponent();
+        //         $genie_award_register->resume_id = $genie_resume->id;
+        //         $genie_award_register->user_id = auth()->user()->id;
+        //         $genie_award_register->component = 4;
+        //         $genie_award_register->component_id = $award->id;
+        //         $genie_award_register->status = '0';
+        //         $genie_award_register->save();
+        //     }
+
+            
+        // }
+
+        // $genie_project = GenieProject::where([
+        //     ['user_id','=',auth()->user()->id],
+        //     // ['status','=','0']
+        // ])->get();
+
+        // if($genie_project)
+        // {
+            
+        //     foreach($genie_project as $project)
+        //     {
+        //         $genie_project_register = new GenieResumeComponent();
+        //         $genie_project_register->user_id = auth()->user()->id;
+        //         $genie_project_register->resume_id = $genie_resume->id;
+        //         $genie_project_register->component = 5;
+        //         $genie_project_register->component_id = $project->id;
+        //         $genie_project_register->status = '0';
+        //         $genie_project_register->save();
+        //     }
+
+            
+        // }
+
+        // $genie_skill = GenieSkill::where([
+        //     ['user_id','=',auth()->user()->id],
+        //     // ['status','=','0']
+        // ])->get();
+
+        // if($genie_skill)
+        // {
+            
+        //     foreach($genie_skill as $skill)
+        //     {
+        //         $genie_skill_register = new GenieResumeComponent();
+        //         $genie_skill_register->user_id = auth()->user()->id;
+        //         $genie_skill_register->resume_id = $genie_resume->id;
+        //         $genie_skill_register->component = 6;
+        //         $genie_skill_register->component_id = $skill->id;
+        //         $genie_skill_register->status = '0';
+        //         $genie_skill_register->save();
+        //     }
+
+            
+        // }
+
+      
+        $resumes = GenieResume::where('user_id',auth()->user()->id)->get();
+        return  Response::json([
+            'status' => 200,
+            'message' => "Genie resume added succesfully",
+            'added_resume' => $resumes,
+        ], 200);
+        
+    }
+
+
+    public function genie_toggle_component(Request $request)
+    {
+        $component = $request->component;
+        $component_id = $request->component_id;
+        $resume_id = $request->resume_id;
+        $toggle_status = $request->status;
+
+
+        if($toggle_status == '0' )
+        {
+            $GenieResumeComponent = GenieResumeComponent::where([
+                ['component','=',$component],
+                ['component_id','=',$component_id],
+                ['resume_id','=',$resume_id]
+            ])->first();
+            if($GenieResumeComponent)
+            {
+                $GenieResumeComponent->delete();
+            }
+        }
+        else
+        {
+            
+            $GenieResumeComponent = new GenieResumeComponent();
+            $GenieResumeComponent->resume_id = $resume_id;
+            $GenieResumeComponent->user_id = auth()->user()->id;
+            $GenieResumeComponent->component = $component;
+            $GenieResumeComponent->component_id = $component_id;
+            $GenieResumeComponent->status = '1';
+            $GenieResumeComponent->save();
+
+        }
     }
 
 }

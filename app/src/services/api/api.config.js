@@ -85,6 +85,44 @@ const apiConfig = {
                 return true
             }
         },
+        'GET_ALL_WORK_EXP':
+        {
+            "METHOD": "get",
+            "URL": "/api/get/all/genie/work",
+            validateParams() {
+                return true
+            }
+        },
+
+        'LANGUAGE': {
+            "METHOD": "post",
+            "URL": "/api/insert/genie/language",
+            validateParams() {
+                return true
+            }
+        },
+        'UPDATE_LANGUAGE': {
+            "METHOD": "post",
+            "URL": "/api/update/genie/language",
+            validateParams() {
+                return true
+            }
+        },
+        'TOGGLE_LANGUAGE':{
+            "METHOD": "post",
+            "URL": "/api/toggle/genie/language",
+            validateParams() {
+                return true
+            }
+        },
+        'GET_ALL_LANGUAGE':
+        {
+            "METHOD": "get",
+            "URL": "/api/get/all/genie/language",
+            validateParams() {
+                return true
+            }
+        },
         'EDUCATION': {
             "METHOD": "post",
             "URL": "/api/insert/genie/education",
@@ -106,14 +144,7 @@ const apiConfig = {
                 return true
             }
         },
-        'GET_ALL_WORK_EXP':
-        {
-            "METHOD": "get",
-            "URL": "/api/get/all/genie/work",
-            validateParams() {
-                return true
-            }
-        },
+      
         'GET_ALL_EDUCATION':
         {
             "METHOD": "get",
@@ -212,6 +243,93 @@ const apiConfig = {
                 return true
             }
         },
+        'REFERENCE': {
+            "METHOD": "post",
+            "URL": "/api/insert/genie/reference",
+            validateParams() {
+                return true
+            }
+        },
+        'UPDATE_REFERENCE': {
+            "METHOD": "post",
+            "URL": "/api/update/genie/reference",
+            validateParams() {
+                return true
+            }
+        },
+        'TOGGLE_REFERENCE':{
+            "METHOD": "post",
+            "URL": "/api/toggle/genie/reference",
+            validateParams() {
+                return true
+            }
+        },
+        'GET_ALL_REFERENCE':
+        {
+            "METHOD": "get",
+            "URL": "/api/get/all/genie/reference",
+            validateParams() {
+                return true
+            }
+        },
+        'VOLUNTEER': {
+            "METHOD": "post",
+            "URL": "/api/insert/genie/volunteer",
+            validateParams() {
+                return true
+            }
+        },
+        'UPDATE_VOLUNTEER': {
+            "METHOD": "post",
+            "URL": "/api/update/genie/volunteer",
+            validateParams() {
+                return true
+            }
+        },
+        'TOGGLE_VOLUNTEER':{
+            "METHOD": "post",
+            "URL": "/api/toggle/genie/volunteer",
+            validateParams() {
+                return true
+            }
+        },
+        'GET_ALL_VOLUNTEER':
+        {
+            "METHOD": "get",
+            "URL": "/api/get/all/genie/volunteer",
+            validateParams() {
+                return true
+            }
+        },
+        'INTEREST': {
+            "METHOD": "post",
+            "URL": "/api/insert/genie/interest",
+            validateParams() {
+                return true
+            }
+        },
+        'UPDATE_INTEREST': {
+            "METHOD": "post",
+            "URL": "/api/update/genie/interest",
+            validateParams() {
+                return true
+            }
+        },
+        'TOGGLE_INTEREST':{
+            "METHOD": "post",
+            "URL": "/api/toggle/genie/interest",
+            validateParams() {
+                return true
+            }
+        },
+        'GET_ALL_INTEREST':
+        {
+            "METHOD": "get",
+            "URL": "/api/get/all/genie/interest",
+            validateParams() {
+                return true
+            }
+        },
         'GET_ALL_CONTACT':
         {
             "METHOD": "get",
@@ -252,6 +370,14 @@ const apiConfig = {
                 return true
             }
         },
+        'GENIE_SPOKEN' :
+        {
+            "METHOD": "get",
+            "URL": "/api/get/all/genie/spoken",
+            validateParams() {
+                return true
+            }
+        },
         // 'GET_ALL_SOCIAL':
         // {
         //     "METHOD": "get",
@@ -287,6 +413,45 @@ const apiConfig = {
         'UPDATE_SOCIAL': {
             "METHOD": "post",
             "URL": "/api/update/genie/social",
+            validateParams() {
+                return true
+            }
+        },
+        'RESUME':
+        {
+            "METHOD": "post",
+            "URL": "/api/insert/genie/resume",
+            validateParams() {
+                return true
+            }
+        },
+        'TOGGLE_RESUME':{
+            "METHOD": "post",
+            "URL": "/api/toggle/genie/resume",
+            validateParams() {
+                return true
+            }
+        },
+        'UPDATE_RESUME': {
+            "METHOD": "post",
+            "URL": "/api/update/genie/resume",
+            validateParams() {
+                return true
+            }
+        },
+        'GET_ALL_RESUME':
+        {
+            "METHOD": "get",
+            "URL": "/api/get/all/genie/resume",
+            validateParams() {
+                return true
+            }
+        },
+
+        'TOGGLE_COMPONENT':
+        {
+            "METHOD": "post",
+            "URL": "/api/toggle/genie/component",
             validateParams() {
                 return true
             }

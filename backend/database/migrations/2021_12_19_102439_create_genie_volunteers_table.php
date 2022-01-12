@@ -17,11 +17,11 @@ class CreateGenieVolunteersTable extends Migration
             $table->id();
             $table->String('organization');
             $table->String('position');
-            $table->String('url');
-            $table->date('startDate');
-            $table->date('endDate');
+            $table->String('url')->nullable();
+            $table->date('start_date');
+            $table->date('end_date')->nullable();
             $table->String('summary');
-            $table->String('highlights');
+            
             $table->timestamps();
             // "organization": "Organization",
             // "position": "Volunteer",

@@ -199,7 +199,7 @@ export default {
       if (loginStatus.status == "success") {
         await this.$store.dispatch("getUser");
 		 this.showLoginLoading = false;
-        this.$router.push("dashboard");
+        this.$router.push("careerdash");
       } else {
 		   this.showLoginLoading = false;
         this.$toast.error("Error", " Incorrect username or password.");

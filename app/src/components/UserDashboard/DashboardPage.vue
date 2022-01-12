@@ -4,42 +4,25 @@
       <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <!--begin::Container-->
         <div class="container-xxl" id="kt_content_container">
-          <div v-if="all_basic" class="card mb-5 mb-xl-10">
+          <div v-if="all_basic" class="card mb-5 mb-xl-10" style="margin-top:150px;">
 								<div class="card-body pt-9 pb-0">
 									<!--begin::Details-->
 									<div class="d-flex flex-wrap flex-sm-nowrap mb-3">
 										<!--begin: Pic-->
 										<div class="me-7 mb-4">
-											<div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
-												<img src="https://img.icons8.com/external-color-for-better-life-royyan-wijaya/64/000000/external-avatar-avatar-i-color-for-better-life-royyan-wijaya-4.png" alt="image">
-												<div class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-white h-20px w-20px"></div>
+											<div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative" style="margin-left:25px;">
+										<img src="https://img.icons8.com/stickers/80/000000/gender-neutral-user-skin-type-1.png"/>
+											
 											</div>
-										</div>
-										<!--end::Pic-->
-										<!--begin::Info-->
-										<div class="flex-grow-1">
-											<!--begin::Title-->
-											<div class="d-flex justify-content-between align-items-start flex-wrap mb-2">
-												<!--begin::User-->
-												<div class="d-flex flex-column">
-													<!--begin::Name-->
-													<div class="d-flex align-items-center mb-2">
+											<div class="d-flex align-items-center mb-2" style="
+    margin-left: 30px;">
 														<a href="#" class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1">{{all_basic.name}}</a>
-														<a href="#">
-															<!--begin::Svg Icon | path: icons/duotune/general/gen026.svg-->
-															<span class="svg-icon svg-icon-1 svg-icon-primary">
-																<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
-																	<path d="M10.0813 3.7242C10.8849 2.16438 13.1151 2.16438 13.9187 3.7242V3.7242C14.4016 4.66147 15.4909 5.1127 16.4951 4.79139V4.79139C18.1663 4.25668 19.7433 5.83365 19.2086 7.50485V7.50485C18.8873 8.50905 19.3385 9.59842 20.2758 10.0813V10.0813C21.8356 10.8849 21.8356 13.1151 20.2758 13.9187V13.9187C19.3385 14.4016 18.8873 15.491 19.2086 16.4951V16.4951C19.7433 18.1663 18.1663 19.7433 16.4951 19.2086V19.2086C15.491 18.8873 14.4016 19.3385 13.9187 20.2758V20.2758C13.1151 21.8356 10.8849 21.8356 10.0813 20.2758V20.2758C9.59842 19.3385 8.50905 18.8873 7.50485 19.2086V19.2086C5.83365 19.7433 4.25668 18.1663 4.79139 16.4951V16.4951C5.1127 15.491 4.66147 14.4016 3.7242 13.9187V13.9187C2.16438 13.1151 2.16438 10.8849 3.7242 10.0813V10.0813C4.66147 9.59842 5.1127 8.50905 4.79139 7.50485V7.50485C4.25668 5.83365 5.83365 4.25668 7.50485 4.79139V4.79139C8.50905 5.1127 9.59842 4.66147 10.0813 3.7242V3.7242Z" fill="#00A3FF"></path>
-																	<path class="permanent" d="M14.8563 9.1903C15.0606 8.94984 15.3771 8.9385 15.6175 9.14289C15.858 9.34728 15.8229 9.66433 15.6185 9.9048L11.863 14.6558C11.6554 14.9001 11.2876 14.9258 11.048 14.7128L8.47656 12.4271C8.24068 12.2174 8.21944 11.8563 8.42911 11.6204C8.63877 11.3845 8.99996 11.3633 9.23583 11.5729L11.3706 13.4705L14.8563 9.1903Z" fill="white"></path>
-																</svg>
-															</span>
-															<!--end::Svg Icon-->
-														</a>
-														<a href="#" class="btn btn-sm btn-light-success fw-bolder ms-2 fs-8 py-1 px-3" data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan">Upgrade to Pro</a>
+														
+														
 													</div>
 													<!--end::Name-->
 													<!--begin::Info-->
-													<div class="d-flex flex-wrap fw-bold fs-6 mb-4 pe-2">
+													<div class="d-flex flex-wrap fw-bold fs-6 mb-4 pe-2" style="margin-left:25px;">
 														<a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
 														<!--begin::Svg Icon | path: icons/duotune/communication/com006.svg-->
 														<span class="svg-icon svg-icon-4 me-1">
@@ -69,11 +52,14 @@
 														<!--end::Svg Icon-->max@kt.com</a>
 													</div>
 													<!--end::Info-->
-												</div>
-												<!--end::User-->
+
+										</div>
+										
+										<!--end::Pic-->
+										<!--begin::Info-->
+										<div class="flex-grow-1" style="
+    margin-left: 60px;">
 											
-											</div>
-											<!--end::Title-->
 											<!--begin::Stats-->
 											<div class="d-flex flex-wrap flex-stack">
 												<!--begin::Wrapper-->
@@ -81,34 +67,236 @@
 													<!--begin::Stats-->
 													<div class="d-flex flex-wrap">
 														<!--begin::Stat-->
+														<router-link
+														:to="{ name: 'GenieBasic' }"
+														title=""
+														data-bs-toggle="tooltip"
+														data-bs-trigger="hover"
+														data-bs-dismiss="click"
+														data-bs-placement="top"
+														data-bs-original-title="The Basics">
 														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
 															<!--begin::Number-->
 															<div class="d-flex align-items-center">
 																<!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
 																<span class="svg-icon svg-icon-3 svg-icon-success me-2">
-																	<img
-                    src="https://img.icons8.com/doodle/32/000000/teaching.png"
-                  />
-                </span>
+																<img src="https://img.icons8.com/stickers/80/000000/user-location.png"/>
+              
 																</span>
 																<!--end::Svg Icon-->
 																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education.length" data-kt-countup-prefix="">{{all_education.length}}</div>
 															</div>
 															<!--end::Number-->
 															<!--begin::Label-->
-															<div class="fw-bold fs-6 text-gray-400">Education</div>
+															<div class="fw-bold fs-6 text-center text-gray-600">The Basics</div>
 															<!--end::Label-->
 														</div>
+														</router-link>
 														<!--end::Stat-->
 														<!--begin::Stat-->
+														<router-link
+														:to="{ name: 'GenieContact' }"
+														title=""
+														data-bs-toggle="tooltip"
+														data-bs-trigger="hover"
+														data-bs-dismiss="click"
+														data-bs-placement="top"
+														data-bs-original-title="Contact">
+														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+															<!--begin::Number-->
+															<div class="d-flex align-items-center">
+																<!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
+																<span class="svg-icon svg-icon-3 svg-icon-success me-2">
+																<img src="https://img.icons8.com/stickers/80/000000/email.png"/>
+              
+																</span>
+																<!--end::Svg Icon-->
+																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education.length" data-kt-countup-prefix="">{{all_education.length}}</div>
+															</div>
+															<!--end::Number-->
+															<!--begin::Label-->
+															<div class="fw-bold fs-6 text-center text-gray-600">Contact</div>
+															<!--end::Label-->
+														</div>
+														</router-link>
+														<!--end::Stat-->
+														<!--begin::Stat-->
+													<router-link
+														:to="{ name: 'GenieSocial' }"
+														title=""
+														data-bs-toggle="tooltip"
+														data-bs-trigger="hover"
+														data-bs-dismiss="click"
+														data-bs-placement="top"
+														data-bs-original-title="Social">
+														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+															<!--begin::Number-->
+															<div class="d-flex align-items-center">
+																<!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
+																<span class="svg-icon svg-icon-3 svg-icon-success me-2">
+																	<img src="https://img.icons8.com/stickers/80/000000/happy-cloud.png"/>
+              
+																</span>
+																<!--end::Svg Icon-->
+																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education.length" data-kt-countup-prefix="">{{all_education.length}}</div>
+															</div>
+															<!--end::Number-->
+															<!--begin::Label-->
+															<div class="fw-bold fs-6 text-center text-gray-600">Social</div>
+															<!--end::Label-->
+														</div>
+													</router-link>
+														<!--end::Stat-->
+														<!--begin::Stat-->
+														<router-link
+														:to="{ name: 'GenieExperience' }"
+														title=""
+														data-bs-toggle="tooltip"
+														data-bs-trigger="hover"
+														data-bs-dismiss="click"
+														data-bs-placement="top"
+														data-bs-original-title="Work Experience">
+														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+															<!--begin::Number-->
+															<div class="d-flex align-items-center">
+																<!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
+																<span class="svg-icon svg-icon-3 svg-icon-success me-2">
+																	<img src="https://img.icons8.com/stickers/80/000000/work.png"/>
+            
+																</span>
+																<!--end::Svg Icon-->
+																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education.length" data-kt-countup-prefix="">{{all_education.length}}</div>
+															</div>
+															<!--end::Number-->
+															<!--begin::Label-->
+															<div class="fw-bold fs-6 text-center text-gray-600">Work Ex</div>
+															<!--end::Label-->
+														</div>
+														</router-link>
+														<!--end::Stat-->
+														<!--begin::Stat-->
+														<router-link
+														:to="{ name: 'GenieSkill' }"
+														title=""
+														data-bs-toggle="tooltip"
+														data-bs-trigger="hover"
+														data-bs-dismiss="click"
+														data-bs-placement="top"
+														data-bs-original-title="Skills">
+														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+															<!--begin::Number-->
+															<div class="d-flex align-items-center">
+																<!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
+																<span class="svg-icon svg-icon-3 svg-icon-success me-2">
+																	<img src="https://img.icons8.com/stickers/80/000000/wizard.png"/>
+            
+																</span>
+																<!--end::Svg Icon-->
+																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education.length" data-kt-countup-prefix="">{{all_education.length}}</div>
+															</div>
+															<!--end::Number-->
+															<!--begin::Label-->
+															<div class="fw-bold fs-6 text-center text-gray-600">Skills</div>
+															<!--end::Label-->
+														</div>
+														</router-link>
+														<!--end::Stat-->
+														<!--begin::Stat-->
+														<router-link
+														:to="{ name: 'GenieProject' }"
+														title=""
+														data-bs-toggle="tooltip"
+														data-bs-trigger="hover"
+														data-bs-dismiss="click"
+														data-bs-placement="top"
+														data-bs-original-title="Projects">
+														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+															<!--begin::Number-->
+															<div class="d-flex align-items-center">
+																<!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
+																<span class="svg-icon svg-icon-3 svg-icon-success me-2">
+																	<img src="https://img.icons8.com/stickers/80/000000/repository.png"/>
+                
+																</span>
+																<!--end::Svg Icon-->
+																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education.length" data-kt-countup-prefix="">{{all_education.length}}</div>
+															</div>
+															<!--end::Number-->
+															<!--begin::Label-->
+															<div class="fw-bold fs-6 text-center text-gray-600">Projects</div>
+															<!--end::Label-->
+														</div>
+														</router-link>
+														<!--end::Stat-->
+														<router-link
+														:to="{ name: 'GenieAward' }"
+														title=""
+														data-bs-toggle="tooltip"
+														data-bs-trigger="hover"
+														data-bs-dismiss="click"
+														data-bs-placement="top"
+														data-bs-original-title="Awards">
+														<!--begin::Stat-->
+														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+															<!--begin::Number-->
+															<div class="d-flex align-items-center">
+																<!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
+																<span class="svg-icon svg-icon-3 svg-icon-success me-2">
+																	<img src="https://img.icons8.com/stickers/80/000000/medal.png"/>	
+                
+																</span>
+																<!--end::Svg Icon-->
+																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education.length" data-kt-countup-prefix="">{{all_education.length}}</div>
+															</div>
+															<!--end::Number-->
+															<!--begin::Label-->
+															<div class="fw-bold fs-6 text-center text-gray-600">Awards</div>
+															<!--end::Label-->
+														</div>
+														</router-link>
+														<!--end::Stat-->
+														<!--begin::Stat-->
+														<router-link
+														:to="{ name: 'GenieLanguage' }"
+														title=""
+														data-bs-toggle="tooltip"
+														data-bs-trigger="hover"
+														data-bs-dismiss="click"
+														data-bs-placement="top"
+														data-bs-original-title="The Basics">
+														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+															<!--begin::Number-->
+															<div class="d-flex align-items-center">
+																<!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
+																<span class="svg-icon svg-icon-3 svg-icon-success me-2">
+																	<img src="https://img.icons8.com/stickers/80/000000/foreign-language-sound.png"/>
+                
+																</span>
+																<!--end::Svg Icon-->
+																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education.length" data-kt-countup-prefix="">{{all_education.length}}</div>
+															</div>
+															<!--end::Number-->
+																<!--begin::Label-->
+															<div class="fw-bold fs-6 text-center text-gray-600">Languages</div>
+															<!--end::Label-->
+														</div>
+														</router-link> 
+														<!--end::Stat-->
+														<!--begin::Stat-->
+														<router-link
+														:to="{ name: 'GenieSocial' }"
+														title=""
+														data-bs-toggle="tooltip"
+														data-bs-trigger="hover"
+														data-bs-dismiss="click"
+														data-bs-placement="top"
+														data-bs-original-title="Social">
 														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
 															<!--begin::Number-->
 															<div class="d-flex align-items-center">
 																<!--begin::Svg Icon | path: icons/duotune/arrows/arr065.svg-->
 																<span class="svg-icon svg-icon-3 svg-icon-danger me-2">
-																	 <img
-                    src="https://img.icons8.com/doodle/32/000000/repository.png"
-                  />
+																	 <img src="https://img.icons8.com/stickers/80/000000/watering-can.png"/>
                 </span>
 																
 																<!--end::Svg Icon-->
@@ -116,66 +304,88 @@
 															</div>
 															<!--end::Number-->
 															<!--begin::Label-->
-															<div class="fw-bold fs-6 text-gray-400">Projects</div>
+															<div class="fw-bold fs-6 text-center text-gray-600"> Interests</div>
 															<!--end::Label-->
 														</div>
+														</router-link>
 														<!--end::Stat-->
 														<!--begin::Stat-->
+														<router-link
+														:to="{ name: 'GenieEducation' }"
+														title=""
+														data-bs-toggle="tooltip"
+														data-bs-trigger="hover"
+														data-bs-dismiss="click"
+														data-bs-placement="top"
+														data-bs-original-title="Education">
 														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
 															<!--begin::Number-->
 															<div class="d-flex align-items-center">
 																<!--begin::Svg Icon | path: icons/duotune/arrows/arr065.svg-->
 																<span class="svg-icon svg-icon-3 svg-icon-danger me-2">
-																	 <img
-                    src="https://img.icons8.com/doodle/32/000000/medal.png"
-                  />
+																	<img src="https://img.icons8.com/stickers/80/000000/graduation-cap.png"/>
 																</span>
 																<!--end::Svg Icon-->
 																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_award.length">{{ all_award.length }}</div>
 															</div>
 															<!--end::Number-->
-															<!--begin::Label-->
-															<div class="fw-bold fs-6 text-gray-400">Awards</div>
+																<!--begin::Label-->
+															<div class="fw-bold fs-6 text-center text-gray-600">Education</div>
 															<!--end::Label-->
 														</div>
+														</router-link>
 														<!--end::Stat-->
 														<!--begin::Stat-->
+														<router-link
+														:to="{ name: 'GenieBasic' }"
+														title=""
+														data-bs-toggle="tooltip"
+														data-bs-trigger="hover"
+														data-bs-dismiss="click"
+														data-bs-placement="top"
+														data-bs-original-title="The Basics">
 														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
 															<!--begin::Number-->
 															<div class="d-flex align-items-center">
 																<!--begin::Svg Icon | path: icons/duotune/arrows/arr065.svg-->
 																<span class="svg-icon svg-icon-3 svg-icon-danger me-2">
-																	<img
-                    src="https://img.icons8.com/doodle/32/000000/employee-card--v1.png"
-                  />
+																	<img src="https://img.icons8.com/stickers/80/000000/trust.png"/>
 																</span>
 																<!--end::Svg Icon-->
 																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_work_exp.length">{{ all_work_exp.length }}</div>
 															</div>
 															<!--end::Number-->
-															<!--begin::Label-->
-															<div class="fw-bold fs-6 text-gray-400">Experience</div>
+																<!--begin::Label-->
+															<div class="fw-bold fs-6 text-center text-gray-600">Volunteer</div>
 															<!--end::Label-->
 														</div>
+														</router-link>
 														<!--end::Stat-->
 														<!--begin::Stat-->
+														<router-link
+														:to="{ name: 'GenieReference' }"
+														title=""
+														data-bs-toggle="tooltip"
+														data-bs-trigger="hover"
+														data-bs-dismiss="click"
+														data-bs-placement="top"
+														data-bs-original-title="The Basics">
 														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
 															<!--begin::Number-->
 															<div class="d-flex align-items-center">
 																<!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
 																<span class="svg-icon svg-icon-3 svg-icon-success me-2">
-																<img
-                    src="https://img.icons8.com/doodle/32/000000/shooting-stars--v1.png"
-                  />
+																<img src="https://img.icons8.com/stickers/80/000000/handshake.png"/>
 																</span>
 																<!--end::Svg Icon-->
 																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_skill.length" >{{ all_skill.length }}</div>
 															</div>
 															<!--end::Number-->
-															<!--begin::Label-->
-															<div class="fw-bold fs-6 text-gray-400">Skills</div>
+																<!--begin::Label-->
+															<div class="fw-bold fs-6 text-center text-gray-600">References</div>
 															<!--end::Label-->
 														</div>
+														</router-link>
 														<!--end::Stat-->
 													</div>
 													<!--end::Stats-->
@@ -184,6 +394,7 @@
 												
 											</div>
 											<!--end::Stats-->
+											
 										</div>
 										<!--end::Info-->
 									</div>
@@ -191,7 +402,7 @@
 									
 								</div>
 		  </div>
-		  <div v-if="!all_basic" class="card mb-5 mb-xl-10">
+		  <div v-if="!all_basic" class="card mb-5 mb-xl-10" >
 								<div class="card bgi-position-y-bottom bgi-position-x-end bgi-no-repeat bgi-size-cover min-h-250px bg-primary mb-5 mb-xl-8" style="background-position: 100% 50px;background-size: 500px auto;background-image:url('./theme/dist/assets/media/misc/city.png')">
 										<!--begin::Body-->
 										<div class="card-body d-flex flex-column justify-content-center">
@@ -209,739 +420,7 @@
 										<!--end::Body-->
 									</div>
 		  </div>
-		  	  <div v-if="all_award.length > 0" class="card mb-5 mb-xl-10">
-            <!--begin::Card header-->
-            <div class="card-header card-header-stretch pb-0">
-              <!--begin::Title-->
-              <div class="card-title">
-                <h3 class="m-0">Awards and Achievements</h3>
-              </div>
-              <!--end::Title-->
-              <!--begin::Toolbar-->
-              <div class="card-toolbar m-0">
-                <!--begin::Tab nav-->
-                <ul
-                  class="nav nav-stretch nav-line-tabs border-transparent"
-                  role="tablist"
-                >
-                  <!--begin::Tab item-->
-                  <!-- <li class="nav-item" role="presentation">
-												<a id="kt_billing_creditcard_tab" class="nav-link fs-5 fw-bolder me-5 active" data-bs-toggle="tab" role="tab" href="#kt_billing_creditcard">Credit / Debit Card</a>
-											</li> -->
-                  <!--end::Tab item-->
-                  <!--begin::Tab item-->
-                  <!-- <li class="nav-item" role="presentation">
-												<a id="kt_billing_paypal_tab" class="nav-link fs-5 fw-bolder" data-bs-toggle="tab" role="tab" href="#kt_billing_paypal">Paypal</a>
-											</li> -->
-                  <!--end::Tab item-->
-                </ul>
-                <!--end::Tab nav-->
-              </div>
-              <!--end::Toolbar-->
-            </div>
-            <!--end::Card header-->
-            <!--begin::Tab content-->
-            <div
-              id="kt_billing_payment_tab_content"
-              class="card-body tab-content"
-            >
-              <!--begin::Tab panel-->
-              <div
-                id="kt_billing_creditcard"
-                class="tab-pane fade show active"
-                role="tabpanel"
-              >
-                <!--begin::Title-->
-
-                <!--end::Title-->
-                <!--begin::Row-->
-                <div class="row gx-9 gy-6">
-                  
-                  <!--begin::Col-->
-                  <div
-                    v-for="award in all_award"
-                    :key="award.id"
-                    class="col-xl-6"
-                  >
-                    <!--begin::Card-->
-                    <div class="card card-flush shadow-sm" >
-                      <div class="card-header ribbon ribbon-end ribbon-clip">
-                        <div v-if="award.status == 0" class="ribbon-label">
-                          <i class="far fa-eye text-white"></i>
-                          <span class="ribbon-inner bg-success"></span>
-                        </div>
-                        <div v-if="award.status == 1" class="ribbon-label">
-                          <i class="fas fa-eye-slash text-white"></i>
-                          <span class="ribbon-inner bg-info"></span>
-                        </div>
-                        <div v-if="award.status == 2" class="ribbon-label">
-                          <i class="fas fa-trash text-white"></i>
-                          <span class="ribbon-inner bg-danger"></span>
-                        </div>
-                        <div class="card-title fw-bolder mb-5">
-                          {{ award.title  }} | By- {{ award.awarder}}
-                        </div>
-
-                        <span class="fs-7"
-                          >{{award.url}}
-                          <div class="badge badge-light-success fs-7 fw-bolder">
-                            {{ award.date}} 
-                            
-                          </div>
-                        </span>
-                      </div>
-                      <div class="card-body">
-                        {{ award.summary  }}
-                      </div>
-
-                     
-                    </div>
-
-                    <!--end::Card-->
-                  </div>
-                 
-                  <!--end::Col-->
-                </div>
-                <!--end::Row-->
-              </div>
-              <!--end::Tab panel-->
-             
-            </div>
-            <!--end::Tab content-->
-          </div>
-		   <div v-if="all_work_exp.length > 0" class="card mb-5 mb-xl-10">
-            <!--begin::Card header-->
-            <div class="card-header card-header-stretch pb-0">
-              <!--begin::Title-->
-              <div class="card-title">
-                <h3 class="m-0">Work Experience(s)</h3>
-              </div>
-              <!--end::Title-->
-              <!--begin::Toolbar-->
-              <div class="card-toolbar m-0">
-                <!--begin::Tab nav-->
-                <ul
-                  class="nav nav-stretch nav-line-tabs border-transparent"
-                  role="tablist"
-                >
-                  <!--begin::Tab item-->
-                  <!-- <li class="nav-item" role="presentation">
-												<a id="kt_billing_creditcard_tab" class="nav-link fs-5 fw-bolder me-5 active" data-bs-toggle="tab" role="tab" href="#kt_billing_creditcard">Credit / Debit Card</a>
-											</li> -->
-                  <!--end::Tab item-->
-                  <!--begin::Tab item-->
-                  <!-- <li class="nav-item" role="presentation">
-												<a id="kt_billing_paypal_tab" class="nav-link fs-5 fw-bolder" data-bs-toggle="tab" role="tab" href="#kt_billing_paypal">Paypal</a>
-											</li> -->
-                  <!--end::Tab item-->
-                </ul>
-                <!--end::Tab nav-->
-              </div>
-              <!--end::Toolbar-->
-            </div>
-            <!--end::Card header-->
-            <!--begin::Tab content-->
-            <div
-              id="kt_billing_payment_tab_content"
-              class="card-body tab-content"
-            >
-              <!--begin::Tab panel-->
-              <div
-                id="kt_billing_creditcard"
-                class="tab-pane fade show active"
-                role="tabpanel"
-              >
-                <!--begin::Title-->
-
-                <!--end::Title-->
-                <!--begin::Row-->
-                <div class="row gx-9 gy-6">
-                   
-                  <!--begin::Col-->
-                  <div
-                    v-for="exp in all_work_exp"
-                    :key="exp.id"
-                    class="col-xl-6"
-                  >
-                    <!--begin::Card-->
-                    <div class="card card-flush shadow-sm">
-                      <div class="card-header ribbon ribbon-end ribbon-clip">
-                        <div v-if="exp.status == 0" class="ribbon-label">
-                          <i class="far fa-eye text-white"></i>
-                          <span class="ribbon-inner bg-success"></span>
-                        </div>
-                        <div v-if="exp.status == 1" class="ribbon-label">
-                          <i class="fas fa-eye-slash text-white"></i>
-                          <span class="ribbon-inner bg-info"></span>
-                        </div>
-                        <div v-if="exp.status == 2" class="ribbon-label">
-                          <i class="fas fa-trash text-white"></i>
-                          <span class="ribbon-inner bg-danger"></span>
-                        </div>
-                        <div class="card-title fw-bolder mb-5">
-                          {{ exp.position  }} | {{ exp.company}}
-                        </div>
-
-                        <span class="fs-7"
-                          >{{exp.website}}
-                          <div class="badge badge-light-success fs-7 fw-bolder">
-                            {{ exp.start_date}} -
-                            <span v-if="exp.end_date">{{exp.end_date}}</span>
-                            <span v-if="!exp.end_date">Current</span> @
-                            {{exp.location}}
-                          </div>
-                        </span>
-                      </div>
-                      <div class="card-body">
-                        {{ exp.summary  }}
-                      </div>
-
-                     
-                    </div>
-
-                    <!--end::Card-->
-                  </div>
-               
-                  <!--end::Col-->
-                </div>
-                <!--end::Row-->
-              </div>
-              <!--end::Tab panel-->
-              
-            </div>
-            <!--end::Tab content-->
-          </div>
-		   <div v-if="all_project.length > 0" class="card mb-5 mb-xl-10">
-            <!--begin::Card header-->
-            <div class="card-header card-header-stretch pb-0">
-              <!--begin::Title-->
-              <div class="card-title">
-                <h3 class="m-0">Project(s)</h3>
-              </div>
-              <!--end::Title-->
-              <!--begin::Toolbar-->
-              <div class="card-toolbar m-0">
-                <!--begin::Tab nav-->
-                <ul
-                  class="nav nav-stretch nav-line-tabs border-transparent"
-                  role="tablist"
-                >
-                  <!--begin::Tab item-->
-                  <!-- <li class="nav-item" role="presentation">
-												<a id="kt_billing_creditcard_tab" class="nav-link fs-5 fw-bolder me-5 active" data-bs-toggle="tab" role="tab" href="#kt_billing_creditcard">Credit / Debit Card</a>
-											</li> -->
-                  <!--end::Tab item-->
-                  <!--begin::Tab item-->
-                  <!-- <li class="nav-item" role="presentation">
-												<a id="kt_billing_paypal_tab" class="nav-link fs-5 fw-bolder" data-bs-toggle="tab" role="tab" href="#kt_billing_paypal">Paypal</a>
-											</li> -->
-                  <!--end::Tab item-->
-                </ul>
-                <!--end::Tab nav-->
-              </div>
-              <!--end::Toolbar-->
-            </div>
-            <!--end::Card header-->
-            <!--begin::Tab content-->
-            <div
-              id="kt_billing_payment_tab_content"
-              class="card-body tab-content"
-            >
-              <!--begin::Tab panel-->
-              <div
-                id="kt_billing_creditcard"
-                class="tab-pane fade show active"
-                role="tabpanel"
-              >
-                <!--begin::Title-->
-
-                <!--end::Title-->
-                <!--begin::Row-->
-                <div class="row gx-9 gy-6">
-                    
-                  <!--begin::Col-->
-                  <div
-                    v-for="project in all_project"
-                    :key="project.id"
-                    class="col-xl-6"
-                  >
-                    <!--begin::Card-->
-                    <div class="card card-flush shadow-sm">
-                      <div class="card-header ribbon ribbon-end ribbon-clip">
-                        <div v-if="project.status == 0" class="ribbon-label">
-                          <i class="far fa-eye text-white"></i>
-                          <span class="ribbon-inner bg-success"></span>
-                        </div>
-                        <div v-if="project.status == 1" class="ribbon-label">
-                          <i class="fas fa-eye-slash text-white"></i>
-                          <span class="ribbon-inner bg-info"></span>
-                        </div>
-                        <div v-if="project.status == 2" class="ribbon-label">
-                          <i class="fas fa-trash text-white"></i>
-                          <span class="ribbon-inner bg-danger"></span>
-                        </div>
-                        <div class="card-title fw-bolder mb-5">
-                          {{ project.name  }} | {{ project.company_name}}
-                        </div>
-
-                        <span class="fs-7"
-                          >{{project.url}}
-                          <div class="badge badge-light-success fs-7 fw-bolder">
-                            {{ project.start_date}} -
-                            <span v-if="project.end_date">{{project.end_date}}</span>
-                            <span v-if="!project.end_date">Current</span> 
-                           
-                          </div>
-                        </span>
-                      </div>
-                      <div class="card-body">
-                        
-                        {{ project.summary  }}
-                      </div>
-
-                    
-                    </div>
-
-                    <!--end::Card-->
-                  </div>
-               
-                  <!--end::Col-->
-                </div>
-                <!--end::Row-->
-              </div>
-              <!--end::Tab panel-->
-             
-            </div>
-            <!--end::Tab content-->
-          </div>
-		    <div v-if="all_skill.length > 0" class="card mb-xl-8">
-										<!--begin::Header-->
-										<div class="card-header border-0 pt-5">
-											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">Skill(s)</span>
-												<!-- <span class="text-muted mt-1 fw-bold fs-7">More than 400 new products</span> -->
-											</h3>
-											<!-- <div class="card-toolbar">
-												<ul class="nav">
-													<li class="nav-item">
-														<a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-dark active fw-bolder px-4 me-1" data-bs-toggle="tab" href="#kt_table_widget_5_tab_1">Month</a>
-													</li>
-													<li class="nav-item">
-														<a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-dark fw-bolder px-4 me-1" data-bs-toggle="tab" href="#kt_table_widget_5_tab_2">Week</a>
-													</li>
-													<li class="nav-item">
-														<a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-dark fw-bolder px-4" data-bs-toggle="tab" href="#kt_table_widget_5_tab_3">Day</a>
-													</li>
-												</ul>
-											</div> -->
-										</div>
-										<!--end::Header-->
-										<!--begin::Body-->
-										<div class="card-body py-3">
-											<div class="tab-content">
-												<!--begin::Tap pane-->
-												<div class="tab-pane fade show active" id="kt_table_widget_5_tab_1">
-													<!--begin::Table container-->
-													<div class="table-responsive">
-														<!--begin::Table-->
-														<table class="table table-row-dashed table-row-gray-200 align-middle gs-0 gy-4">
-															<!--begin::Table head-->
-															<thead>
-																<tr class="border-0">
-																	<th class="p-0 w-50px"></th>
-																	<th class="p-0 min-w-150px"></th>
-																	<th class="p-0 min-w-140px"></th>
-																	<th class="p-0 min-w-110px"></th>
-																	<th class="p-0 min-w-50px"></th>
-																</tr>
-															</thead>
-															<!--end::Table head-->
-															<!--begin::Table body-->
-															<tbody>
-																<tr v-for="skill in all_skill" :key="skill.id">
-																	<td>
-																		<div class="symbol symbol-45px me-2">
-																			<span class="symbol-label">
-																				<img src="https://img.icons8.com/doodle/48/000000/shooting-stars--v1.png">
-																			</span>
-																		</div>
-																	</td>
-																	<td>
-																		<a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{skill.name}}</a>
-																	
-																	</td>
-																	<td>
-																		<div class="d-flex align-items-center ps-4" id="kt_toolbar">
-											<div id="kt_toolbar_slider" class="noUi-target noUi-target-primary w-75px w-xxl-150px noUi-sm noUi-ltr noUi-horizontal noUi-txt-dir-ltr"><div class="noUi-base"><div class="noUi-connects"><div class="noUi-connect" style="transform: translate(0%, 0px) scale(0.555556, 1);"></div></div><div class="noUi-origin" style="transform: translate(-444.444%, 0px); z-index: 4;"><div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="1.0" aria-valuemax="10.0" aria-valuenow="1.0" aria-valuetext="1.0"><div class="noUi-touch-area"></div></div></div></div></div>
-											<span v-if="skill.level<=40" id="kt_toolbar_slider_value" class="d-flex flex-center bg-danger rounded-circle w-35px h-35px ms-4 fs-7 fw-bolder text-white" style="font-size: 20px; !important">{{skill.level}}</span>
-												<span v-if="skill.level>40" id="kt_toolbar_slider_value" class="d-flex flex-center bg-success rounded-circle w-35px h-35px ms-4 fs-7 fw-bolder text-white" style="font-size: 20px; !important">{{skill.level}}</span>
-										</div>
-																	</td>
-                                  									<td class="text-end">
-																		<span
-                            v-if="skill.status == 0"
-                            class="badge badge-success fs-7 ms-2"
-                            ><i class="far fa-eye text-white"></i
-                          ></span>
-                          <span
-                            v-if="skill.status == 1"
-                            class="badge badge-info fs-7 ms-2"
-                          >
-                            <i class="fas fa-eye-slash text-white"></i
-                          ></span>
-                          <span
-                            v-if="skill.status == 2"
-                            class="badge badge-danger fs-7 ms-2"
-                          >
-                            <i class="fas fa-trash text-white"></i
-                          ></span>
-																	</td>
-																	
-																
-																	
-																</tr>
-																
-															</tbody>
-															<!--end::Table body-->
-														</table>
-													</div>
-													<!--end::Table-->
-												</div>
-												<!--end::Tap pane-->
-												<!--begin::Tap pane-->
-												<div class="tab-pane fade" id="kt_table_widget_5_tab_2">
-													<!--begin::Table container-->
-													<div class="table-responsive">
-														<!--begin::Table-->
-														<table class="table table-row-dashed table-row-gray-200 align-middle gs-0 gy-4">
-															<!--begin::Table head-->
-															<thead>
-																<tr class="border-0">
-																	<th class="p-0 w-50px"></th>
-																	<th class="p-0 min-w-150px"></th>
-																	<th class="p-0 min-w-140px"></th>
-																	<th class="p-0 min-w-110px"></th>
-																	<th class="p-0 min-w-50px"></th>
-																</tr>
-															</thead>
-															<!--end::Table head-->
-															<!--begin::Table body-->
-															<tbody>
-																<tr>
-																	<td>
-																		<div class="symbol symbol-45px me-2">
-																			<span class="symbol-label">
-																				<img src="assets/media/svg/brand-logos/plurk.svg" class="h-50 align-self-center" alt="">
-																			</span>
-																		</div>
-																	</td>
-																	<td>
-																		<a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">Brad Simmons</a>
-																		<span class="text-muted fw-bold d-block">Movie Creator</span>
-																	</td>
-																	<td class="text-end text-muted fw-bold">React, HTML</td>
-																	<td class="text-end">
-																		<span class="badge badge-light-success">Approved</span>
-																	</td>
-																	<td class="text-end">
-																		<a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
-																			<!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
-																			<span class="svg-icon svg-icon-2">
-																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																					<rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="black"></rect>
-																					<path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="black"></path>
-																				</svg>
-																			</span>
-																			<!--end::Svg Icon-->
-																		</a>
-																	</td>
-																</tr>
-																<tr>
-																	<td>
-																		<div class="symbol symbol-45px me-2">
-																			<span class="symbol-label">
-																				<img src="assets/media/svg/brand-logos/telegram.svg" class="h-50 align-self-center" alt="">
-																			</span>
-																		</div>
-																	</td>
-																	<td>
-																		<a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">Popular Authors</a>
-																		<span class="text-muted fw-bold d-block">Most Successful</span>
-																	</td>
-																	<td class="text-end text-muted fw-bold">Python, MySQL</td>
-																	<td class="text-end">
-																		<span class="badge badge-light-warning">In Progress</span>
-																	</td>
-																	<td class="text-end">
-																		<a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
-																			<!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
-																			<span class="svg-icon svg-icon-2">
-																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																					<rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="black"></rect>
-																					<path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="black"></path>
-																				</svg>
-																			</span>
-																			<!--end::Svg Icon-->
-																		</a>
-																	</td>
-																</tr>
-																<tr>
-																	<td>
-																		<div class="symbol symbol-45px me-2">
-																			<span class="symbol-label">
-																				<img src="assets/media/svg/brand-logos/bebo.svg" class="h-50 align-self-center" alt="">
-																			</span>
-																		</div>
-																	</td>
-																	<td>
-																		<a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">Active Customers</a>
-																		<span class="text-muted fw-bold d-block">Movie Creator</span>
-																	</td>
-																	<td class="text-end text-muted fw-bold">AngularJS, C#</td>
-																	<td class="text-end">
-																		<span class="badge badge-light-danger">Rejected</span>
-																	</td>
-																	<td class="text-end">
-																		<a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
-																			<!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
-																			<span class="svg-icon svg-icon-2">
-																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																					<rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="black"></rect>
-																					<path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="black"></path>
-																				</svg>
-																			</span>
-																			<!--end::Svg Icon-->
-																		</a>
-																	</td>
-																</tr>
-															</tbody>
-															<!--end::Table body-->
-														</table>
-													</div>
-													<!--end::Table-->
-												</div>
-												<!--end::Tap pane-->
-												<!--begin::Tap pane-->
-												<div class="tab-pane fade" id="kt_table_widget_5_tab_3">
-													<!--begin::Table container-->
-													<div class="table-responsive">
-														<!--begin::Table-->
-														<table class="table table-row-dashed table-row-gray-200 align-middle gs-0 gy-4">
-															<!--begin::Table head-->
-															<thead>
-																<tr class="border-0">
-																	<th class="p-0 w-50px"></th>
-																	<th class="p-0 min-w-150px"></th>
-																	<th class="p-0 min-w-140px"></th>
-																	<th class="p-0 min-w-110px"></th>
-																	<th class="p-0 min-w-50px"></th>
-																</tr>
-															</thead>
-															<!--end::Table head-->
-															<!--begin::Table body-->
-															<tbody>
-																<tr>
-																	<td>
-																		<div class="symbol symbol-45px me-2">
-																			<span class="symbol-label">
-																				<img src="assets/media/svg/brand-logos/kickstarter.svg" class="h-50 align-self-center" alt="">
-																			</span>
-																		</div>
-																	</td>
-																	<td>
-																		<a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">Bestseller Theme</a>
-																		<span class="text-muted fw-bold d-block">Best Customers</span>
-																	</td>
-																	<td class="text-end text-muted fw-bold">ReactJS, Ruby</td>
-																	<td class="text-end">
-																		<span class="badge badge-light-warning">In Progress</span>
-																	</td>
-																	<td class="text-end">
-																		<a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
-																			<!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
-																			<span class="svg-icon svg-icon-2">
-																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																					<rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="black"></rect>
-																					<path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="black"></path>
-																				</svg>
-																			</span>
-																			<!--end::Svg Icon-->
-																		</a>
-																	</td>
-																</tr>
-																<tr>
-																	<td>
-																		<div class="symbol symbol-45px me-2">
-																			<span class="symbol-label">
-																				<img src="assets/media/svg/brand-logos/bebo.svg" class="h-50 align-self-center" alt="">
-																			</span>
-																		</div>
-																	</td>
-																	<td>
-																		<a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">Active Customers</a>
-																		<span class="text-muted fw-bold d-block">Movie Creator</span>
-																	</td>
-																	<td class="text-end text-muted fw-bold">AngularJS, C#</td>
-																	<td class="text-end">
-																		<span class="badge badge-light-danger">Rejected</span>
-																	</td>
-																	<td class="text-end">
-																		<a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
-																			<!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
-																			<span class="svg-icon svg-icon-2">
-																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																					<rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="black"></rect>
-																					<path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="black"></path>
-																				</svg>
-																			</span>
-																			<!--end::Svg Icon-->
-																		</a>
-																	</td>
-																</tr>
-																<tr>
-																	<td>
-																		<div class="symbol symbol-45px me-2">
-																			<span class="symbol-label">
-																				<img src="assets/media/svg/brand-logos/vimeo.svg" class="h-50 align-self-center" alt="">
-																			</span>
-																		</div>
-																	</td>
-																	<td>
-																		<a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">New Users</a>
-																		<span class="text-muted fw-bold d-block">Awesome Users</span>
-																	</td>
-																	<td class="text-end text-muted fw-bold">Laravel,Metronic</td>
-																	<td class="text-end">
-																		<span class="badge badge-light-primary">Success</span>
-																	</td>
-																	<td class="text-end">
-																		<a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
-																			<!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
-																			<span class="svg-icon svg-icon-2">
-																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																					<rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="black"></rect>
-																					<path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="black"></path>
-																				</svg>
-																			</span>
-																			<!--end::Svg Icon-->
-																		</a>
-																	</td>
-																</tr>
-																<tr>
-																	<td>
-																		<div class="symbol symbol-45px me-2">
-																			<span class="symbol-label">
-																				<img src="assets/media/svg/brand-logos/telegram.svg" class="h-50 align-self-center" alt="">
-																			</span>
-																		</div>
-																	</td>
-																	<td>
-																		<a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">Popular Authors</a>
-																		<span class="text-muted fw-bold d-block">Most Successful</span>
-																	</td>
-																	<td class="text-end text-muted fw-bold">Python, MySQL</td>
-																	<td class="text-end">
-																		<span class="badge badge-light-warning">In Progress</span>
-																	</td>
-																	<td class="text-end">
-																		<a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
-																			<!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
-																			<span class="svg-icon svg-icon-2">
-																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																					<rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="black"></rect>
-																					<path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="black"></path>
-																				</svg>
-																			</span>
-																			<!--end::Svg Icon-->
-																		</a>
-																	</td>
-																</tr>
-															</tbody>
-															<!--end::Table body-->
-														</table>
-													</div>
-													<!--end::Table-->
-												</div>
-												<!--end::Tap pane-->
-											</div>
-										</div>
-										<!--end::Body-->
-			</div>
-			 <div v-if="all_education.length > 0" class="card mb-xl-8">
-            <div class="card mb-5 mb-xl-10">
-              <!--begin::Card header-->
-              <div class="card-header">
-                <!--begin::Title-->
-                <div class="card-title">
-                  <h3>Education(s)</h3>
-                </div>
-                <!--end::Title-->
-              </div>
-              <!--end::Card header-->
-              <!--begin::Card body-->
-              <div class="card-body">
-                <!--begin::Addresses-->
-                <div class="row gx-9 gy-6">
-                   
-                  <!--begin::Col-->
-                  <div
-                    v-for="edu in all_education"
-                    :key="edu.id"
-                    class="col-xl-4"
-                  >
-                    <!--begin::Address-->
-                    <div
-                      class="
-                        card card-flush shadow-sm
-                        h-xl-100
-                        flex-row flex-stack flex-wrap
-                        p-6
-                      "
-                    >
-                      <!--begin::Details-->
-                      <div class="d-flex flex-column py-2">
-                        <div
-                          class="d-flex align-items-center fs-5 fw-bolder mb-5"
-                        >
-                          {{ edu.institution  }}
-                          <span
-                            v-if="edu.status == 0"
-                            class="badge badge-success fs-7 ms-2"
-                            ><i class="far fa-eye text-white"></i
-                          ></span>
-                          <span
-                            v-if="edu.status == 1"
-                            class="badge badge-info fs-7 ms-2"
-                          >
-                            <i class="fas fa-eye-slash text-white"></i
-                          ></span>
-                          <span
-                            v-if="edu.status == 2"
-                            class="badge badge-danger fs-7 ms-2"
-                          >
-                            <i class="fas fa-trash text-white"></i
-                          ></span>
-                        </div>
-                        <div class="fs-6 fw-bold text-gray-600">
-                         {{ edu.area  }}
-                          ({{ edu.studyType  }}) <br />{{ edu.start_date}} -
-                          {{edu.end_date}} @ {{edu.score}}
-                        </div>
-                      </div>
-                      <!--end::Details-->
-                      
-                    </div>
-                    <!--end::Address-->
-                  </div>
-                  <!--end::Col-->
-
-                 
-                </div>
-                <!--end::Addresses-->
-              </div>
-              <!--end::Card body-->
-            </div>
-          </div>
+		 
         </div>
         <!--end::Container-->
       </div>

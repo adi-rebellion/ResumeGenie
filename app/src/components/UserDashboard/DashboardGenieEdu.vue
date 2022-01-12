@@ -25,7 +25,7 @@
 												<a href="#add_new_work_exp" class="btn btn-flex btn-text-gray-800 btn-icon-gray-400 btn-active-color-primary bg-body flex-column justfiy-content-start align-items-start text-start w-100 p-10">
 													<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
 												 <span class="svg-icon svg-icon-3x mb-5" style="margin-left:auto; margin-right:auto;">
-                        <img src="https://img.icons8.com/dusk/80/000000/add--v1.png"  />
+                        <img src="https://img.icons8.com/stickers/100/000000/add.png"  />
                        
                         </span>
                         <!--end::Svg Icon-->

@@ -27,6 +27,26 @@ const UpdateGenieWork = (genie_work_id) => {
 
 //////////////////////////////////Genie Work////////////////////
 
+//////////////////////////////////Genie Reference////////////////////
+
+const GetAllReference = () => {
+    return getApi('GENIE', 'GET_ALL_REFERENCE')
+}
+
+const GenieReference = (genie_reference) => {
+    return getApi('GENIE', 'REFERENCE', genie_reference)
+}
+
+const ToggleGenieReference = (genie_reference_id,status) => {
+    return getApi('GENIE', 'TOGGLE_REFERENCE', genie_reference_id,status)
+}
+
+const UpdateGenieReference = (genie_reference_id) => {
+    return getApi('GENIE', 'UPDATE_REFERENCE', genie_reference_id)
+}
+
+//////////////////////////////////Genie Reference////////////////////
+
 //////////////////////////////////Genie Education////////////////////
 
 const GetAllEducation = () => {
@@ -153,6 +173,56 @@ const UpdateGenieSocial = (genie_social_id) => {
 //////////////////////////////////Genie Socail////////////////////
 
 
+//////////////////////////////////Genie Resume////////////////////
+
+const GetAllResume = () => {
+    return getApi('GENIE', 'GET_ALL_RESUME')
+}
+
+const GenieResume = (genie_resume) => {
+    return getApi('GENIE','RESUME',genie_resume)
+}
+
+const ToggleGenieResume = (genie_resume_id,status) => {
+    return getApi('GENIE', 'TOGGLE_RESUME', genie_resume_id,status)
+}
+
+const UpdateGenieResume = (genie_resume_id) => {
+    return getApi('GENIE', 'UPDATE_RESUME', genie_skill_id)
+}
+
+const ToggleGenieComponent = (resume_id,status) => {
+    return getApi('GENIE', 'TOGGLE_COMPONENT', resume_id,status)
+}
+
+//////////////////////////////////Genie Resume////////////////////
+
+const GetGenieSpoken = () => {
+    return getApi('GENIE', 'GENIE_SPOKEN')
+}
+
+//////////////////////////////////Genie Work////////////////////
+
+const GetAllLanguage = () => {
+    return getApi('GENIE', 'GET_ALL_LANGUAGE')
+}
+
+const GenieLanguage = (genie_language) => {
+    return getApi('GENIE', 'LANGUAGE', genie_language)
+}
+
+const ToggleGenieLanguage = (genie_language_id,status) => {
+    return getApi('GENIE', 'TOGGLE_LANGUAGE', genie_language_id,status)
+}
+
+const UpdateGenieLanguage = (genie_language_id) => {
+    return getApi('GENIE', 'UPDATE_LANGUAGE',genie_language_id)
+}
+
+//////////////////////////////////Genie Work////////////////////
+
+
+
 module.exports = {
     GenieBasic ,
     GenieWork,
@@ -163,6 +233,10 @@ module.exports = {
     GetAllAward,
     GenieProject,
     GetAllProject,
+    GetAllLanguage,
+    GenieLanguage,
+    ToggleGenieLanguage,
+    UpdateGenieLanguage,
     GenieSkill,
     GetAllSkill,
     GenieContact,
@@ -184,7 +258,18 @@ module.exports = {
     GetAllSocial,
     GenieSocial,
     ToggleGenieSocial,
-    UpdateGenieSocial
+    UpdateGenieSocial,
+    GenieResume,
+    ToggleGenieResume,
+    UpdateGenieResume,
+    GetAllResume,
+    ToggleGenieComponent,
+    GetGenieSpoken,
+    GetAllReference,
+    GenieReference,
+    ToggleGenieReference,
+    UpdateGenieReference
+
 
     
 

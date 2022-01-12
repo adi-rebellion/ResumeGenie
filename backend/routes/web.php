@@ -18,5 +18,3 @@ use Illuminate\Support\Facades\Cookie;
 Route::get('/login', function () {
 })->name("login");
 
-Route::get('/make/user/1/json', 'ResumeController@add_user_json');
-Route::get('/user/preview/json', 'ResumeController@preview_json');

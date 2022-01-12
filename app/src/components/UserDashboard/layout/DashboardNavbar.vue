@@ -26,6 +26,7 @@
         <!--begin::Heading-->
         <h1 class="d-flex flex-column text-dark fw-bolder my-1">
           <span v-if="$route.name=='GenieBasic'" class="text-white fs-1">Let's first build your profile</span>
+           <span v-if="$route.name=='DashboardPage'" class="text-white fs-1">This is your career profile</span>
            <span v-if="$route.name=='GenieExperience'" class="text-white fs-1">Now, lets add your work  experiences</span>
             <span v-if="$route.name=='GenieEducation'" class="text-white fs-1">Now, Lets add your education details</span>
              <span v-if="$route.name=='GenieAward'" class="text-white fs-1">Now, Lets  showcase any awards & achievements</span>
@@ -42,6 +43,9 @@
           >
           <small v-if="$route.name=='GenieAward'" class="text-gray-600 fs-6 fw-normal pt-2"
             >Add all awards and achievements. Remember, you can show/hide them as needed</small
+          >
+          <small v-if="$route.name=='DashboardPage'" class="text-gray-600 fs-6 fw-normal pt-2"
+            >Add everything about you in here. We will use this information to create one or more versions of your resume for you.<br> After filling up everything about you, you can start to create resumes from the left pane.<br> You can customize what you show on each version of your resume. </small
           >
            <small v-if="$route.name=='GenieProject'" class="text-gray-600 fs-6 fw-normal pt-2"
             >Feel free to add as many as you can. The more the better ...</small
@@ -62,8 +66,8 @@
          
           <router-link
            :to="{ name: 'GenieBasic' }"
-            class="btn btn-light-warning"
-            
+            class="btn btn-light-warning "
+            style="color: #2e1f27 !important;"
             >{{$store.state.auth.user.user_name}}</router-link
           >
         </div>

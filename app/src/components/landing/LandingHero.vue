@@ -692,6 +692,7 @@
                           Used by millions
                         </div>
                       </div>
+                      
                       <!--end::Value-->
                     </div>
                     <!--end::Info-->
@@ -1279,22 +1280,22 @@ export default {
   },
   metaInfo() {
     return {
-      title: "Hearecho - Hear what matters to your people.",
+      title: "Resume Genie - A way better resume maker.",
       meta: [
         {
           name: "description",
           content:
-            "A place where communities and their leadership members can express themselves. Know what matters to everyone. Clear communication leads to better engagement.",
+            "Buid your resume once, change its look as often as you like.We keep adding new designs all the time.",
         },
         {
           property: "og:title",
-          content: "Hearecho - Hear what matters to your people.",
+          content: "Resume Genie - A way better resume maker.",
         },
-        { property: "og:site_name", content: "hearecho" },
+        { property: "og:site_name", content: "Resume Genie" },
         {
           property: "og:description",
           content:
-            "A place where communities and their leadership members can express themselves. Know what matters to everyone. Clear communication leads to better engagement.",
+            "Buid your resume once, change its look as often as you like.We keep adding new designs all the time.",
         },
         { property: "og:type", content: "website" },
         { property: "og:url", content: "https://hearcho.com/" },

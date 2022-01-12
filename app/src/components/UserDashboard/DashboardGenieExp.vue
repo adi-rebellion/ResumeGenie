@@ -72,7 +72,7 @@
                       >
                         <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
                         <span class="svg-icon svg-icon-3x mb-5" style="margin-left:auto; margin-right:auto;">
-                        <img src="https://img.icons8.com/dusk/80/000000/add--v1.png"  />
+                        <img src="https://img.icons8.com/stickers/100/000000/add.png"  />
                        
                         </span>
                         <!--end::Svg Icon-->

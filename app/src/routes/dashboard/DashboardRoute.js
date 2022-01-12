@@ -10,6 +10,10 @@ import DashboardGenieProject from '../../components/UserDashboard/DashboardGenie
 import DashboardGenieSkill from '../../components/UserDashboard/DashboardGenieSkill.vue'
 import DashboardGenieContact from '../../components/UserDashboard/DashboardGenieContact.vue'
 import DashboardGenieSocial from '../../components/UserDashboard/DashboardGenieSocial.vue'
+import DashboardGenieResume from '../../components/UserDashboard/DashboardGenieResume.vue'
+import DashboardGenieResumeCreate from '../../components/UserDashboard/DashboardGenieResumeCreate.vue'
+import DashboardGenieLanguage from '../../components/UserDashboard/DashboardGenieLanguage.vue'
+import DashboardGenieReference from '../../components/UserDashboard/DashboardGenieReference.vue'
 
 const dashboardRoutes = [
     {
@@ -19,9 +23,16 @@ const dashboardRoutes = [
         meta: { requiresAuth: true }
     },
     {
-        path: "/dashboard",
+        path: "/careerdash",
         name: "DashboardPage",
         component: DashboardPage,
+        meta: { requiresAuth: true }
+    },
+
+    {
+        path: "/buildresume",
+        name: "GenieResume",
+        component: DashboardGenieResume,
         meta: { requiresAuth: true }
     },
 
@@ -53,6 +64,7 @@ const dashboardRoutes = [
         meta: { requiresAuth: true }
     },
 
+
     {
         path: "/genie-project",
         name: "GenieProject",
@@ -78,6 +90,27 @@ const dashboardRoutes = [
         path: "/genie-social",
         name: "GenieSocial",
         component: DashboardGenieSocial,
+        meta: { requiresAuth: true }
+    },
+
+    {
+        path: "/genie-language",
+        name: "GenieLanguage",
+        component: DashboardGenieLanguage,
+        meta: { requiresAuth: true }
+    },
+
+    {
+        path: "/genie-reference",
+        name: "GenieReference",
+        component: DashboardGenieReference,
+        meta: { requiresAuth: true }
+    },
+
+    {
+        path: "/genie-resume-create-:resume_id",
+        name: "GenieResumeCreate",
+        component: DashboardGenieResumeCreate,
         meta: { requiresAuth: true }
     },
     

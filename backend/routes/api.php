@@ -87,7 +87,45 @@ Route::get('get/all/genie/contact','ResumeController@genie_all_contact');
 Route::get('get/all/genie/active','ResumeController@get_all_active_areas');
 Route::post('get/all/genie/skill','ResumeController@fetch_genie_skills');
 Route::get('get/all/genie/connect','ResumeController@fetch_genie_connect');
+Route::get('get/all/genie/spoken','ResumeController@fetch_genie_spoken');
 
 Route::post('insert/genie/social','ResumeController@add_resume_genie_social');
+Route::post('toggle/genie/social','ResumeController@toggle_resume_social');
 Route::post('update/genie/social','ResumeController@update_resume_genie_social');
 Route::get('get/all/genie/social','ResumeController@genie_all_social');
+
+Route::post('insert/genie/language','ResumeController@add_resume_genie_language');
+Route::post('update/genie/language','ResumeController@update_resume_genie_language');
+// Route::post('toggle/genie/language','ResumeController@toggle_resume_project');
+Route::get('get/all/genie/language','ResumeController@genie_all_language');
+
+
+Route::post('insert/genie/resume','ResumeController@add_genie_resume');
+Route::post('update/genie/resume','ResumeController@update_genie_resume');
+Route::get('get/all/genie/resume','ResumeController@get_all_genie_resume');
+
+Route::post('insert/genie/reference','ResumeController@add_resume_reference');
+Route::post('update/genie/reference','ResumeController@update_resume_reference');
+// Route::post('toggle/genie/language','ResumeController@toggle_resume_project');
+Route::get('get/all/genie/reference','ResumeController@genie_all_reference');
+
+Route::post('insert/genie/volunteer','ResumeController@add_resume_genie_volunteer');
+Route::post('update/genie/volunteer','ResumeController@update_resume_genie_volunteer');
+// Route::post('toggle/genie/language','ResumeController@toggle_resume_project');
+Route::get('get/all/genie/volunteer','ResumeController@genie_all_volunteer');
+
+
+Route::post('insert/genie/interest','ResumeController@add_resume_genie_interest');
+Route::post('update/genie/interest','ResumeController@update_resume_genie_interest');
+// Route::post('toggle/genie/language','ResumeController@toggle_resume_project');
+Route::get('get/all/genie/interest','ResumeController@genie_all_interest');
+
+
+
+Route::post('toggle/genie/component','ResumeController@genie_toggle_component');
+
+
+
+
+Route::get('/make/user/1/json', 'ResumeController@add_user_json');
+Route::get('/user/preview/json', 'ResumeController@preview_json');

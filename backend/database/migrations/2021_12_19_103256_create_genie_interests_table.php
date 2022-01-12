@@ -15,16 +15,8 @@ class CreateGenieInterestsTable extends Migration
     {
         Schema::create('genie_interests', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
             $table->String('name');
-            $table->String('keyword');
-
-            // "interests": [{
-            //     "name": "Wildlife",
-            //     "keywords": [
-            //       "Ferrets",
-            //       "Unicorns"
-            //     ]
-            //   }],
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGenieReferencesTable extends Migration
+class CreateGenieResumeComponentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateGenieReferencesTable extends Migration
      */
     public function up()
     {
-        Schema::create('genie_references', function (Blueprint $table) {
+        Schema::create('genie_resume_components', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->String('name');
-            $table->String('reference');
-            $table->String('company');
-            // "references": [{
-            //     "name": "Jane Doe",
-            //     "reference": "Reference…"
-            //   }],
+            $table->integer('resume_id');
+            $table->integer('component');
+            $table->integer('component_id');
+            $table->enum('status',['0','1','2']);
             $table->timestamps();
         });
     }
@@ -34,6 +31,6 @@ class CreateGenieReferencesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('genie_references');
+        Schema::dropIfExists('genie_resume_components');
     }
 }

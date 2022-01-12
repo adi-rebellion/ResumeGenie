@@ -38,7 +38,7 @@
 															<!--begin::Table head-->
 															<thead>
 																<tr class="border-0">
-																	<th class="p-0 w-50px"></th>
+																	<!-- <th class="p-0 w-50px"></th> -->
 																	<th class="p-0 min-w-150px"></th>
 																	<th class="p-0 min-w-140px"></th>
 																	<th class="p-0 min-w-110px"></th>
@@ -49,13 +49,13 @@
 															<!--begin::Table body-->
 															<tbody>
 																<tr v-for="skill in all_skill" :key="skill.id">
-																	<td>
+																	<!-- <td>
 																		<div class="symbol symbol-45px me-2">
 																			<span class="symbol-label">
 																				<img src="https://img.icons8.com/doodle/48/000000/shooting-stars--v1.png">
 																			</span>
 																		</div>
-																	</td>
+																	</td> -->
 																	<td>
 																		<a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{skill.name}}</a>
 																	
@@ -411,7 +411,7 @@
             >
               <!--begin::Card title-->
               <div class="card-title m-0">
-                <h3 class="fw-bolder m-0">Skill Details</h3>
+                <h3 class="fw-bolder m-0">Adding a skill</h3>
               </div>
               <!--end::Card title-->
             </div>

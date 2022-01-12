@@ -48,35 +48,15 @@
                         
 												<div class="d-flex justify-content-end">
 												  <div v-if="social.status != 2" >
-                        <button
-                          v-if="social.status==1"
-                          type="reset"
-                          class="
-                            btn btn-sm btn-light btn-active-light-primary
-                            me-3
-                          "
-                          @click.prevent="toogle_social(social.id,'0')"
-                        >
-                          <i class="far fa-eye"></i>
-                        </button>
-                        <button
-                          v-if="social.status==0"
-                          type="reset"
-                          class="
-                            btn btn-sm btn-light btn-active-light-primary
-                            me-3
-                          "
-                          @click.prevent="toogle_social(social.id,'1')"
-                        >
-                          <i class="fas fa-eye-slash"></i>
-                        </button>
+                        
+                      
                         <button
                           type="reset"
                           class="
                             btn btn-sm btn-light btn-active-light-primary
                             me-3
                           "
-                          @click.prevent="toogle_social(social.id,'2')"
+                          @click.prevent="delete_social(social.id,'2')"
                         >
                           <i class="fas fa-trash"></i>
                         </button>
@@ -86,7 +66,7 @@
                         >
                           <i class="far fa-edit"></i>
                         </button>
-                      </div>
+                        </div>
 												</div>
                         
 											</div>
@@ -124,7 +104,7 @@
             >
               <!--begin::Card title-->
               <div class="card-title m-0">
-                <h3 class="fw-bolder m-0">Contact Details</h3>
+                <h3 class="fw-bolder m-0">Social Details</h3>
               </div>
               <!--end::Card title-->
             </div>
@@ -340,8 +320,9 @@ export default {
     },
     methods: {
         
-        async toogle_social(social_id,status)
+        async delete_social(social_id,status)
       {
+
 
 
 
@@ -384,7 +365,8 @@ export default {
                 await API.GenieSocial(this.genie_social)
                 .then((res) => {
                     if (res.status == 200) {
-                        this.$toast.success("Success", "Organization created succesfully");
+                      this.all_social = res.data.network;
+                        this.$toast.success("Success", "Genie Social created succesfully");
 
                     } else {
                         this.$toast.error("Error", "Oops error creating an organization");

@@ -15,6 +15,7 @@ class CreateGenieLanguagesTable extends Migration
     {
         Schema::create('genie_languages', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
             $table->String('language');
             $table->String('fluency');
 

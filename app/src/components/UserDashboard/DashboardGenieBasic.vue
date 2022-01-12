@@ -17,6 +17,7 @@
             >
               <!--begin::Card title-->
               <div class="card-title m-0">
+                
                 <h3 class="fw-bolder m-0">The Basics</h3>
               </div>
               <!--end::Card title-->
