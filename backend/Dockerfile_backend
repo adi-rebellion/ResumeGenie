@@ -4,7 +4,9 @@ ARG apk_repo
 ARG php_version
 
 COPY . /var/www/html
-WORKDIR /var/www/html
+COPY package.json /var/www
+
+WORKDIR /var/www
 
 RUN apk update;
 RUN apk add --update \
@@ -73,16 +75,23 @@ RUN set -ex; \
 
 RUN ln -s -f /usr/bin/php7 /usr/bin/php
 
+RUN sudo npm install
+RUN sudo npm install --save --unsafe-perm=true -g resume-cli
+RUN sudo npm install --save -g jsonresume-theme-even 
+RUN sudo npm install --save -g jsonresume-theme-elegant
+
+WORKDIR /var/www/html
+
+RUN chmod -f -R  777 storage
+RUN chmod -f -R  777 bootstrap/cache
+
 # Installing composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');";
 RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer;
 RUN rm -f composer-setup.php;
 
-RUN chmod -f -R  777 storage
-RUN chmod -f -R  777 bootstrap/cache
+RUN composer install
 
-# RUN composer install
-# RUN sudo npm install
+RUN cp -f -r vendor ../vendor
+RUN cp -f -r composer.lock ../composer.lock
 
-# RUN sudo npm install --save --unsafe-perm=true -g resume-cli
-# run npm install --save -g jsonresume-theme-even

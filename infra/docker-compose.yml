@@ -59,7 +59,7 @@ services:
     hostname: resumegeni_backend
     restart: always
     ports:
-      - '127.0.0.1:9000:8000'
+      - '127.0.0.1:8000:8000'
     command: sh -c 'sh docker_start_init_scripts.sh'
     volumes:
       - type: bind
