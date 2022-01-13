@@ -87,21 +87,10 @@
                     class="col-xl-6"
                   >
                     <!--begin::Card-->
-                    <div class="card card-flush shadow-sm" >
-                      <div class="card-header ribbon ribbon-end ribbon-clip">
-                        <div v-if="award.status == 0" class="ribbon-label">
-                          <i class="far fa-eye text-white"></i>
-                          <span class="ribbon-inner bg-success"></span>
-                        </div>
-                        <div v-if="award.status == 1" class="ribbon-label">
-                          <i class="fas fa-eye-slash text-white"></i>
-                          <span class="ribbon-inner bg-info"></span>
-                        </div>
-                        <div v-if="award.status == 2" class="ribbon-label">
-                          <i class="fas fa-trash text-white"></i>
-                          <span class="ribbon-inner bg-danger"></span>
-                        </div>
-                        <div class="card-title fw-bolder mb-5">
+                    <div class="card card-flush shadow-lg" >
+                      <div class="card-header">
+                       
+                        <div class="card-title fw-bolder mb-1">
                           {{ award.title  }} | By- {{ award.awarder}}
                         </div>
 
@@ -117,36 +106,15 @@
                         {{ award.summary  }}
                       </div>
 
-                      <div v-if="award.status != 2" class="card-footer">
-                        <button
-                          v-if="award.status==1"
-                          type="reset"
-                          class="
-                            btn btn-sm btn-light btn-active-light-primary
-                            me-3
-                          "
-                          @click.prevent="toogle_award(award.id,'0')"
-                        >
-                          <i class="far fa-eye"></i>
-                        </button>
-                        <button
-                          v-if="award.status==0"
-                          type="reset"
-                          class="
-                            btn btn-sm btn-light btn-active-light-primary
-                            me-3
-                          "
-                          @click.prevent="toogle_award(award.id,'1')"
-                        >
-                          <i class="fas fa-eye-slash"></i>
-                        </button>
+                      <div  class="card-footer">
+                       
                         <button
                           type="reset"
                           class="
                             btn btn-sm btn-light btn-active-light-primary
                             me-3
                           "
-                          @click.prevent="toogle_award(award.id,'2')"
+                          @click.prevent="toogle_award(award.id)"
                         >
                           <i class="fas fa-trash"></i>
                         </button>
@@ -437,16 +405,17 @@ export default {
 
 
       },
-       async toogle_award(award_id,status)
+       async toogle_award(award_id)
       {
 
-          const award = {toogle_award_id:award_id , status:status}
+          const award = {toogle_award_id:award_id}
           await API.ToggleGenieAward(award).then((result) => {
 
 
               // this.genie_work = this.all_work_exp[work_id-1];
-              this.all_award[award_id-1].status = status;
-                this.all_award= res.data.award;
+              // this.all_award[award_id-1].status = status;
+               this.$toast.info("Deleted", "Genie award deleted!");
+                this.all_award= result.data.award;
 
             })
 

@@ -14,6 +14,8 @@ import DashboardGenieResume from '../../components/UserDashboard/DashboardGenieR
 import DashboardGenieResumeCreate from '../../components/UserDashboard/DashboardGenieResumeCreate.vue'
 import DashboardGenieLanguage from '../../components/UserDashboard/DashboardGenieLanguage.vue'
 import DashboardGenieReference from '../../components/UserDashboard/DashboardGenieReference.vue'
+import DashboardGenieVolunteer from '../../components/UserDashboard/DashboardGenieVolunteer.vue'
+import DashboardGenieInterest from '../../components/UserDashboard/DashboardGenieInterest.vue'
 
 const dashboardRoutes = [
     {
@@ -104,6 +106,20 @@ const dashboardRoutes = [
         path: "/genie-reference",
         name: "GenieReference",
         component: DashboardGenieReference,
+        meta: { requiresAuth: true }
+    },
+
+    {
+        path: "/genie-volunteer",
+        name: "GenieVolunteer",
+        component: DashboardGenieVolunteer,
+        meta: { requiresAuth: true }
+    },
+
+    {
+        path: "/genie-interest",
+        name: "GenieInterest",
+        component: DashboardGenieInterest,
         meta: { requiresAuth: true }
     },
 

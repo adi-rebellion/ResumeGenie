@@ -17,7 +17,7 @@
             >
               <!--begin::Card title-->
               <div class="card-title m-0">
-                
+               <img src="https://img.icons8.com/stickers/50/000000/user-location.png"/>&nbsp;
                 <h3 class="fw-bolder m-0">The Basics</h3>
               </div>
               <!--end::Card title-->

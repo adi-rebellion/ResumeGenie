@@ -5,27 +5,38 @@
         <!--begin::Container-->
         <div class="container-xxl" id="kt_content_container">
           <div v-if="all_skill.length > 0" class="card mb-xl-8">
-										<!--begin::Header-->
-										<div class="card-header border-0 pt-5">
-											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">Skill(s)</span>
-												<!-- <span class="text-muted mt-1 fw-bold fs-7">More than 400 new products</span> -->
-											</h3>
-											<!-- <div class="card-toolbar">
-												<ul class="nav">
-													<li class="nav-item">
-														<a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-dark active fw-bolder px-4 me-1" data-bs-toggle="tab" href="#kt_table_widget_5_tab_1">Month</a>
-													</li>
-													<li class="nav-item">
-														<a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-dark fw-bolder px-4 me-1" data-bs-toggle="tab" href="#kt_table_widget_5_tab_2">Week</a>
-													</li>
-													<li class="nav-item">
-														<a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-dark fw-bolder px-4" data-bs-toggle="tab" href="#kt_table_widget_5_tab_3">Day</a>
-													</li>
-												</ul>
-											</div> -->
-										</div>
-										<!--end::Header-->
+										  <div class="card-header card-header-stretch pb-0">
+              <!--begin::Title-->
+              <div class="card-title">
+                 <img
+                  class="me-6"
+                  src="https://img.icons8.com/stickers/50/000000/wizard.png"
+                />&nbsp;
+                <h3 class="m-0">Skill(s)</h3>
+              </div>
+              <!--end::Title-->
+              <!--begin::Toolbar-->
+              <div class="card-toolbar m-0">
+                <!--begin::Tab nav-->
+                <ul
+                  class="nav nav-stretch nav-line-tabs border-transparent"
+                  role="tablist"
+                >
+                  <!--begin::Tab item-->
+                  <!-- <li class="nav-item" role="presentation">
+												<a id="kt_billing_creditcard_tab" class="nav-link fs-5 fw-bolder me-5 active" data-bs-toggle="tab" role="tab" href="#kt_billing_creditcard">Credit / Debit Card</a>
+											</li> -->
+                  <!--end::Tab item-->
+                  <!--begin::Tab item-->
+                  <!-- <li class="nav-item" role="presentation">
+												<a id="kt_billing_paypal_tab" class="nav-link fs-5 fw-bolder" data-bs-toggle="tab" role="tab" href="#kt_billing_paypal">Paypal</a>
+											</li> -->
+                  <!--end::Tab item-->
+                </ul>
+                <!--end::Tab nav-->
+              </div>
+              <!--end::Toolbar-->
+            </div>
 										<!--begin::Body-->
 										<div class="card-body py-3">
 											<div class="tab-content">
@@ -42,7 +53,7 @@
 																	<th class="p-0 min-w-150px"></th>
 																	<th class="p-0 min-w-140px"></th>
 																	<th class="p-0 min-w-110px"></th>
-																	<th class="p-0 min-w-50px"></th>
+																	
 																</tr>
 															</thead>
 															<!--end::Table head-->
@@ -63,59 +74,24 @@
 																	<td>
 																		<div class="d-flex align-items-center ps-4" id="kt_toolbar">
 											<div id="kt_toolbar_slider" class="noUi-target noUi-target-primary w-75px w-xxl-150px noUi-sm noUi-ltr noUi-horizontal noUi-txt-dir-ltr"><div class="noUi-base"><div class="noUi-connects"><div class="noUi-connect" style="transform: translate(0%, 0px) scale(0.555556, 1);"></div></div><div class="noUi-origin" style="transform: translate(-444.444%, 0px); z-index: 4;"><div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="1.0" aria-valuemax="10.0" aria-valuenow="1.0" aria-valuetext="1.0"><div class="noUi-touch-area"></div></div></div></div></div>
-											<span v-if="skill.level<=40" id="kt_toolbar_slider_value" class="d-flex flex-center bg-danger rounded-circle w-35px h-35px ms-4 fs-7 fw-bolder text-white" style="font-size: 20px; !important">{{skill.level}}</span>
-												<span v-if="skill.level>40" id="kt_toolbar_slider_value" class="d-flex flex-center bg-success rounded-circle w-35px h-35px ms-4 fs-7 fw-bolder text-white" style="font-size: 20px; !important">{{skill.level}}</span>
+											<span  id="kt_toolbar_slider_value" class="d-flex flex-center rounded-circle w-35px h-35px ms-4 fs-7 fw-bolder text-white" style="
+                                  font-size: 20px !important;
+                                  background-color: #218380;
+                                ">{{skill.level}}</span>
+												
 										</div>
 																	</td>
-                                  									<td class="text-end">
-																		<span
-                            v-if="skill.status == 0"
-                            class="badge badge-success fs-7 ms-2"
-                            ><i class="far fa-eye text-white"></i
-                          ></span>
-                          <span
-                            v-if="skill.status == 1"
-                            class="badge badge-info fs-7 ms-2"
-                          >
-                            <i class="fas fa-eye-slash text-white"></i
-                          ></span>
-                          <span
-                            v-if="skill.status == 2"
-                            class="badge badge-danger fs-7 ms-2"
-                          >
-                            <i class="fas fa-trash text-white"></i
-                          ></span>
-																	</td>
+                                  									
 																	<td class="text-end">
-																		  <button
-                          v-if="skill.status==1"
-                          type="reset"
-                          class="
-                            btn btn-sm btn-light btn-active-light-primary
-                            me-3
-                          "
-                          @click.prevent="toogle_skill(skill.id,'0')"
-                        >
-                          <i class="far fa-eye"></i>
-                        </button>
-                        <button
-                          v-if="skill.status==0"
-                          type="reset"
-                          class="
-                            btn btn-sm btn-light btn-active-light-primary
-                            me-3
-                          "
-                          @click.prevent="toogle_skill(skill.id,'1')"
-                        >
-                          <i class="fas fa-eye-slash"></i>
-                        </button>
+																	
+                       
                         <button
                           type="reset"
                           class="
                             btn btn-sm btn-light btn-active-light-primary
                             me-3
                           "
-                          @click.prevent="toogle_skill(skill.id,'2')"
+                          @click.prevent="toogle_skill(skill.id)"
                         >
                           <i class="fas fa-trash"></i>
                         </button>
@@ -606,24 +582,25 @@ export default {
     methods: {
          async edit_skill(skill_id)
       {
-        
+        alert(skill_id);
         this.add_new_skill = false;
         this.genie_skill = this.all_skill[skill_id-1];
         this.genie_skill.update_skill_id = skill_id;
 
         
       },
-       async toogle_skill(skill_id,status)
+       async toogle_skill(skill_id)
       {
 
         
-        const skill = {toogle_skill_id:skill_id , status:status}
+        const skill = {toogle_skill_id:skill_id }
           await API.ToggleGenieSkill(skill).then((result) => {
             
                
               // this.genie_skill = this.all_skill[skill_id-1];
-              this.all_skill[skill_id-1].status = status;
-			  this.all_skill= res.data.skill;
+            //   this.all_skill[skill_id-1].status = status;
+			 this.$toast.info("Deleted", "Genie skill deleted!");
+			  this.all_skill= result.data.skill;
                
             })	
 
@@ -660,10 +637,10 @@ export default {
                     if (res.status == 200) {
 						this.all_skill= res.data.skill;
 						 this.genie_skill.name = '';
-                        this.$toast.success("Success", "Organization created succesfully");
+                        this.$toast.success("Success", "Genie Skill created succesfully");
 
                     } else {
-                        this.$toast.error("Error", "Oops error creating an organization");
+                        this.$toast.error("Error", "Oops error creating an skill");
                     }
                 })
                 .catch((error) => {
@@ -681,31 +658,20 @@ export default {
 	   async updateButton() {
            
                
-                 if(this.genie_skill.institution == "")
+               
+                   if(this.genie_skill.name == "")
                 {
-                      this.$toast.error("Error", "Institution is a required feild");
-                    return "Error";
-                }
-                if (this.genie_skill.area == "") {
-                    this.$toast.error("Error", "Area is a required feild");
-                    return "Error";
-                }
-                 if (this.genie_skill.score == "") {
-                    this.$toast.error("Error", "Score is a required feild");
-                    return "Error";
-                }
-                 if (this.genie_skill.start_date == "") {
-                    this.$toast.error("Error", "Start date is a required feild");
+                      this.$toast.error("Error", "Skill Name is a required feild");
                     return "Error";
                 }
 
                 await API.UpdateGenieSkill(this.genie_skill)
                 .then((res) => {
                     if (res.status == 200) {
-                        this.$toast.success("Success", "Organization created succesfully");
+                        this.$toast.success("Success", "Genie Skill updated succesfully");
 
                     } else {
-                        this.$toast.error("Error", "Oops error creating an organization");
+                        this.$toast.error("Error", "Oops error updating an skill");
                     }
                 })
                 .catch((error) => {

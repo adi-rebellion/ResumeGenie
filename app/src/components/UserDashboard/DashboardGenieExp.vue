@@ -9,6 +9,7 @@
             <div class="card-header card-header-stretch pb-0">
               <!--begin::Title-->
               <div class="card-title">
+                	<img src="https://img.icons8.com/stickers/50/000000/work.png"/> &nbsp;
                 <h3 class="m-0">Work Experience(s)</h3>
               </div>
               <!--end::Title-->
@@ -88,31 +89,24 @@
                     class="col-xl-6"
                   >
                     <!--begin::Card-->
-                    <div class="card card-flush shadow-sm">
-                      <div class="card-header ribbon  ribbon-end ribbon-clip">
-                        <div v-if="exp.status == 0" class="ribbon-label">
-                          <i class="far fa-eye text-white "></i>
-                          <span class="ribbon-inner  bg-success"></span>
-                        </div>
-                        <div v-if="exp.status == 1" class="ribbon-label">
-                          <i class="fas fa-eye-slash text-white"></i>
-                          <span class="ribbon-inner bg-info"></span>
-                        </div>
-                        <div v-if="exp.status == 2" class="ribbon-label">
-                          <i class="fas fa-trash text-white"></i>
-                          <span class="ribbon-inner bg-danger"></span>
-                        </div>
-                        <div class="card-title fw-bolder mb-5">
+                    <div class="card card-flush shadow-lg">
+                      <div class="card-header">
+                        
+                        <div class="card-title fw-bolder mb-1">
                           {{ exp.position  }} | {{ exp.company}}
                         </div>
 
                         <span class="fs-7"
                           >{{exp.website}}
+                          <img
+                            src="https://img.icons8.com/stickers/20/000000/marker.png"
+                          />
+                          {{ exp.location}}
                           <div class="badge badge-light-success fs-7 fw-bolder">
                             {{ exp.start_date}} -
                             <span v-if="exp.end_date">{{exp.end_date}}</span>
-                            <span v-if="!exp.end_date">Current</span> @
-                            {{exp.location}}
+                            <span v-if="!exp.end_date">now</span> 
+                           
                           </div>
                         </span>
                       </div>
@@ -120,36 +114,15 @@
                         {{ exp.summary  }}
                       </div>
 
-                      <div v-if="exp.status != 2" class="card-footer">
-                        <button
-                          v-if="exp.status==1"
-                          type="reset"
-                          class="
-                            btn btn-sm btn-light btn-active-light-primary
-                            me-3
-                          "
-                          @click.prevent="toogle_work_exp(exp.id,'0')"
-                        >
-                          <i class="far fa-eye"></i>
-                        </button>
-                        <button
-                          v-if="exp.status==0"
-                          type="reset"
-                          class="
-                            btn btn-sm btn-light btn-active-light-primary
-                            me-3
-                          "
-                          @click.prevent="toogle_work_exp(exp.id,'1')"
-                        >
-                          <i class="fas fa-eye-slash"></i>
-                        </button>
+                      <div  class="card-footer">
+                      
                         <button
                           type="reset"
                           class="
                             btn btn-sm btn-light btn-active-light-primary
                             me-3
                           "
-                          @click.prevent="toogle_work_exp(exp.id,'2')"
+                          @click.prevent="toogle_work_exp(exp.id)"
                         >
                           <i class="fas fa-trash"></i>
                         </button>
@@ -494,19 +467,20 @@ export default {
 
 
       },
-       async toogle_work_exp(work_id,status)
+       async toogle_work_exp(work_id)
       {
 
 
 
 
-        const work_exp = {toogle_work_id:work_id , status:status}
+        const work_exp = {toogle_work_id:work_id}
           await API.ToggleGenieWork(work_exp).then((result) => {
 
 
               // this.genie_work = this.all_work_exp[work_id-1];
-              this.all_work_exp[work_id-1].status = status;
-              this.all_work_exp = res.data.work_experience;
+              // this.all_work_exp[work_id-1].status = status;
+               this.$toast.info("Deleted", "Genie work experience deleted!");
+              this.all_work_exp = result.data.work_experience;
 
             })
 

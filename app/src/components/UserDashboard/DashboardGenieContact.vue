@@ -9,6 +9,7 @@
 								<div class="card-header cursor-pointer">
 									<!--begin::Card title-->
 									<div class="card-title m-0">
+                  	<img src="https://img.icons8.com/stickers/50/000000/email.png"/>&nbsp;
 										<h3 class="fw-bolder m-0">Primary Contact Details</h3>
 									</div>
 									<!--end::Card title-->

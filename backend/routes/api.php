@@ -96,7 +96,7 @@ Route::get('get/all/genie/social','ResumeController@genie_all_social');
 
 Route::post('insert/genie/language','ResumeController@add_resume_genie_language');
 Route::post('update/genie/language','ResumeController@update_resume_genie_language');
-// Route::post('toggle/genie/language','ResumeController@toggle_resume_project');
+ Route::post('toggle/genie/language','ResumeController@toggle_resume_language');
 Route::get('get/all/genie/language','ResumeController@genie_all_language');
 
 
@@ -106,18 +106,18 @@ Route::get('get/all/genie/resume','ResumeController@get_all_genie_resume');
 
 Route::post('insert/genie/reference','ResumeController@add_resume_reference');
 Route::post('update/genie/reference','ResumeController@update_resume_reference');
-// Route::post('toggle/genie/language','ResumeController@toggle_resume_project');
+Route::post('toggle/genie/reference','ResumeController@toggle_resume_reference');
 Route::get('get/all/genie/reference','ResumeController@genie_all_reference');
 
-Route::post('insert/genie/volunteer','ResumeController@add_resume_genie_volunteer');
-Route::post('update/genie/volunteer','ResumeController@update_resume_genie_volunteer');
-// Route::post('toggle/genie/language','ResumeController@toggle_resume_project');
+Route::post('insert/genie/volunteer','ResumeController@add_resume_volunteer');
+Route::post('update/genie/volunteer','ResumeController@update_resume_volunteer');
+Route::post('toggle/genie/volunteer','ResumeController@toggle_resume_volunteer');
 Route::get('get/all/genie/volunteer','ResumeController@genie_all_volunteer');
 
 
-Route::post('insert/genie/interest','ResumeController@add_resume_genie_interest');
-Route::post('update/genie/interest','ResumeController@update_resume_genie_interest');
-// Route::post('toggle/genie/language','ResumeController@toggle_resume_project');
+Route::post('insert/genie/interest','ResumeController@add_resume_interest');
+Route::post('update/genie/interest','ResumeController@update_resume_interest');
+Route::post('toggle/genie/interest','ResumeController@toggle_resume_interest');
 Route::get('get/all/genie/interest','ResumeController@genie_all_interest');
 
 

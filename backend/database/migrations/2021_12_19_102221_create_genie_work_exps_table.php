@@ -22,7 +22,7 @@ class CreateGenieWorkExpsTable extends Migration
             $table->String('website');
             $table->date('start_date');
             $table->date('end_date')->nullable();
-            $table->enum('status',['0','1','2']);
+            $table->enum('status',['active','inactive'])->default('active');
             $table->String('summary');
             $table->String('highlights')->nullable();
             $table->timestamps();

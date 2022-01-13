@@ -17,6 +17,7 @@ class CreateGenieInterestsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->String('name');
+            $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
         });
     }

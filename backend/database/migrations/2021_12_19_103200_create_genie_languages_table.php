@@ -18,6 +18,7 @@ class CreateGenieLanguagesTable extends Migration
             $table->integer('user_id');
             $table->String('language');
             $table->String('fluency');
+            $table->enum('status',['active','inactive'])->default('active');
 
             // "languages": [{
             //     "language": "English",

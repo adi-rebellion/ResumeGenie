@@ -19,7 +19,7 @@ class CreateGenieSkillsTable extends Migration
             $table->String('name');
             $table->String('level')->nullable();
             $table->String('keywords')->nullable();
-            $table->enum('status',[0,1,2])->nullable();
+            $table->enum('status',['active','inactive'])->default('active');
             // "skills": [{
             //     "name": "Web Development",
             //     "level": "Master",

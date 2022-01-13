@@ -47,6 +47,46 @@ const UpdateGenieReference = (genie_reference_id) => {
 
 //////////////////////////////////Genie Reference////////////////////
 
+//////////////////////////////////Genie Volunteer////////////////////
+
+const GetAllVolunteer = () => {
+    return getApi('GENIE', 'GET_ALL_VOLUNTEER')
+}
+
+const GenieVolunteer = (genie_volunteer) => {
+    return getApi('GENIE', 'VOLUNTEER', genie_volunteer)
+}
+
+const ToggleGenieVolunteer = (genie_volunteer_id,status) => {
+    return getApi('GENIE', 'TOGGLE_VOLUNTEER', genie_volunteer_id,status)
+}
+
+const UpdateGenieVolunteer = (genie_volunteer_id) => {
+    return getApi('GENIE', 'UPDATE_VOLUNTEER', genie_volunteer_id)
+}
+
+//////////////////////////////////Genie Volunteer////////////////////
+
+//////////////////////////////////Genie Interest////////////////////
+
+const GetAllInterest = () => {
+    return getApi('GENIE', 'GET_ALL_INTEREST')
+}
+
+const GenieInterest = (genie_interest) => {
+    return getApi('GENIE', 'INTEREST', genie_interest)
+}
+
+const ToggleGenieInterest = (genie_interest_id,status) => {
+    return getApi('GENIE', 'TOGGLE_INTEREST', genie_interest_id,status)
+}
+
+const UpdateGenieInterest = (genie_interest_id) => {
+    return getApi('GENIE', 'UPDATE_INTEREST', genie_interest_id)
+}
+
+//////////////////////////////////Genie Volunteer////////////////////
+
 //////////////////////////////////Genie Education////////////////////
 
 const GetAllEducation = () => {
@@ -268,7 +308,16 @@ module.exports = {
     GetAllReference,
     GenieReference,
     ToggleGenieReference,
-    UpdateGenieReference
+    UpdateGenieReference,
+    GetAllVolunteer,
+    GenieVolunteer,
+    ToggleGenieVolunteer,
+    UpdateGenieVolunteer,
+    GetAllInterest,
+    GenieInterest,
+    ToggleGenieInterest,
+    UpdateGenieInterest
+
 
 
     

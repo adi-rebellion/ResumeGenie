@@ -10,6 +10,7 @@
               <div class="card-header">
                 <!--begin::Title-->
                 <div class="card-title">
+                   <img src="https://img.icons8.com/stickers/50/000000/graduation-cap.png"/>&nbsp;
                   <h3>Education(s)</h3>
                 </div>
                 <!--end::Title-->
@@ -43,7 +44,7 @@
                     <!--begin::Address-->
                     <div
                       class="
-                        card card-flush shadow-sm
+                        card card-flush shadow-lg
                         h-xl-100
                         flex-row flex-stack flex-wrap
                         p-6
@@ -52,65 +53,28 @@
                       <!--begin::Details-->
                       <div class="d-flex flex-column py-2">
                         <div
-                          class="d-flex align-items-center fs-5 fw-bolder mb-5"
+                          class="d-flex align-items-center fs-5 fw-bolder mb-1"
                         >
                           {{ edu.institution  }}
-                          <span
-                            v-if="edu.status == 0"
-                            class="badge badge-success fs-7 ms-2"
-                            ><i class="far fa-eye text-white"></i
-                          ></span>
-                          <span
-                            v-if="edu.status == 1"
-                            class="badge badge-info fs-7 ms-2"
-                          >
-                            <i class="fas fa-eye-slash text-white"></i
-                          ></span>
-                          <span
-                            v-if="edu.status == 2"
-                            class="badge badge-danger fs-7 ms-2"
-                          >
-                            <i class="fas fa-trash text-white"></i
-                          ></span>
+                         
                         </div>
                         <div class="fs-6 fw-bold text-gray-600">
                          {{ edu.area  }}
-                          ({{ edu.studyType  }}) <br />{{ edu.start_date}} -
-                          {{edu.end_date}} @ {{edu.score}}
+                           <br /><span class="badge badge-light-success">{{ edu.start_date}} -
+                          <span v-if="edu.end_date">{{edu.end_date}}</span><span v-if="!edu.end_date">now</span> @ {{edu.score}}</span>
                         </div>
                       </div>
                       <!--end::Details-->
                       <!--begin::Actions-->
                       <div class="d-flex align-items-center py-2">
-                        <button
-                          v-if="edu.status==1"
-                          type="reset"
-                          class="
-                            btn btn-sm btn-light btn-active-light-primary
-                            me-3
-                          "
-                          @click.prevent="toogle_education(edu.id,'0')"
-                        >
-                          <i class="far fa-eye"></i>
-                        </button>
-                        <button
-                          v-if="edu.status==0"
-                          type="reset"
-                          class="
-                            btn btn-sm btn-light btn-active-light-primary
-                            me-3
-                          "
-                          @click.prevent="toogle_education(edu.id,'1')"
-                        >
-                          <i class="fas fa-eye-slash"></i>
-                        </button>
+                    
                         <button
                           type="reset"
                           class="
                             btn btn-sm btn-light btn-active-light-primary
                             me-3
                           "
-                          @click.prevent="toogle_education(edu.id,'2')"
+                          @click.prevent="toogle_education(edu.id)"
                         >
                           <i class="fas fa-trash"></i>
                         </button>
@@ -449,19 +413,20 @@ export default {
 
         
       },
-       async toogle_education(edu_id,status)
+       async toogle_education(edu_id)
       {
         
         
         
         
-        const work_exp = {toogle_edu_id:edu_id , status:status}
+        const work_exp = {toogle_edu_id:edu_id}
           await API.ToggleGenieEducation(work_exp).then((result) => {
             
                
               // this.genie_education = this.all_education[edu_id-1];
-              this.all_education[edu_id-1].status = status;
-               this.all_education = res.data.education;
+              //this.all_education[edu_id-1].status = status;
+              this.$toast.info("Deleted", "Genie Education deleted!");
+               this.all_education = result.data.education;
 
                
             })	

@@ -4,7 +4,8 @@
       <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <!--begin::Container-->
         <div class="container-xxl" id="kt_content_container">
-          <div v-if="all_basic" class="card mb-5 mb-xl-10" style="margin-top:150px;">
+          <div v-if="all_basic" class="card mb-5 mb-xl-10" >
+			  <!-- style="margin-top:150px;" -->
 								<div class="card-body pt-9 pb-0">
 									<!--begin::Details-->
 									<div class="d-flex flex-wrap flex-sm-nowrap mb-3">
@@ -84,7 +85,7 @@
               
 																</span>
 																<!--end::Svg Icon-->
-																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education.length" data-kt-countup-prefix="">{{all_education.length}}</div>
+																<!-- <div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education.length" data-kt-countup-prefix="">{{all_education.length}}</div> -->
 															</div>
 															<!--end::Number-->
 															<!--begin::Label-->
@@ -111,7 +112,7 @@
               
 																</span>
 																<!--end::Svg Icon-->
-																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education.length" data-kt-countup-prefix="">{{all_education.length}}</div>
+																<!-- <div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education.length" data-kt-countup-prefix="">{{all_education.length}}</div> -->
 															</div>
 															<!--end::Number-->
 															<!--begin::Label-->
@@ -138,7 +139,7 @@
               
 																</span>
 																<!--end::Svg Icon-->
-																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education.length" data-kt-countup-prefix="">{{all_education.length}}</div>
+																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_social.length" data-kt-countup-prefix="">{{all_social.length}}</div>
 															</div>
 															<!--end::Number-->
 															<!--begin::Label-->
@@ -165,7 +166,7 @@
             
 																</span>
 																<!--end::Svg Icon-->
-																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education.length" data-kt-countup-prefix="">{{all_education.length}}</div>
+																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_work_exp.length" data-kt-countup-prefix="">{{all_work_exp.length}}</div>
 															</div>
 															<!--end::Number-->
 															<!--begin::Label-->
@@ -192,7 +193,7 @@
             
 																</span>
 																<!--end::Svg Icon-->
-																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education.length" data-kt-countup-prefix="">{{all_education.length}}</div>
+																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_skill.length" data-kt-countup-prefix="">{{all_skill.length}}</div>
 															</div>
 															<!--end::Number-->
 															<!--begin::Label-->
@@ -219,7 +220,7 @@
                 
 																</span>
 																<!--end::Svg Icon-->
-																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education.length" data-kt-countup-prefix="">{{all_education.length}}</div>
+																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_project.length" data-kt-countup-prefix="">{{all_project.length}}</div>
 															</div>
 															<!--end::Number-->
 															<!--begin::Label-->
@@ -246,7 +247,7 @@
                 
 																</span>
 																<!--end::Svg Icon-->
-																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education.length" data-kt-countup-prefix="">{{all_education.length}}</div>
+																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_award.length" data-kt-countup-prefix="">{{all_award.length}}</div>
 															</div>
 															<!--end::Number-->
 															<!--begin::Label-->
@@ -263,7 +264,7 @@
 														data-bs-trigger="hover"
 														data-bs-dismiss="click"
 														data-bs-placement="top"
-														data-bs-original-title="The Basics">
+														data-bs-original-title="Language">
 														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
 															<!--begin::Number-->
 															<div class="d-flex align-items-center">
@@ -273,7 +274,7 @@
                 
 																</span>
 																<!--end::Svg Icon-->
-																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education.length" data-kt-countup-prefix="">{{all_education.length}}</div>
+																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_langugae.length" data-kt-countup-prefix="">{{all_langugae.length}}</div>
 															</div>
 															<!--end::Number-->
 																<!--begin::Label-->
@@ -284,13 +285,13 @@
 														<!--end::Stat-->
 														<!--begin::Stat-->
 														<router-link
-														:to="{ name: 'GenieSocial' }"
+														:to="{ name: 'GenieInterest' }"
 														title=""
 														data-bs-toggle="tooltip"
 														data-bs-trigger="hover"
 														data-bs-dismiss="click"
 														data-bs-placement="top"
-														data-bs-original-title="Social">
+														data-bs-original-title="Interest">
 														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
 															<!--begin::Number-->
 															<div class="d-flex align-items-center">
@@ -300,7 +301,7 @@
                 </span>
 																
 																<!--end::Svg Icon-->
-																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_project.length">{{ all_project.length }}</div>
+																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_interest.length">{{ all_interest.length }}</div>
 															</div>
 															<!--end::Number-->
 															<!--begin::Label-->
@@ -317,7 +318,7 @@
 														data-bs-trigger="hover"
 														data-bs-dismiss="click"
 														data-bs-placement="top"
-														data-bs-original-title="Education">
+														data-bs-original-title="Eduall_projectcation">
 														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
 															<!--begin::Number-->
 															<div class="d-flex align-items-center">
@@ -326,7 +327,7 @@
 																	<img src="https://img.icons8.com/stickers/80/000000/graduation-cap.png"/>
 																</span>
 																<!--end::Svg Icon-->
-																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_award.length">{{ all_award.length }}</div>
+																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education.length">{{ all_education.length }}</div>
 															</div>
 															<!--end::Number-->
 																<!--begin::Label-->
@@ -337,13 +338,13 @@
 														<!--end::Stat-->
 														<!--begin::Stat-->
 														<router-link
-														:to="{ name: 'GenieBasic' }"
+														:to="{ name: 'GenieVolunteer' }"
 														title=""
 														data-bs-toggle="tooltip"
 														data-bs-trigger="hover"
 														data-bs-dismiss="click"
 														data-bs-placement="top"
-														data-bs-original-title="The Basics">
+														data-bs-original-title="Volunteer">
 														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
 															<!--begin::Number-->
 															<div class="d-flex align-items-center">
@@ -352,7 +353,7 @@
 																	<img src="https://img.icons8.com/stickers/80/000000/trust.png"/>
 																</span>
 																<!--end::Svg Icon-->
-																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_work_exp.length">{{ all_work_exp.length }}</div>
+																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_volunteer.length">{{ all_volunteer.length }}</div>
 															</div>
 															<!--end::Number-->
 																<!--begin::Label-->
@@ -369,7 +370,7 @@
 														data-bs-trigger="hover"
 														data-bs-dismiss="click"
 														data-bs-placement="top"
-														data-bs-original-title="The Basics">
+														data-bs-original-title="Reference">
 														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
 															<!--begin::Number-->
 															<div class="d-flex align-items-center">
@@ -378,7 +379,7 @@
 																<img src="https://img.icons8.com/stickers/80/000000/handshake.png"/>
 																</span>
 																<!--end::Svg Icon-->
-																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_skill.length" >{{ all_skill.length }}</div>
+																<div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_reference.length" >{{ all_reference.length }}</div>
 															</div>
 															<!--end::Number-->
 																<!--begin::Label-->
@@ -407,13 +408,13 @@
 										<!--begin::Body-->
 										<div class="card-body d-flex flex-column justify-content-center">
 											<!--begin::Title-->
-											<h3 class="text-white fs-2x fw-bolder line-height-lg mb-5">One step far from a better resume
+											<h3 class="text-white fs-2x fw-bolder line-height-lg mb-5">One step away from a better resume
 											<br>because that resume is your entry-ticket <br>
 											to the job interview</h3>
 											<!--end::Title-->
 											<!--begin::Action-->
 											<div class="m-0">
-												<a href="#" class="btn btn-success fw-bold px-6 py-3" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">Create an App</a>
+												<router-link :to="{name : 'GenieBasic'}" class="btn btn-success fw-bold px-6 py-3">Create an resume</router-link>
 											</div>
 											<!--begin::Action-->
 										</div>
@@ -443,9 +444,15 @@ export default {
 			 all_education: [],
 			 all_project: [],
 			 all_award: [],
-			 all_basic: [],
-			 
+			 all_volunteer: [],
+			  all_skill: [],
+			   all_reference: [],
+			    all_interest: [],
+			 	all_basic: [],
+				 all_social: [],
+				  all_langugae: [],
 			all_skill: [],
+			all_contact: [],
           
            
             errors: [],
@@ -484,6 +491,12 @@ export default {
 				this.all_skill = result.data.skill;
 				this.all_award = result.data.award;
 				this.all_basic = result.data.basic;
+				this.all_reference = result.data.reference;
+				this.all_volunteer = result.data.volunteer;
+				this.all_interest = result.data.interest;
+				this.all_contact = result.data.contact;
+				this.all_social = result.data.social;
+				this.all_langugae = result.data.language;
 
                
                

@@ -25,7 +25,7 @@ class CreateGenieProjectsTable extends Migration
             $table->String('highlights')->nullable();
             $table->String('keywords')->nullable();
             
-            $table->enum('status',[0,1,2])->nullable();
+            $table->enum('status',['active','inactive'])->default('active');
             $table->String('roles')->nullable();
             $table->String('entity')->nullable();
             $table->String('type')->nullable();

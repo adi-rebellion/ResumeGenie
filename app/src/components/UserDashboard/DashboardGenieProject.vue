@@ -9,6 +9,7 @@
             <div class="card-header card-header-stretch pb-0">
               <!--begin::Title-->
               <div class="card-title">
+                 <img src="https://img.icons8.com/stickers/50/000000/repository.png"/>&nbsp;
                 <h3 class="m-0">Project(s)</h3>
               </div>
               <!--end::Title-->
@@ -87,21 +88,10 @@
                     class="col-xl-6"
                   >
                     <!--begin::Card-->
-                    <div class="card card-flush shadow-sm">
-                      <div class="card-header ribbon ribbon-end ribbon-clip">
-                        <div v-if="project.status == 0" class="ribbon-label">
-                          <i class="far fa-eye text-white"></i>
-                          <span class="ribbon-inner bg-success"></span>
-                        </div>
-                        <div v-if="project.status == 1" class="ribbon-label">
-                          <i class="fas fa-eye-slash text-white"></i>
-                          <span class="ribbon-inner bg-info"></span>
-                        </div>
-                        <div v-if="project.status == 2" class="ribbon-label">
-                          <i class="fas fa-trash text-white"></i>
-                          <span class="ribbon-inner bg-danger"></span>
-                        </div>
-                        <div class="card-title fw-bolder mb-5">
+                    <div class="card card-flush shadow-lg">
+                      <div class="card-header">
+                       
+                        <div class="card-title fw-bolder mb-1">
                           {{ project.name  }} | {{ project.company_name}}
                         </div>
 
@@ -110,7 +100,7 @@
                           <div class="badge badge-light-success fs-7 fw-bolder">
                             {{ project.start_date}} -
                             <span v-if="project.end_date">{{project.end_date}}</span>
-                            <span v-if="!project.end_date">Current</span> 
+                            <span v-if="!project.end_date">now</span> 
                            
                           </div>
                         </span>
@@ -120,36 +110,15 @@
                         {{ project.summary  }}
                       </div>
 
-                      <div v-if="project.status != 2" class="card-footer">
-                        <button
-                          v-if="project.status==1"
-                          type="reset"
-                          class="
-                            btn btn-sm btn-light btn-active-light-primary
-                            me-3
-                          "
-                          @click.prevent="toogle_project(project.id,'0')"
-                        >
-                          <i class="far fa-eye"></i>
-                        </button>
-                        <button
-                          v-if="project.status==0"
-                          type="reset"
-                          class="
-                            btn btn-sm btn-light btn-active-light-primary
-                            me-3
-                          "
-                          @click.prevent="toogle_project(project.id,'1')"
-                        >
-                          <i class="fas fa-eye-slash"></i>
-                        </button>
+                      <div class="card-footer">
+                      
                         <button
                           type="reset"
                           class="
                             btn btn-sm btn-light btn-active-light-primary
                             me-3
                           "
-                          @click.prevent="toogle_project(project.id,'2')"
+                          @click.prevent="toogle_project(project.id)"
                         >
                           <i class="fas fa-trash"></i>
                         </button>
@@ -170,95 +139,7 @@
                 <!--end::Row-->
               </div>
               <!--end::Tab panel-->
-              <!--begin::Tab panel-->
-              <div
-                id="kt_billing_paypal"
-                class="tab-pane fade"
-                role="tabpanel"
-                aria-labelledby="kt_billing_paypal_tab"
-              >
-                <!--begin::Title-->
-                <h3 class="mb-5">My Paypal</h3>
-                <!--end::Title-->
-                <!--begin::Description-->
-                <div class="text-gray-600 fs-6 fw-bold mb-5">
-                  To use PayPal as your payment method, you will need to make
-                  pre-payments each month before your bill is due.
-                </div>
-                <!--end::Description-->
-                <!--begin::Form-->
-                <form class="form">
-                  <!--begin::Input group-->
-                  <div class="mb-7 mw-350px">
-                    <select
-                      name="timezone"
-                      data-control="select2"
-                      data-placeholder="Select an option"
-                      data-hide-search="true"
-                      class="
-                        form-select form-select-solid form-select-lg
-                        fw-bold
-                        fs-6
-                        text-gray-700
-                        select2-hidden-accessible
-                      "
-                      data-select2-id="select2-data-7-3rey"
-                      tabindex="-1"
-                      aria-hidden="true"
-                    >
-                      <option data-select2-id="select2-data-9-imk7">
-                        Select an option
-                      </option>
-                      <option value="25">US $25.00</option>
-                      <option value="50">US $50.00</option>
-                      <option value="100">US $100.00</option>
-                      <option value="125">US $125.00</option>
-                      <option value="150">US $150.00</option></select
-                    ><span
-                      class="
-                        select2 select2-container select2-container--bootstrap5
-                      "
-                      dir="ltr"
-                      data-select2-id="select2-data-8-fxli"
-                      style="width: 100%"
-                      ><span class="selection"
-                        ><span
-                          class="
-                            select2-selection select2-selection--single
-                            form-select form-select-solid form-select-lg
-                            fw-bold
-                            fs-6
-                            text-gray-700
-                          "
-                          role="combobox"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                          tabindex="0"
-                          aria-disabled="false"
-                          aria-labelledby="select2-timezone-xp-container"
-                          aria-controls="select2-timezone-xp-container"
-                          ><span
-                            class="select2-selection__rendered"
-                            id="select2-timezone-xp-container"
-                            role="textbox"
-                            aria-readonly="true"
-                            title="Select an option"
-                            >Select an option</span
-                          ><span
-                            class="select2-selection__arrow"
-                            role="presentation"
-                            ><b role="presentation"></b></span></span></span
-                      ><span class="dropdown-wrapper" aria-hidden="true"></span
-                    ></span>
-                  </div>
-                  <!--end::Input group-->
-                  <button type="submit" class="btn btn-primary">
-                    Pay with Paypal
-                  </button>
-                </form>
-                <!--end::Form-->
-              </div>
-              <!--end::Tab panel-->
+          
             </div>
             <!--end::Tab content-->
           </div>
@@ -563,19 +444,20 @@ export default {
 
 
       },
-       async toogle_project(project_id,status)
+       async toogle_project(project_id)
       {
 
 
 
 
-        const project = {toogle_project_id:project_id , status:status}
+        const project = {toogle_project_id:project_id}
           await API.ToggleGenieProject(project).then((result) => {
 
 
               // this.genie_project = this.all_project[project_id-1];
-              this.all_project[project_id-1].status = status;
-                this.all_project= res.data.project;
+              // this.all_project[project_id-1].status = status;
+               this.$toast.info("Deleted", "Genie project deleted!");
+                this.all_project= result.data.project;
 
             })
 
@@ -592,7 +474,7 @@ export default {
                     return "Error";
                 }
                 if (this.genie_project.company == "") {
-                    this.$toast.error("Error", "awarder is a required feild");
+                    this.$toast.error("Error", "Awarder is a required feild");
                     return "Error";
                 }
                  if (this.genie_project.url == "") {
@@ -617,10 +499,10 @@ export default {
                 .then((res) => {
                     if (res.status == 200) {
                        this.all_project= res.data.project;
-                        this.$toast.success("Success", "Organization created succesfully");
+                        this.$toast.success("Success", "Genie project created succesfully");
 
                     } else {
-                        this.$toast.error("Error", "Oops error creating an organization");
+                        this.$toast.error("Error", "Oops error creating an project");
                     }
                 })
                 .catch((error) => {
@@ -643,7 +525,7 @@ export default {
                     return "Error";
                 }
                 if (this.genie_project.company == "") {
-                    this.$toast.error("Error", "awarder is a required feild");
+                    this.$toast.error("Error", "Awarder is a required feild");
                     return "Error";
                 }
                  if (this.genie_project.url == "") {
@@ -655,10 +537,11 @@ export default {
                 await API.UpdateGenieProject(this.genie_project)
                 .then((res) => {
                     if (res.status == 200) {
-                        this.$toast.success("Success", "Organization created succesfully");
+                        this.all_project= res.data.project;
+                        this.$toast.success("Success", "Genie project created succesfully");
 
                     } else {
-                        this.$toast.error("Error", "Oops error creating an organization");
+                        this.$toast.error("Error", "Oops error creating an project");
                     }
                 })
                 .catch((error) => {

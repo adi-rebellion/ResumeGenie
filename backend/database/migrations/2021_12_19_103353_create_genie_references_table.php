@@ -19,6 +19,7 @@ class CreateGenieReferencesTable extends Migration
             $table->String('name');
             $table->String('reference');
             $table->String('company');
+            $table->enum('status',['active','inactive'])->default('active');
             // "references": [{
             //     "name": "Jane Doe",
             //     "reference": "Reference…"

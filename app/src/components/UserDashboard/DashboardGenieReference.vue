@@ -5,15 +5,37 @@
         <!--begin::Container-->
         <div class="container-xxl" id="kt_content_container">
 			 <div v-if="all_reference.length > 0"  class="card mb-xl-8">
-										<!--begin::Header-->
-										<div class="card-header border-0 pt-5">
-											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">Reference(s)</span>
-												<!-- <span class="text-muted mt-1 fw-bold fs-7">More than 400 new products</span> -->
-											</h3>
-										
-										</div>
-										<!--end::Header-->
+									 <!--begin::Card header-->
+            <div class="card-header card-header-stretch pb-0">
+              <!--begin::Title-->
+              <div class="card-title">
+               <img src="https://img.icons8.com/stickers/50/000000/handshake.png"/>&nbsp;
+                <h3 class="m-0">Reference(s)</h3>
+              </div>
+              <!--end::Title-->
+              <!--begin::Toolbar-->
+              <div class="card-toolbar m-0">
+                <!--begin::Tab nav-->
+                <ul
+                  class="nav nav-stretch nav-line-tabs border-transparent"
+                  role="tablist"
+                >
+                  <!--begin::Tab item-->
+                  <!-- <li class="nav-item" role="presentation">
+												<a id="kt_billing_creditcard_tab" class="nav-link fs-5 fw-bolder me-5 active" data-bs-toggle="tab" role="tab" href="#kt_billing_creditcard">Credit / Debit Card</a>
+											</li> -->
+                  <!--end::Tab item-->
+                  <!--begin::Tab item-->
+                  <!-- <li class="nav-item" role="presentation">
+												<a id="kt_billing_paypal_tab" class="nav-link fs-5 fw-bolder" data-bs-toggle="tab" role="tab" href="#kt_billing_paypal">Paypal</a>
+											</li> -->
+                  <!--end::Tab item-->
+                </ul>
+                <!--end::Tab nav-->
+              </div>
+              <!--end::Toolbar-->
+            </div>
+            <!--end::Card header-->
 										<!--begin::Body-->
 										<div class="card-body py-3">
 											<div class="tab-content">
@@ -52,6 +74,12 @@
 																	
 																	<td class="text-end">
 																		 <button
+                          class="btn btn-sm btn-light btn-active-light-primary"
+                          @click.prevent="toggle_reference(reference.id)"
+                        >
+                          <i class="fa fa-trash"></i>
+                        </button> &nbsp;
+                         <button
                           class="btn btn-sm btn-light btn-active-light-primary"
                           @click.prevent="edit_reference(reference.id)"
                         >
@@ -296,19 +324,20 @@ export default {
 
 
       },
-       async toogle_reference(reference_id,status)
+       async toggle_reference(reference_id)
       {
 
 
 
 
-        const project = {toogle_reference_id:reference_id , status:status}
-          await API.ToggleGenieReference(project).then((result) => {
+        const reference = {toogle_reference_id:reference_id}
+          await API.ToggleGenieReference(reference).then((result) => {
 
 
               // this.genie_reference = this.all_reference[reference_id-1];
-              this.all_reference[reference_id-1].status = status;
-                this.all_reference= res.data.project;
+            //  this.all_reference[reference_id-1].status = status;
+               this.$toast.info("Deleted", "Genie reference deleted!");
+                this.all_reference = result.data.reference;
 
             })
 

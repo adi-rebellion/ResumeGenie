@@ -8,6 +8,7 @@
 								<!--begin::Card header-->
 								<div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_connected_accounts" aria-expanded="true" aria-controls="kt_account_connected_accounts">
 									<div class="card-title m-0">
+                    	<img src="https://img.icons8.com/stickers/50/000000/happy-cloud.png"/> &nbsp;
 										<h3 class="fw-bolder m-0">Connected Accounts</h3>
 									</div>
 								</div>
@@ -104,6 +105,7 @@
             >
               <!--begin::Card title-->
               <div class="card-title m-0">
+                
                 <h3 class="fw-bolder m-0">Social Details</h3>
               </div>
               <!--end::Card title-->

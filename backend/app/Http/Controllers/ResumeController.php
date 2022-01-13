@@ -28,7 +28,20 @@ use Illuminate\Support\Facades\Storage;
 
 class ResumeController extends Controller
 {
-    //
+    //1 == BASIC
+    //2 == CONTACT
+    //3 == SOCIAL
+    //4 == WORK EXP
+    //5 == SKILLS
+    //6 == PROJECTS
+    //7 == AWARDS
+    //8 == LANGUAGE
+    //9 == INTEREST
+    //10 == EDUCATION
+    //11 == VOLUNTEER
+    //12 == REFERENCE
+
+    
 
     public function resume_genie_basic(Request $request)
     {
@@ -98,7 +111,11 @@ class ResumeController extends Controller
 //////////////////////////////////////////////Genie Work/////////////////////////////////////////
     public function genie_all_work_exp(Request $request)
     {
-        $genie_work_exp = GenieWorkExp::where('user_id',auth()->user()->id)->get();
+       
+        $genie_work_exp = GenieWorkExp::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();
         return $genie_work_exp;  
         //sort by enddate
     } 
@@ -116,11 +133,14 @@ class ResumeController extends Controller
         $genie_work_exp->location = $request->location;
         $genie_work_exp->end_date = $request->end_date;
         $genie_work_exp->summary = $request->summary;
-        $genie_work_exp->status = '0';
+        
         $genie_work_exp->website = $request->website;
         $genie_work_exp->save();
-        $created_work_exp = GenieWorkExp::where('user_id',auth()->user()->id)->get();
-
+       
+        $created_work_exp = GenieWorkExp::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();
         return  Response::json([
             'status' => 200,
             'message' => "Genie work experience added succesfully",
@@ -133,11 +153,7 @@ class ResumeController extends Controller
         
         $genie_work_exp_id = $request->toogle_work_id; 
         
-        $genie_work_exp = GenieResumeComponent::where([
-            ['component','=',$request->component],
-            ['resume_id','=',$request->resume_id],
-            ['component_id','=',$request->toogle_work_id]
-        ])->first();
+        $genie_work_exp = GenieWorkExp::where('id',$genie_work_exp_id)->first();
        
        
         if($genie_work_exp)
@@ -151,13 +167,17 @@ class ResumeController extends Controller
             }
             else
             {
-                $genie_work_exp->status = $request->status;
+                $genie_work_exp->status = 'inactive';
                 $genie_work_exp->save();
 
-                // $created_work_exp = GenieWorkExp::where('user_id',auth()->user()->id)->get();
+                 $created_work_exp = GenieWorkExp::where([
+                     ['user_id','=',auth()->user()->id],
+                     ['status','=','active']
+                 ])->get();
+
                 return  Response::json([
                     'status' => 200,
-                    // 'work_experience' =>  $created_work_exp,
+                     'work_experience' =>  $created_work_exp,
                     'message' => "Genie work experience status updated succesfully"
                 ], 200);
             }
@@ -203,10 +223,13 @@ class ResumeController extends Controller
                 $genie_work_exp->end_date = $request->end_date;
                 $genie_work_exp->summary = $request->summary;
                 $genie_work_exp->location = $request->location;
-                $genie_work_exp->status = '0';
+               
                 $genie_work_exp->website = $request->website;
                 $genie_work_exp->save();
-                $created_work_exp = GenieWorkExp::where('user_id',auth()->user()->id)->get();
+                $created_work_exp = GenieWorkExp::where([
+                    ['user_id','=',auth()->user()->id],
+                    ['status','=','active']
+                ])->get();
                 return  Response::json([
                     'status' => 200,
                     'work_experience' => $created_work_exp,
@@ -229,7 +252,11 @@ class ResumeController extends Controller
 
     public function genie_all_education(Request $request)
     {
-        $genie_education = GenieEducation::where('user_id',auth()->user()->id)->get();
+        
+        $genie_education = GenieEducation::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();
         return $genie_education;  
         //sort by enddate
     }
@@ -248,9 +275,12 @@ class ResumeController extends Controller
    
         $genie_new_education->score = $request->score;
         $genie_new_education->courses = $request->courses;
-        $genie_new_education->status = '0';
+      
         $genie_new_education->save();
-        $created_education = GenieEducation::where('user_id',auth()->user()->id)->get();
+        $created_education = GenieEducation::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();
         return  Response::json([
             'status' => 200,
             'education' => $created_education,
@@ -281,18 +311,21 @@ class ResumeController extends Controller
             {
                 return  Response::json([
                     'status' => 200,
-                    'message' => "Genie work experience authentication error"
+                    'message' => "Genie education authentication error"
                 ], 200);
             }
             else
             {
-                $genie_education->status = $request->status;
+                $genie_education->status = 'inactive';
                 $genie_education->save();
-                $created_education = GenieEducation::where('user_id',auth()->user()->id)->get();
+                $created_education = GenieEducation::where([
+                    ['user_id','=',auth()->user()->id],
+                    ['status','=','active']
+                ])->get();
                 return  Response::json([
                     'status' => 200,
                     'education' => $created_education,
-                    'message' => "Genie work experience status updated succesfully"
+                    'message' => "Genie education status updated succesfully"
                 ], 200);
             }
             
@@ -301,7 +334,7 @@ class ResumeController extends Controller
         {
             return  Response::json([
                 'status' => 403,
-                'message' => "Genie work experience not found"
+                'message' => "Genie education not found"
             ], 200);
         }
 
@@ -322,6 +355,7 @@ class ResumeController extends Controller
         $genie_edu_id = $request->update_edu_id;
         
         $genie_education = GenieEducation::where('id', $genie_edu_id)->first();
+        
        
         if($genie_education)
         {
@@ -329,7 +363,7 @@ class ResumeController extends Controller
             {
                 return  Response::json([
                     'status' => 200,
-                    'message' => "Genie work experience authentication error"
+                    'message' => "Genie education authentication error"
                 ], 200);
             }
             else
@@ -344,13 +378,16 @@ class ResumeController extends Controller
         
                 $genie_education->score = $request->score;
                 $genie_education->courses = $request->courses;
-                $genie_education->status = '0';
+               
                 $genie_education->save();
-                $created_education = GenieEducation::where('user_id',auth()->user()->id)->get();
+                $created_education = GenieEducation::where([
+                    ['user_id','=',auth()->user()->id],
+                    ['status','=','active']
+                ])->get();
                 return  Response::json([
                     'status' => 200,
                     'education' => $created_education,
-                    'message' => "Genie work experience status updated succesfully"
+                    'message' => "Genie education status updated succesfully"
                 ], 200);
             }
             
@@ -371,7 +408,11 @@ class ResumeController extends Controller
 //////////////////////////////////////////////Genie Award////////////////////////////////////////////
     public function genie_all_award(Request $request)
     {
-        $genie_award = GenieAward::where('user_id',auth()->user()->id)->get();
+        // $genie_award = GenieAward::where('user_id',auth()->user()->id)->get();
+        $genie_award = GenieAward::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();
         return $genie_award;  
     }
 
@@ -387,9 +428,12 @@ class ResumeController extends Controller
       
         $genie_new_award->awarder = $request->awarder;
         $genie_new_award->summary = $request->summary;
-        $genie_new_award->status = '0';
+       
         $genie_new_award->save();
-        $created_awards = GenieAward::where('user_id',auth()->user()->id)->get();
+        $created_awards = GenieAward::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();
 
         return  Response::json([
             'status' => 200,
@@ -411,18 +455,21 @@ class ResumeController extends Controller
             {
                 return  Response::json([
                     'status' => 200,
-                    'message' => "Genie work experience authentication error"
+                    'message' => "Genie award authentication error"
                 ], 200);
             }
             else
             {
-                $genie_award->status = $request->status;
+                $genie_award->status = 'inactive';
                 $genie_award->save();
-                $created_awards = GenieAward::where('user_id',auth()->user()->id)->get();
+                $created_awards = GenieAward::where([
+                    ['user_id','=',auth()->user()->id],
+                    ['status','=','active']
+                ])->get();
                 return  Response::json([
                     'status' => 200,
                     'award' => $created_awards,
-                    'message' => "Genie work experience status updated succesfully"
+                    'message' => "Genie award status updated succesfully"
                 ], 200);
             }
             
@@ -431,7 +478,7 @@ class ResumeController extends Controller
         {
             return  Response::json([
                 'status' => 403,
-                'message' => "Genie work experience not found"
+                'message' => "Genie award not found"
             ], 200);
         }
 
@@ -459,7 +506,7 @@ class ResumeController extends Controller
             {
                 return  Response::json([
                     'status' => 200,
-                    'message' => "Genie work experience authentication error"
+                    'message' => "Genie award authentication error"
                 ], 200);
             }
             else
@@ -474,14 +521,17 @@ class ResumeController extends Controller
               
                 $genie_award->awarder = $request->awarder;
                 $genie_award->summary = $request->summary;
-                $genie_award->status = '0';
+               
                 $genie_award->save();
-                $created_awards = GenieAward::where('user_id',auth()->user()->id)->get();
+                $created_awards = GenieAward::where([
+                    ['user_id','=',auth()->user()->id],
+                    ['status','=','active']
+                ])->get();
                 
                 return  Response::json([
                     'status' => 200,
                     'award' => $created_awards,
-                    'message' => "Genie work experience status updated succesfully"
+                    'message' => "Genie award status updated succesfully"
                 ], 200);
             }
             
@@ -504,7 +554,10 @@ class ResumeController extends Controller
 //////////////////////////////////////////////Genie Project/////////////////////////////////////////
     public function genie_all_project(Request $request)
     {
-        $genie_project = GenieProject::where('user_id',1)->get();
+        $genie_project = GenieProject::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();
         return $genie_project;  
     }
 
@@ -525,9 +578,12 @@ class ResumeController extends Controller
         // $genie_new_award->roles = $request->roles;
         // $genie_new_award->entity = $request->entity;
         // $genie_new_award->type = $request->type;
-        $genie_new_project->status = '0';
+       
         $genie_new_project->save();
-        $created_projects = GenieProject::where('user_id',auth()->user()->id)->get();
+        $created_projects = GenieProject::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();
         return  Response::json([
             'status' => 200,
             'message' => "Genie project added succesfully",
@@ -559,18 +615,21 @@ class ResumeController extends Controller
             {
                 return  Response::json([
                     'status' => 200,
-                    'message' => "Genie work experience authentication error"
+                    'message' => "Genie project authentication error"
                 ], 200);
             }
             else
             {
-                $genie_project->status = $request->status;
+                $genie_project->status = 'inactive';
                 $genie_project->save();
-                $created_projects = GenieProject::where('user_id',auth()->user()->id)->get();
+                $created_projects = GenieProject::where([
+                    ['user_id','=',auth()->user()->id],
+                    ['status','=','active']
+                ])->get();
                 return  Response::json([
                     'status' => 200,
                     'project' => $created_projects,
-                    'message' => "Genie work experience status updated succesfully"
+                    'message' => "Genie project status updated succesfully"
                 ], 200);
             }
             
@@ -579,7 +638,7 @@ class ResumeController extends Controller
         {
             return  Response::json([
                 'status' => 403,
-                'message' => "Genie work experience not found"
+                'message' => "Genie project not found"
             ], 200);
         }
 
@@ -606,7 +665,7 @@ class ResumeController extends Controller
             {
                 return  Response::json([
                     'status' => 200,
-                    'message' => "Genie work experience authentication error"
+                    'message' => "Genie project authentication error"
                 ], 200);
             }
             else
@@ -627,15 +686,18 @@ class ResumeController extends Controller
         // $genie_new_award->roles = $request->roles;
         // $genie_new_award->entity = $request->entity;
         // $genie_new_award->type = $request->type;
-        $genie_project->status = '0';
+        
         $genie_project->save();
-        $created_projects = GenieProject::where('user_id',auth()->user()->id)->get();      
+        $created_projects = GenieProject::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();      
                 
                 
                 return  Response::json([
                     'status' => 200,
                     'project' => $created_projects,
-                    'message' => "Genie work experience status updated succesfully"
+                    'message' => "Genie project status updated succesfully"
                 ], 200);
             }
             
@@ -644,7 +706,7 @@ class ResumeController extends Controller
         {
             return  Response::json([
                 'status' => 403,
-                'message' => "Genie education not found"
+                'message' => "Genie project not found"
             ], 200);
         }
     }
@@ -659,7 +721,11 @@ class ResumeController extends Controller
 
     public function genie_all_skill(Request $request)
     {
-        $genie_skill = GenieSkill::where('user_id',auth()->user()->id)->get();
+     
+        $genie_skill = GenieSkill::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();
         return $genie_skill;  
     }
 
@@ -669,9 +735,12 @@ class ResumeController extends Controller
         $genie_new_skill->user_id = auth()->user()->id;
         $genie_new_skill->name = $request->name;
         $genie_new_skill->level = $request->level;
-        $genie_new_skill->status = '0';
+       
         $genie_new_skill->save();
-        $created_skill = GenieSkill::where('user_id',auth()->user()->id)->get();
+        $created_skill = GenieSkill::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();
 
         return  Response::json([
             'status' => 200,
@@ -695,16 +764,21 @@ class ResumeController extends Controller
             {
                 return  Response::json([
                     'status' => 200,
-                    'message' => "Genie work experience authentication error"
+                    'message' => "Genie skill authentication error"
                 ], 200);
             }
             else
             {
-                $genie_skill->status = $request->status;
+                $genie_skill->status = 'inactive';
                 $genie_skill->save();
+                $created_skill = GenieSkill::where([
+                    ['user_id','=',auth()->user()->id],
+                    ['status','=','active']
+                ])->get();
                 return  Response::json([
                     'status' => 200,
-                    'message' => "Genie work experience status updated succesfully"
+                    'skill' => $created_skill,
+                    'message' => "Genie skill status updated succesfully"
                 ], 200);
             }
             
@@ -740,7 +814,7 @@ class ResumeController extends Controller
             {
                 return  Response::json([
                     'status' => 200,
-                    'message' => "Genie work experience authentication error"
+                    'message' => "Genie skill authentication error"
                 ], 200);
             }
             else
@@ -752,12 +826,16 @@ class ResumeController extends Controller
         $genie_skill->name = $request->name;
         $genie_skill->level = $request->level;
         $genie_skill->save();
-              
+        $created_skill = GenieSkill::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();
                 
                 
                 return  Response::json([
                     'status' => 200,
-                    'message' => "Genie work experience status updated succesfully"
+                    'skill' =>  $created_skill ,
+                    'message' => "Genie skill status updated succesfully"
                 ], 200);
             }
             
@@ -840,7 +918,10 @@ public function fetch_genie_connect(Request $request)
 
 public function genie_all_social(Request $request)
     {
-        $genie_social = GenieSocial::where('user_id',auth()->user()->id)->get();
+        $genie_social = GenieSocial::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();
         return $genie_social;  
     }
 
@@ -851,10 +932,14 @@ public function add_resume_genie_social(Request $request)
     $new_genie_social->network_id = $request->network_id;
     $new_genie_social->user_name = $request->user_name;
     $new_genie_social->url = $request->url;
-    $new_genie_social->status = '0';
+    
     $new_genie_social->save();
 
-    $connected_social = GenieSocial::where('user_id',auth()->user()->id)->get();
+    // $connected_social = GenieSocial::where('user_id',auth()->user()->id)->get();
+    $connected_social = GenieSocial::where([
+        ['user_id','=',auth()->user()->id],
+        ['status','=','active']
+    ])->get();
 
     return  Response::json([
         'status' => 200,
@@ -888,11 +973,15 @@ public function update_resume_genie_social(Request $request)
     $genie_social->user_name = $request->user_name;
     $genie_social->url = $request->url;
     $genie_social->save();
-          
+    $connected_social = GenieSocial::where([
+        ['user_id','=',auth()->user()->id],
+        ['status','=','active']
+    ])->get();     
             
             
             return  Response::json([
                 'status' => 200,
+                'social' => $connected_social ,
                 'message' => "Genie social status updated succesfully"
             ], 200);
         }
@@ -930,10 +1019,15 @@ public function toggle_resume_social(Request $request)
         }
         else
         {
-            $genie_social->status = $request->status;
+            $genie_social->status = 'inactive';
             $genie_social->save();
+            $connected_social = GenieSocial::where([
+                ['user_id','=',auth()->user()->id],
+                ['status','=','active']
+            ])->get();  
             return  Response::json([
                 'status' => 200,
+                'social' => $connected_social,
                 'message' => "Genie social status updated succesfully"
             ], 200);
         }
@@ -977,7 +1071,10 @@ public function toggle_resume_social(Request $request)
 
     public function genie_all_language(Request $request)
     {
-        $genie_language = GenieLanguage::where('user_id',auth()->user()->id)->get();
+        $genie_language = GenieLanguage::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();
         return $genie_language;  
     }
 
@@ -1003,10 +1100,13 @@ public function toggle_resume_social(Request $request)
             $genie_new_language->save();
         }
         
-        $languages = GenieLanguage::where('user_id',auth()->user()->id)->get();
+        $genie_language = GenieLanguage::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();
         return  Response::json([
             'status' => 200,
-            'language' => $languages,
+            'language' => $genie_language,
             'message' => "Genie language added succesfully"
         ], 200);
     }
@@ -1020,28 +1120,92 @@ public function toggle_resume_social(Request $request)
             if ($genie_language->user_id != auth()->user()->id) {
                 return  Response::json([
                     'status' => 200,
-                    'message' => "Genie skill authentication error"
+                    'message' => "Genie language authentication error"
                 ], 200);
             } else {
-                $genie_language->status = $request->requested_status;
+                $genie_language->language = $request->language;
+                $genie_language->fluency = $request->fluency;
                 $genie_language->save();
+                $genie_language = GenieLanguage::where([
+                    ['user_id','=',auth()->user()->id],
+                    ['status','=','active']
+                ])->get();
                 return  Response::json([
                     'status' => 200,
-                    'message' => "Genie skill status updated succesfully"
+                    'language' =>  $genie_language,
+                    'message' => "Genie language status updated succesfully"
                 ], 200);
             }
         } else {
             return  Response::json([
                 'status' => 403,
-                'message' => "Genie project not found"
+                'message' => "Genie language not found"
             ], 200);
         }
+    }
+
+    public function toggle_resume_language(Request $request)
+    {
+        
+        $genie_language_id = $request->toogle_language_id; 
+        
+        $genie_language = GenieLanguage::where('id',$genie_language_id)->first();
+       
+       
+        if($genie_language)
+        {
+            if($genie_language->user_id != auth()->user()->id)
+            {
+                return  Response::json([
+                    'status' => 200,
+                    'message' => "Genie language authentication error"
+                ], 200);
+            }
+            else
+            {
+                $genie_language->status = 'inactive';
+                $genie_language->save();
+
+                 $language = GenieLanguage::where([
+                     ['user_id','=',auth()->user()->id],
+                     ['status','=','active']
+                 ])->get();
+
+                return  Response::json([
+                    'status' => 200,
+                     'language' => $language,
+                    'message' => "Genie language status updated succesfully"
+                ], 200);
+            }
+            
+        }
+        else
+        {
+            return  Response::json([
+                'status' => 403,
+                'message' => "Genie language not found"
+            ], 200);
+        }
+
+
+
+
+        
+      
+
+
+
+
     }
 
     //////////////////////////////////////////////Genie Reference/////////////////////////////////////////
     public function genie_all_reference(Request $request)
     {
-        $genie_reference = GenieReference::where('user_id',auth()->user()->id)->get();
+        //$genie_reference = GenieReference::where('user_id',auth()->user()->id)->get();
+        $genie_reference = GenieReference::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();
         return $genie_reference;  
         //sort by enddate
     } 
@@ -1058,7 +1222,10 @@ public function toggle_resume_social(Request $request)
         $genie_reference->name = $request->name;
       
         $genie_reference->save();
-        $created_reference = GenieReference::where('user_id',auth()->user()->id)->get();
+        $created_reference = GenieReference::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();
 
         return  Response::json([
             'status' => 200,
@@ -1066,8 +1233,6 @@ public function toggle_resume_social(Request $request)
             'reference' => $created_reference
         ], 200);
     }
-
-   
 
     public function update_resume_reference(Request $request)
     {
@@ -1089,7 +1254,10 @@ public function toggle_resume_social(Request $request)
                 $genie_reference->name = $request->name;
                
                 $genie_reference->save();
-                $created_reference = GenieReference::where('user_id',auth()->user()->id)->get();
+                $created_reference = GenieReference::where([
+                    ['user_id','=',auth()->user()->id],
+                    ['status','=','active']
+                ])->get();
                 return  Response::json([
                     'status' => 200,
                     'reference' => $created_reference,
@@ -1103,6 +1271,60 @@ public function toggle_resume_social(Request $request)
             ], 200);
         }
     }
+
+    public function toggle_resume_reference(Request $request)
+    {
+        
+        $genie_reference_id = $request->toogle_reference_id; 
+        
+        $genie_reference = GenieReference::where('id',$genie_reference_id)->first();
+       
+       
+        if($genie_reference)
+        {
+            if($genie_reference->user_id != auth()->user()->id)
+            {
+                return  Response::json([
+                    'status' => 200,
+                    'message' => "Genie reference authentication error"
+                ], 200);
+            }
+            else
+            {
+                $genie_reference->status = 'inactive';
+                $genie_reference->save();
+
+                 $reference = GenieReference::where([
+                     ['user_id','=',auth()->user()->id],
+                     ['status','=','active']
+                 ])->get();
+
+                return  Response::json([
+                    'status' => 200,
+                     'reference' => $reference,
+                    'message' => "Genie reference status updated succesfully"
+                ], 200);
+            }
+            
+        }
+        else
+        {
+            return  Response::json([
+                'status' => 403,
+                'message' => "Genie reference not found"
+            ], 200);
+        }
+
+
+
+
+        
+      
+
+
+
+
+    }
 //////////////////////////////////////////////Genie Reference/////////////////////////////////////////
    
 
@@ -1110,7 +1332,11 @@ public function toggle_resume_social(Request $request)
    //////////////////////////////////////////////Genie volunteer/////////////////////////////////////////
    public function genie_all_volunteer(Request $request)
    {
-       $genie_volunteer = GenieVolunteer::where('user_id',auth()->user()->id)->get();
+    //    $genie_volunteer = GenieVolunteer::where('user_id',auth()->user()->id)->get();
+       $genie_volunteer = GenieVolunteer::where([
+        ['user_id','=',auth()->user()->id],
+        ['status','=','active']
+    ])->get();
        return $genie_volunteer;  
        //sort by enddate
    } 
@@ -1127,8 +1353,12 @@ public function toggle_resume_social(Request $request)
        $genie_volunteer->url = $request->url;
        $genie_volunteer->start_date = $request->start_date;
        $genie_volunteer->end_date = $request->end_date;
+       $genie_volunteer->summary = $request->summary;
        $genie_volunteer->save();
-       $created_volunteer = GenieVolunteer::where('user_id',auth()->user()->id)->get();
+       $created_volunteer = GenieVolunteer::where([
+        ['user_id','=',auth()->user()->id],
+        ['status','=','active']
+    ])->get();
 
        return  Response::json([
            'status' => 200,
@@ -1137,12 +1367,11 @@ public function toggle_resume_social(Request $request)
        ], 200);
    }
 
-  
 
    public function update_resume_volunteer(Request $request)
    {
        $genie_volunteer_id = $request->update_volunteer_id;
-       $genie_volunteer = GenieReference::where('id',$genie_volunteer_id)->first();
+       $genie_volunteer = GenieVolunteer::where('id',$genie_volunteer_id)->first();
       
        if ($genie_volunteer) {
            if ($genie_volunteer->user_id != auth()->user()->id) {
@@ -1159,9 +1388,13 @@ public function toggle_resume_social(Request $request)
             $genie_volunteer->url = $request->url;
             $genie_volunteer->start_date = $request->start_date;
             $genie_volunteer->end_date = $request->end_date;
+            $genie_volunteer->summary = $request->summary;
               
                $genie_volunteer->save();
-               $created_volunteer = GenieVolunteer::where('user_id',auth()->user()->id)->get();
+               $created_volunteer = GenieVolunteer::where([
+                ['user_id','=',auth()->user()->id],
+                ['status','=','active']
+            ])->get();
                return  Response::json([
                    'status' => 200,
                    'volunteer' => $created_volunteer,
@@ -1175,13 +1408,71 @@ public function toggle_resume_social(Request $request)
            ], 200);
        }
    }
+
+   public function toggle_resume_volunteer(Request $request)
+   {
+       
+       $genie_volunteer_id = $request->toogle_volunteer_id; 
+       
+       $genie_volunteer = GenieVolunteer::where('id',$genie_volunteer_id)->first();
+      
+      
+       if($genie_volunteer)
+       {
+           if($genie_volunteer->user_id != auth()->user()->id)
+           {
+               return  Response::json([
+                   'status' => 200,
+                   'message' => "Genie volunteer authentication error"
+               ], 200);
+           }
+           else
+           {
+               $genie_volunteer->status = 'inactive';
+               $genie_volunteer->save();
+
+                $created_volunteer = GenieVolunteer::where([
+                    ['user_id','=',auth()->user()->id],
+                    ['status','=','active']
+                ])->get();
+
+               return  Response::json([
+                   'status' => 200,
+                    'volunteer' =>  $created_volunteer,
+                   'message' => "Genie volunteer status updated succesfully"
+               ], 200);
+           }
+           
+       }
+       else
+       {
+           return  Response::json([
+               'status' => 403,
+               'message' => "Genie volunteer not found"
+           ], 200);
+       }
+
+
+
+
+       
+     
+
+
+
+
+   }
 //////////////////////////////////////////////Genie volunteer/////////////////////////////////////////
   
 
 //////////////////////////////////////////////Genie interest/////////////////////////////////////////
     public function genie_all_interest(Request $request)
     {
-        $genie_interest = GenieInterest::where('user_id',auth()->user()->id)->get();
+        // $genie_interest = GenieInterest::where('user_id',auth()->user()->id)->get();
+        $genie_interest = GenieInterest::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();
         return $genie_interest;  
         //sort by enddate
     } 
@@ -1202,8 +1493,11 @@ public function toggle_resume_social(Request $request)
             $genie_interest->save();
         }
     
-        $created_interest= GenieInterest::where('user_id',auth()->user()->id)->get();
-
+        // $created_interest= GenieInterest::where('user_id',auth()->user()->id)->get();
+        $created_interest = GenieInterest::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();
         return  Response::json([
             'status' => 200,
             'message' => "Genie interest added succesfully",
@@ -1232,7 +1526,11 @@ public function toggle_resume_social(Request $request)
             
             
                 $genie_interest->save();
-                $created_interest= GenieInterest::where('user_id',auth()->user()->id)->get();
+                
+                $created_interest = GenieInterest::where([
+                    ['user_id','=',auth()->user()->id],
+                    ['status','=','active']
+                ])->get();
                 return  Response::json([
                     'status' => 200,
                     'interest' => $created_interest,
@@ -1245,6 +1543,60 @@ public function toggle_resume_social(Request $request)
                 'message' => "Genie interest not found"
             ], 200);
         }
+    }
+
+    public function toggle_resume_interest(Request $request)
+    {
+        
+        $genie_interest_id = $request->toogle_interest_id; 
+        
+        $genie_interest = GenieInterest::where('id',$genie_interest_id)->first();
+       
+       
+        if($genie_interest)
+        {
+            if($genie_interest->user_id != auth()->user()->id)
+            {
+                return  Response::json([
+                    'status' => 200,
+                    'message' => "Genie interest authentication error"
+                ], 200);
+            }
+            else
+            {
+                $genie_interest->status = 'inactive';
+                $genie_interest->save();
+
+                 $interest = GenieInterest::where([
+                     ['user_id','=',auth()->user()->id],
+                     ['status','=','active']
+                 ])->get();
+
+                return  Response::json([
+                    'status' => 200,
+                     'interest' => $interest,
+                    'message' => "Genie interest status updated succesfully"
+                ], 200);
+            }
+            
+        }
+        else
+        {
+            return  Response::json([
+                'status' => 403,
+                'message' => "Genie interest not found"
+            ], 200);
+        }
+
+
+
+
+        
+      
+
+
+
+
     }
 //////////////////////////////////////////////Genie interest/////////////////////////////////////////
 
@@ -1279,32 +1631,52 @@ public function toggle_resume_social(Request $request)
 
         $genie_work_exp = GenieWorkExp::where([
             ['user_id','=',auth()->user()->id],
-            // ['status','=','0']
+             ['status','=','active']
         ])->get();
 
         $genie_social = GenieSocial::where([
             ['user_id','=',auth()->user()->id],
-            // ['status','=','0']
+            ['status','=','active']
         ])->get();
 
         $genie_education = GenieEducation::where([
             ['user_id','=',auth()->user()->id],
-           // ['status','=','0']
+            ['status','=','active']
         ])->get();
 
         $genie_award = GenieAward::where([
             ['user_id','=',auth()->user()->id],
-            // ['status','=','0']
+            ['status','=','active']
         ])->get();
 
         $genie_project = GenieProject::where([
             ['user_id','=',auth()->user()->id],
-            // ['status','=','0']
+            ['status','=','active']
         ])->get();
 
         $genie_skill = GenieSkill::where([
             ['user_id','=',auth()->user()->id],
-            // ['status','=','0']
+            ['status','=','active']
+        ])->get();
+
+        $genie_volunteer = GenieVolunteer::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();
+
+        $genie_reference = GenieReference::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();
+
+        $genie_interest = GenieInterest::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
+        ])->get();
+
+        $genie_language = GenieLanguage::where([
+            ['user_id','=',auth()->user()->id],
+            ['status','=','active']
         ])->get();
 
         
@@ -1318,7 +1690,11 @@ public function toggle_resume_social(Request $request)
             'award' => $genie_award,
             'education' => $genie_education,
             'social' => $genie_social,
-            'contact' => $genie_contact
+            'contact' => $genie_contact,
+            'volunteer' => $genie_volunteer,
+            'reference' => $genie_reference,
+            'interest' => $genie_interest,
+            'language' => $genie_language
         ], 200);
 
 

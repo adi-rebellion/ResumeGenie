@@ -15,10 +15,12 @@ class CreateGenieVolunteersTable extends Migration
     {
         Schema::create('genie_volunteers', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
             $table->String('organization');
             $table->String('position');
             $table->String('url')->nullable();
             $table->date('start_date');
+            $table->enum('status',['inactive','active'])->default('active');
             $table->date('end_date')->nullable();
             $table->String('summary');
             

@@ -24,7 +24,7 @@ class CreateGenieEducationTable extends Migration
             $table->date('end_date')->nullable();
             $table->float('score')->nullable();
             $table->String('courses')->nullable();
-            $table->enum('status',[0,1,2])->nullable();
+            $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
             // "education": [
             //     {

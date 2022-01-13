@@ -22,7 +22,7 @@ class CreateGenieAwardsTable extends Migration
           
             $table->String('awarder');
             $table->String('summary');
-            $table->enum('status',[0,1,2])->nullable();
+            $table->enum('status',['active','inactive'])->default('active');
             // "awards": [{
             //     "title": "Award",
             //     "date": "2014-11-01",

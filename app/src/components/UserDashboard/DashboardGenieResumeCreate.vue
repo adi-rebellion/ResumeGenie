@@ -290,9 +290,9 @@
                     </div>
 
                     <div class="d-flex justify-content-end">
-                      <div v-if="social.status != 2">
+                      <div v-if="social.status != 'inactive'">
                         <button
-                          v-if="social.status==1"
+                          v-if="social.status=='active'"
                           
                           class="
                             btn btn-sm btn-light btn-active-light-primary
@@ -303,7 +303,7 @@
                           <i class="far fa-eye"></i>
                         </button>
                         <button
-                          v-if="social.status==0"
+                          v-if="social.status=='inactive'"
                           
                           class="
                             btn btn-sm btn-light btn-active-light-primary

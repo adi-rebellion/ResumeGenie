@@ -4,15 +4,40 @@
       <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <!--begin::Container-->
         <div class="container-xxl" id="kt_content_container">
-			<div class="col-xl-6" style="margin-left:auto;margin-right:auto;">
+			<div v-if="all_language.length > 0" class="col-xl-6" style="margin-left:auto;margin-right:auto;">
 											<!--begin::List Widget 3-->
 											<div class="card card-xl-stretch mb-xl-8">
-												<!--begin::Header-->
-												<div class="card-header border-0">
-													<h3 class="card-title fw-bolder text-dark">Language(s)</h3>
-												
-												</div>
-												<!--end::Header-->
+											  <!--begin::Card header-->
+            <div class="card-header card-header-stretch pb-0">
+              <!--begin::Title-->
+              <div class="card-title">
+                	<img src="https://img.icons8.com/stickers/50/000000/foreign-language-sound.png"/>&nbsp;
+                <h3 class="m-0">Language(s)</h3>
+              </div>
+              <!--end::Title-->
+              <!--begin::Toolbar-->
+              <div class="card-toolbar m-0">
+                <!--begin::Tab nav-->
+                <ul
+                  class="nav nav-stretch nav-line-tabs border-transparent"
+                  role="tablist"
+                >
+                  <!--begin::Tab item-->
+                  <!-- <li class="nav-item" role="presentation">
+												<a id="kt_billing_creditcard_tab" class="nav-link fs-5 fw-bolder me-5 active" data-bs-toggle="tab" role="tab" href="#kt_billing_creditcard">Credit / Debit Card</a>
+											</li> -->
+                  <!--end::Tab item-->
+                  <!--begin::Tab item-->
+                  <!-- <li class="nav-item" role="presentation">
+												<a id="kt_billing_paypal_tab" class="nav-link fs-5 fw-bolder" data-bs-toggle="tab" role="tab" href="#kt_billing_paypal">Paypal</a>
+											</li> -->
+                  <!--end::Tab item-->
+                </ul>
+                <!--end::Tab nav-->
+              </div>
+              <!--end::Toolbar-->
+            </div>
+            <!--end::Card header-->
 												<!--begin::Body-->
 												<div class="card-body pt-2">
 													<!--begin::Item-->
@@ -32,6 +57,13 @@
 															<span class="text-muted fw-bold d-block">{{language.fluency}}</span>
 														</div>
 														<!--end::Description-->
+                             <button
+                          class="btn btn-sm btn-light btn-active-light-primary"
+                          @click.prevent="toogle_language(language.id)"
+                        >
+                          <i class="fa fa-trash"></i>
+                        </button>
+                        &nbsp;
 													 <button
                           class="btn btn-sm btn-light btn-active-light-primary"
                           @click.prevent="edit_language(language.id)"
@@ -231,16 +263,19 @@ export default {
 
 
       },
-       async toogle_language(language_id,status)
-      {
 
-          const language = {toogle_language_id:language_id , status:status}
+       async toogle_language(language_id)
+      {
+        
+
+          const language = {toogle_language_id:language_id}
           await API.ToggleGenieLanguage(language).then((result) => {
 
 
-              // this.genie_work = this.all_work_exp[work_id-1];
-              this.all_language[language_id-1].status = status;
-                this.all_language= res.data.language;
+               //this.genie_work = this.all_work_exp[work_id-1];
+              // this.all_language[language_id-1].status = status;
+              this.$toast.info("Deleted", "Genie language deleted!");
+                this.all_language = result.data.language;
 
             })
 
@@ -302,10 +337,11 @@ export default {
                 await API.UpdateGenieLanguage(this.genie_language)
                 .then((res) => {
                     if (res.status == 200) {
-                        this.$toast.success("Success", "Organization created succesfully");
+                        this.all_language= res.data.language;
+                        this.$toast.success("Success", "Genie Language created succesfully");
 
                     } else {
-                        this.$toast.error("Error", "Oops error creating an organization");
+                        this.$toast.error("Error", "Oops error creating an language");
                     }
                 })
                 .catch((error) => {
