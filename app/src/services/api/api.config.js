@@ -348,7 +348,7 @@ const apiConfig = {
         },
         'ALL_ACTIVE_COMPO' :
         {
-            "METHOD": "get",
+            "METHOD": "post",
             "URL": "/api/get/all/genie/active",
             validateParams() {
                 return true
@@ -452,6 +452,13 @@ const apiConfig = {
         {
             "METHOD": "post",
             "URL": "/api/toggle/genie/component",
+            validateParams() {
+                return true
+            }
+        },
+        'GENERATE_RESUME': {
+            "METHOD": "post",
+            "URL": "/api/resume",
             validateParams() {
                 return true
             }

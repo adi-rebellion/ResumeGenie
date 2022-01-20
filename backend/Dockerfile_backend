@@ -77,8 +77,10 @@ RUN ln -s -f /usr/bin/php7 /usr/bin/php
 
 RUN sudo npm install
 RUN sudo npm install --save --unsafe-perm=true -g resume-cli
-RUN sudo npm install --save -g jsonresume-theme-even 
-RUN sudo npm install --save -g jsonresume-theme-elegant
+# RUN sudo npm install --save -g jsonresume-theme-even 
+# RUN sudo npm install --save -g jsonresume-theme-elegant
+RUN sudo npm install --save -g jsonresume-theme-kendall
+
 
 WORKDIR /var/www/html
 

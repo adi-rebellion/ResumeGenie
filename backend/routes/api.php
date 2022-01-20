@@ -84,7 +84,7 @@ Route::post('insert/genie/contact','ResumeController@add_resume_genie_contact');
 Route::post('update/genie/contact','ResumeController@update_resume_genie_contact');
 Route::get('get/all/genie/contact','ResumeController@genie_all_contact');
 
-Route::get('get/all/genie/active','ResumeController@get_all_active_areas');
+Route::post('get/all/genie/active','ResumeController@get_all_active_areas');
 Route::post('get/all/genie/skill','ResumeController@fetch_genie_skills');
 Route::get('get/all/genie/connect','ResumeController@fetch_genie_connect');
 Route::get('get/all/genie/spoken','ResumeController@fetch_genie_spoken');
@@ -129,3 +129,7 @@ Route::post('toggle/genie/component','ResumeController@genie_toggle_component');
 
 Route::get('/make/user/1/json', 'ResumeController@add_user_json');
 Route::get('/user/preview/json', 'ResumeController@preview_json');
+
+Route::post('/resume','ResumeController@create_resume_json')->name('create_resume');
+
+Route::get('/check/login','Auth\LoginController@login_api')->name('login_api');

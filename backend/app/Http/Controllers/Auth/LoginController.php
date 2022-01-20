@@ -11,6 +11,9 @@ use Carbon\Carbon;
 use Exception;
 use Response;
 use Illuminate\Support\Facades\Cookie;
+use JWTAuth;
+use Tymon\JWTAuth\Facades\JWTFactory;
+use Illuminate\Support\Facades\Http;
 
 class LoginController extends Controller
 {
@@ -20,7 +23,7 @@ class LoginController extends Controller
         $salt1 = env('PASSWORD_SALT_1');
         $salt2 = env('PASSWORD_SALT_2');
         $password = sha1($salt1.$request->password.$salt2);
-
+       
 
         $check_contact = ContactItem::where([
             ['value','=',$email],
@@ -31,6 +34,26 @@ class LoginController extends Controller
         if ($check_contact) {
             $user = User::where('contact_id', $check_contact->belongs_to)->first();
             if ($user->password == $password) {
+
+                // $payload = JWTFactory::sub($user->id)
+                // ->email($request->email)
+                // ->password($request->password)
+                // ->make();
+          
+
+       
+            //    $token = JWTAuth::encode($payload);
+            //    $decode_token = JWTAuth::decode($token);
+            //    return $decode_token;
+
+            //    $data = Http::asForm()->post('https://www.thehiringco.com/api-auth/UserCredential/', [
+            //        'email' => $request->email,
+            //        'password' => $request->password,
+            //        'token' =>  $token
+            //    ]);
+              
+            //    return $data;
+       
                 auth('api')->login($user);
 
                 $token = auth('api')->login($user);
@@ -59,6 +82,27 @@ class LoginController extends Controller
             'message' => "Incorrect username or password."
         ], 200);
     }
+
+    public function login_api(Request $request)
+    {
+      
+       
+        $payload = JWTFactory::sub(1)
+         ->email('rks@iwynoworks.com')
+         ->password('1!Rakesh')
+         ->make();
+   
+    
+
+    $token = JWTAuth::encode($payload);
+        $response = Http::asForm()->post('https://www.thehiringco.com/api-auth/UserCredential/', [
+            'email' => 'rks@iwynoworks.com',
+            'password' => '1!Rakesh',
+            'token' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InJrc0Bpd3lub3dvcmtzLmNvbSIsInBhc3N3b3JkIjoiMSFSYWtlc2gifQ.sk4p-BIktG7Dzc5Id0HbYRZ0h7dvuMnBSx89W28kL4Y'
+        ]);
+        return $token;
+    }
+    
 
     protected function addJWTCookie($token)
     {

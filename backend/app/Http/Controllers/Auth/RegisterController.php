@@ -13,6 +13,7 @@ use App\ContactItem;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\VerifyEmail;
+use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use Exception;
 use Response;
@@ -67,7 +68,7 @@ class RegisterController extends Controller
             $user->contact_id = $contact->id;
             $user->password = sha1($salt1.$request->password.$salt2);
             $user->save();
-
+            Storage::makeDirectory('data/'.$user->id);
 
             return Response::json([
                 'status' => 200,
@@ -106,6 +107,7 @@ class RegisterController extends Controller
                 $user->contact_id = $contact->id;
                 $user->password = sha1($salt1.$request->password.$salt2);
                 $user->save();
+                Storage::makeDirectory('data/'.$user->id);
 
 
                 return Response::json([

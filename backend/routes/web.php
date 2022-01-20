@@ -18,3 +18,13 @@ use Illuminate\Support\Facades\Cookie;
 Route::get('/login', function () {
 })->name("login");
 
+// Route::get('/resume', function () {
+//     $resume = [];
+//         $resume['work'] = [];
+//         $work_data1 = [];
+//         $work_data1['name'] = 'Aditya NAIDU';
+//         array_push($resume['work'],$work_data1);
+//         return $resume;
+
+// })->name("resume");
+

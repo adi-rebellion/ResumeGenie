@@ -19,7 +19,7 @@ class CreateGenieResumeComponentsTable extends Migration
             $table->integer('resume_id');
             $table->integer('component');
             $table->integer('component_id');
-            $table->enum('status',['0','1','2']);
+            $table->enum('status',['active','inactive']);
             $table->timestamps();
         });
     }

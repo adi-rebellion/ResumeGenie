@@ -181,8 +181,8 @@ const GetAllContact = () => {
 }
 
 
-const GetAllActiveCompo = () => {
-    return getApi('GENIE', 'ALL_ACTIVE_COMPO')
+const GetAllActiveCompo = (resume_id) => {
+    return getApi('GENIE', 'ALL_ACTIVE_COMPO',resume_id)
 }
 
 const GetGenieSkillSelect = (key) => {
@@ -263,7 +263,13 @@ const UpdateGenieLanguage = (genie_language_id) => {
 
 
 
+const GenerateResume = (resume_id) => {
+    return getApi('GENIE', 'GENERATE_RESUME',resume_id)
+}
+
+
 module.exports = {
+    GenerateResume,
     GenieBasic ,
     GenieWork,
     GetAllWorkExp,
