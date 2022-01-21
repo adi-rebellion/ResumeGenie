@@ -145,6 +145,33 @@
             </router-link>
            
           </div>
+          <br><br>
+           <div
+            data-kt-menu-trigger="click"
+            data-kt-menu-placement="right-start"
+            class="menu-item py-3"
+          >
+            <router-link
+             :to="{ name: 'GenieResume' }"
+              v-bind:class="{ active: $route.name=='GenieResume' }"
+              class="menu-link"
+              title=""
+              data-bs-toggle="tooltip"
+              data-bs-trigger="hover"
+              data-bs-dismiss="click"
+              data-bs-placement="right"
+              data-bs-original-title="Build Resume"
+            >
+              <span class="menu-icon">
+                <!--begin::Svg Icon | path: icons/duotune/abstract/abs037.svg-->
+                <span class="svg-icon svg-icon-2x">
+               <img src="https://img.icons8.com/stickers/100/000000/business.png"/>
+                </span>
+                <!--end::Svg Icon-->
+              </span>
+            </router-link>
+           
+          </div>
          
         </div>
       </div>

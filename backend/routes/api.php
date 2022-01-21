@@ -52,7 +52,7 @@ Route::get('auth/add/cookie', 'Auth\LoginController@addCookie');
 
 Route::post('insert/genie/basic','ResumeController@resume_genie_basic');
 Route::get('get/genie/basic','ResumeController@genie_get_basic');
-
+Route::get('get/user/details','ResumeController@get_all_user_details');
 
 Route::post('insert/genie/work','ResumeController@add_resume_work_exp');
 Route::post('update/genie/work','ResumeController@update_resume_work_exp');
@@ -131,5 +131,10 @@ Route::get('/make/user/1/json', 'ResumeController@add_user_json');
 Route::get('/user/preview/json', 'ResumeController@preview_json');
 
 Route::post('/resume','ResumeController@create_resume_json')->name('create_resume');
+Route::get('/render/resume','ResumeController@render_resume')->name('render_resume');
 
 Route::get('/check/login','Auth\LoginController@login_api')->name('login_api');
+
+Route::get('/get/themes','ResumeController@get_all_active_themes')->name('get_all_active_themes');
+
+Route::get('/get/content','ResumeController@store_resume_content')->name('store_resume_content');

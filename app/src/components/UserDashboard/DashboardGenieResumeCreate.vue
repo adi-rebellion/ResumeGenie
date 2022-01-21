@@ -6,7 +6,7 @@
       
         <!--begin::Container-->
         <div class="container-xxl" id="kt_content_container">
-             <button type="button" class="js-swal-success btn btn-success" @click.prevent="GenerateResume">Download</button>
+             <!-- <button type="button" class="js-swal-success btn btn-success" @click.prevent="GenerateResume">Download</button> -->
           <div v-if="all_social.length >0" class="card mb-xl-6">
             <!--begin::Card header-->
             <div class="card-header card-header-stretch pb-0">
@@ -326,13 +326,13 @@
                           "
                           @click.prevent="toogle_work_exp(exp.id,'2')"
                         >
-                          <i class="fas fa-trash"></i>
+                        <img src="https://img.icons8.com/stickers/30/000000/delete-forever.png"/>
                         </button>
                         <button
                           class="btn btn-sm btn-light btn-active-light-primary"
                           @click.prevent="edit_work_exp(exp.id)"
                         >
-                          <i class="far fa-edit"></i>
+                          <img src="https://img.icons8.com/stickers/30/000000/multi-edit.png"/>
                         </button>
                       </div> -->
                     </div>

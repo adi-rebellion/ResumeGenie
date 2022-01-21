@@ -136,7 +136,7 @@
                           ></path>
                         </svg>
                       </span>
-                      <!--end::Svg Icon-->max@kt.com</a
+                      <!--end::Svg Icon-->{{all_contact.email}}</a
                     >
                   </div>
                   <!--end::Info-->
@@ -186,7 +186,7 @@
                                 />
                               </span>
                               <!--end::Svg Icon-->
-                              <!-- <div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education.length" data-kt-countup-prefix="">{{all_education.length}}</div> -->
+                              <!-- <div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education" data-kt-countup-prefix="">{{all_education}}</div> -->
                             </div>
                             <!--end::Number-->
                             <!--begin::Label-->
@@ -232,7 +232,7 @@
                                 />
                               </span>
                               <!--end::Svg Icon-->
-                              <!-- <div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education.length" data-kt-countup-prefix="">{{all_education.length}}</div> -->
+                              <!-- <div class="fs-2 fw-bolder counted" data-kt-countup="true" :data-kt-countup-value="all_education" data-kt-countup-prefix="">{{all_education}}</div> -->
                             </div>
                             <!--end::Number-->
                             <!--begin::Label-->
@@ -281,10 +281,10 @@
                               <div
                                 class="fs-2 fw-bolder counted"
                                 data-kt-countup="true"
-                                :data-kt-countup-value="all_social.length"
+                                :data-kt-countup-value="all_social"
                                 data-kt-countup-prefix=""
                               >
-                                {{all_social.length}}
+                                {{all_social}}
                               </div>
                             </div>
                             <!--end::Number-->
@@ -334,10 +334,10 @@
                               <div
                                 class="fs-2 fw-bolder counted"
                                 data-kt-countup="true"
-                                :data-kt-countup-value="all_work_exp.length"
+                                :data-kt-countup-value="all_work_exp"
                                 data-kt-countup-prefix=""
                               >
-                                {{all_work_exp.length}}
+                                {{all_work_exp}}
                               </div>
                             </div>
                             <!--end::Number-->
@@ -387,10 +387,10 @@
                               <div
                                 class="fs-2 fw-bolder counted"
                                 data-kt-countup="true"
-                                :data-kt-countup-value="all_skill.length"
+                                :data-kt-countup-value="all_skill"
                                 data-kt-countup-prefix=""
                               >
-                                {{all_skill.length}}
+                                {{all_skill}}
                               </div>
                             </div>
                             <!--end::Number-->
@@ -440,10 +440,10 @@
                               <div
                                 class="fs-2 fw-bolder counted"
                                 data-kt-countup="true"
-                                :data-kt-countup-value="all_project.length"
+                                :data-kt-countup-value="all_project"
                                 data-kt-countup-prefix=""
                               >
-                                {{all_project.length}}
+                                {{all_project}}
                               </div>
                             </div>
                             <!--end::Number-->
@@ -493,10 +493,10 @@
                               <div
                                 class="fs-2 fw-bolder counted"
                                 data-kt-countup="true"
-                                :data-kt-countup-value="all_award.length"
+                                :data-kt-countup-value="all_award"
                                 data-kt-countup-prefix=""
                               >
-                                {{all_award.length}}
+                                {{all_award}}
                               </div>
                             </div>
                             <!--end::Number-->
@@ -546,10 +546,10 @@
                               <div
                                 class="fs-2 fw-bolder counted"
                                 data-kt-countup="true"
-                                :data-kt-countup-value="all_langugae.length"
+                                :data-kt-countup-value="all_langugae"
                                 data-kt-countup-prefix=""
                               >
-                                {{all_langugae.length}}
+                                {{all_langugae}}
                               </div>
                             </div>
                             <!--end::Number-->
@@ -597,9 +597,9 @@
                               <div
                                 class="fs-2 fw-bolder counted"
                                 data-kt-countup="true"
-                                :data-kt-countup-value="all_interest.length"
+                                :data-kt-countup-value="all_interest"
                               >
-                                {{ all_interest.length }}
+                                {{ all_interest }}
                               </div>
                             </div>
                             <!--end::Number-->
@@ -646,9 +646,9 @@
                               <div
                                 class="fs-2 fw-bolder counted"
                                 data-kt-countup="true"
-                                :data-kt-countup-value="all_education.length"
+                                :data-kt-countup-value="all_education"
                               >
-                                {{ all_education.length }}
+                                {{ all_education }}
                               </div>
                             </div>
                             <!--end::Number-->
@@ -695,9 +695,9 @@
                               <div
                                 class="fs-2 fw-bolder counted"
                                 data-kt-countup="true"
-                                :data-kt-countup-value="all_volunteer.length"
+                                :data-kt-countup-value="all_volunteer"
                               >
-                                {{ all_volunteer.length }}
+                                {{ all_volunteer }}
                               </div>
                             </div>
                             <!--end::Number-->
@@ -747,9 +747,9 @@
                               <div
                                 class="fs-2 fw-bolder counted"
                                 data-kt-countup="true"
-                                :data-kt-countup-value="all_reference.length"
+                                :data-kt-countup-value="all_reference"
                               >
-                                {{ all_reference.length }}
+                                {{ all_reference }}
                               </div>
                             </div>
                             <!--end::Number-->
@@ -831,19 +831,19 @@ export default {
    data() {
         return {
 
-			 all_work_exp: [],
-			 all_education: [],
-			 all_project: [],
-			 all_award: [],
-			 all_volunteer: [],
-			  all_skill: [],
-			   all_reference: [],
-			    all_interest: [],
-			 	all_basic: [],
-				 all_social: [],
-				  all_langugae: [],
-			all_skill: [],
-			all_contact: [],
+			 all_work_exp: '',
+			 all_education: '',
+			 all_project: '',
+			 all_award: '',
+			 all_volunteer: '',
+			  all_skill: '',
+			   all_reference: '',
+			    all_interest: '',
+			 	all_basic: '',
+				 all_social: '',
+				  all_langugae: '',
+			all_skill: '',
+			all_contact: '',
 
 
             errors: [],
@@ -873,10 +873,10 @@ export default {
 
     },
 	async created() {
-		 await API.GetAllActiveCompo().then((result) => {
+		 await API.GenieUserDetails().then((result) => {
 
 
-                this.all_work_exp = result.data.work;
+                this.all_work_exp = result.data.work_experience;
 				this.all_education = result.data.education;
 				this.all_project = result.data.project;
 				this.all_skill = result.data.skill;

@@ -374,6 +374,16 @@
 			
           </div>
           <!--end::Basic info-->
+           <nav class="d-flex justify-content-between align-items-center push">
+                <a class="btn btn-light-danger" @click.prevent="$router.push('genie-basic')">
+                  <i class="fa fa-arrow-left opacity-50 me-1"></i>
+                  <span>Prev</span>
+                </a>
+                <a class="btn btn-light-success" @click.prevent="$router.push('genie-social')">
+                  <span>Next</span>
+                  <i class="fa fa-arrow-right opacity-50 ms-1"></i>
+                </a>
+              </nav>
 		
         </div>
         <!--end::Container-->

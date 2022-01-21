@@ -4,6 +4,10 @@ const GenieBasic = (genie_basic) => {
     return getApi('GENIE', 'BASIC', genie_basic)
 }
 
+const GenieUserDetails = () => {
+    return getApi('GENIE', 'USER_DETAILS')
+}
+
 const GetGenieBasic = () => {
     return getApi('GENIE', 'GET_BASIC')
 }
@@ -219,6 +223,10 @@ const GetAllResume = () => {
     return getApi('GENIE', 'GET_ALL_RESUME')
 }
 
+const GetAllTheme = () => {
+    return getApi('GENIE', 'GET_ALL_THEMES')
+}
+
 const GenieResume = (genie_resume) => {
     return getApi('GENIE','RESUME',genie_resume)
 }
@@ -267,9 +275,14 @@ const GenerateResume = (resume_id) => {
     return getApi('GENIE', 'GENERATE_RESUME',resume_id)
 }
 
+const RenderResume = (resume_id) => {
+    return getApi('GENIE', 'RENDER_RESUME',resume_id)
+}
+
 
 module.exports = {
     GenerateResume,
+    RenderResume,
     GenieBasic ,
     GenieWork,
     GetAllWorkExp,
@@ -312,6 +325,7 @@ module.exports = {
     ToggleGenieComponent,
     GetGenieSpoken,
     GetAllReference,
+    GenieUserDetails,
     GenieReference,
     ToggleGenieReference,
     UpdateGenieReference,
@@ -322,7 +336,8 @@ module.exports = {
     GetAllInterest,
     GenieInterest,
     ToggleGenieInterest,
-    UpdateGenieInterest
+    UpdateGenieInterest,
+    GetAllTheme
 
 
 

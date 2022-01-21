@@ -12,6 +12,7 @@ import DashboardGenieContact from '../../components/UserDashboard/DashboardGenie
 import DashboardGenieSocial from '../../components/UserDashboard/DashboardGenieSocial.vue'
 import DashboardGenieResume from '../../components/UserDashboard/DashboardGenieResume.vue'
 import DashboardGenieResumeCreate from '../../components/UserDashboard/DashboardGenieResumeCreate.vue'
+import DashboardGenieResumeTheme from '../../components/UserDashboard/DashboardGenieResumeTheme.vue'
 import DashboardGenieLanguage from '../../components/UserDashboard/DashboardGenieLanguage.vue'
 import DashboardGenieReference from '../../components/UserDashboard/DashboardGenieReference.vue'
 import DashboardGenieVolunteer from '../../components/UserDashboard/DashboardGenieVolunteer.vue'
@@ -127,6 +128,13 @@ const dashboardRoutes = [
         path: "/genie-resume-create-:resume_id",
         name: "GenieResumeCreate",
         component: DashboardGenieResumeCreate,
+        meta: { requiresAuth: true }
+    },
+
+    {
+        path: "/genie-resume-theme-:resume_id",
+        name: "GenieResumeTheme",
+        component: DashboardGenieResumeTheme,
         meta: { requiresAuth: true }
     },
     

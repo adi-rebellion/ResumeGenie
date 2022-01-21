@@ -11,6 +11,7 @@
               :key="resume.id"
               class="col-md-6 col-lg-4 col-xl-3"
             >
+            
               <!--begin::Card-->
               <div class="card h-100">
                 <!--begin::Card body-->
@@ -24,6 +25,14 @@
                     p-8
                   "
                 >
+                <div class="block-options" style="    margin-left: 200px;">
+                    <div class="dropdown">
+                      <a type="button" class="btn-block-option" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="https://img.icons8.com/stickers/30/000000/share.png"/>
+                      </a>
+                     
+                    </div>
+                  </div>
                   <!--begin::Name-->
                   <router-link
                     :to="{ name: 'GenieResumeCreate', params: { resume_id: resume.id } }"
@@ -42,17 +51,12 @@
                   <!--end::Name-->
                   <!--begin::Description-->
                   <div class="fs-7 fw-bold text-gray-400">
-                   <!-- <button type="reset" class="btn btn-sm btn-primary" >
-                        <img src="https://img.icons8.com/stickers/30/000000/download-from-ftp.png"/>
-                      </button>
+                 
+                      <a class="btn btn-outline btn-outline-dashed btn-outline-primary btn-sm me-2 mb-2" @click.prevent="GenerateResume(resume.id)">
+                        <span class="svg-icon svg-icon-1"> View </span></a>
                       &nbsp;
-											<button type="submit" class="btn btn-sm btn-primary" >
-                        <img src="https://img.icons8.com/stickers/30/000000/visible.png"/>
-                      </button> -->
-                      <a  class="btn btn-outline btn-outline-dashed btn-outline-info me-2 mb-2">
-                        <span class="svg-icon svg-icon-1"> <img src="https://img.icons8.com/stickers/30/000000/download-from-ftp.png"/></span></a>
-                      &nbsp;
-<a href="#" class="btn btn-outline btn-outline-dashed btn-outline-info me-2 mb-2"><span class="svg-icon svg-icon-1"> <img src="https://img.icons8.com/stickers/30/000000/visible.png"/></span></a>
+                <router-link
+                    :to="{ name: 'GenieResumeCreate', params: { resume_id: resume.id } }" class="btn btn-outline btn-outline-dashed btn-outline-primary btn-sm me-2 mb-2"><span class="svg-icon svg-icon-1"> Edit </span></router-link>
 
                   </div>
                   <!--end::Description-->
@@ -233,6 +237,116 @@
           <!--end::Modal dialog-->
         </div>
         <!--end::Modal - Select Users-->
+         <!--begin::Modal - Select Users-->
+        <div
+          class="modal fade"
+          id="kt_modal_download_resume"
+          tabindex="-1"
+          aria-hidden="true"
+        >
+          <!--begin::Modal dialog-->
+          <div class="modal-dialog mw-700px">
+            <div class="modal-content rounded">
+              <!--begin::Modal header-->
+              <div class="modal-header pb-0 border-0 justify-content-end">
+                <!--begin::Close-->
+                <div
+                  class="btn btn-sm btn-icon btn-active-color-primary"
+                  data-bs-dismiss="modal"
+                >
+                  <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                  <span class="svg-icon svg-icon-1">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <rect
+                        opacity="0.5"
+                        x="6"
+                        y="17.3137"
+                        width="16"
+                        height="2"
+                        rx="1"
+                        transform="rotate(-45 6 17.3137)"
+                        fill="black"
+                      ></rect>
+                      <rect
+                        x="7.41422"
+                        y="6"
+                        width="16"
+                        height="2"
+                        rx="1"
+                        transform="rotate(45 7.41422 6)"
+                        fill="black"
+                      ></rect>
+                    </svg>
+                  </span>
+                  <!--end::Svg Icon-->
+                </div>
+                <!--end::Close-->
+              </div>
+              <!--begin::Modal header-->
+              <!--begin::Modal body-->
+              <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
+                <!--begin:Form-->
+                <form
+                  id="kt_modal_new_target_form"
+                  class="form fv-plugins-bootstrap5 fv-plugins-framework"
+                  action="#"
+                >
+                  <!--begin::Heading-->
+                  <div class="mb-13 text-center">
+                    <!--begin::Title-->
+                    <h1 class="mb-3">Generating resume</h1>
+                    <!--end::Title-->
+                    <!--begin::Description-->
+                    <div class="text-muted fw-bold fs-5">
+                     <img src="https://motiongraphicsphoebe.files.wordpress.com/2018/10/giphy.gif?w=371">
+                    </div>
+                    <!--end::Description-->
+                  </div>
+                  <!--end::Heading-->
+                  <!--begin::Input group-->
+                 
+                  <!--end::Input group-->
+
+                  <!--begin::Actions-->
+                  <div class="text-center">
+                    <button
+                      @click.prevent="add_new_resume()"
+                      type="submit"
+                      id="kt_modal_new_target_submit"
+                      class="btn bg-rg-yellow"
+                    >
+                      <span v-if="!showResumeSaving" class="indicator-label"
+                        >Download</span
+                      >
+                      <span v-if="showResumeSaving"
+                        >Please wait...
+                        <span
+                          class="
+                            spinner-border spinner-border-sm
+                            align-middle
+                            ms-2
+                          "
+                        ></span
+                      ></span>
+                    </button>
+                  </div>
+                  <!--end::Actions-->
+                  <div></div>
+                </form>
+                <!--end:Form-->
+              </div>
+              <!--end::Modal body-->
+            </div>
+          </div>
+          <!--end::Modal dialog-->
+        </div>
+        <!--end::Modal - Select Users-->
       </div>
     </template>
   </DashboardLayout>
@@ -279,6 +393,22 @@ export default {
 
 
       },
+       async GenerateResume(resume_id)
+       {
+         //alert(resume_id);
+          //$("#kt_modal_download_resume").modal("show");
+            const resume = { resume_id:resume_id }
+          await API.GenerateResume(resume).then((result) => {
+             
+            //console.log('hello')
+          this.$router.push({
+    name: 'GenieResumeTheme', 
+    params: { resume_id: resume_id }
+});
+            
+
+            })
+       },
        async toogle_work_exp(work_id,status)
       {
 

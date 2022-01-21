@@ -120,13 +120,13 @@
                           "
                           @click.prevent="toogle_project(project.id)"
                         >
-                          <i class="fas fa-trash"></i>
+                        <img src="https://img.icons8.com/stickers/30/000000/delete-forever.png"/>
                         </button>
                         <button
                           class="btn btn-sm btn-light btn-active-light-primary"
                           @click.prevent="edit_project(project.id)"
                         >
-                          <i class="far fa-edit"></i>
+                          <img src="https://img.icons8.com/stickers/30/000000/multi-edit.png"/>
                         </button>
                       </div>
                     </div>
@@ -391,6 +391,16 @@
 			
           </div>
           <!--end::Basic info-->
+          <nav class="d-flex justify-content-between align-items-center push">
+                <a class="btn btn-light-danger" @click.prevent="$router.push('genie-skill')">
+                  <i class="fa fa-arrow-left opacity-50 me-1"></i>
+                  <span>Prev</span>
+                </a>
+                <a class="btn btn-light-success" @click.prevent="$router.push('genie-award')">
+                  <span>Next</span>
+                  <i class="fa fa-arrow-right opacity-50 ms-1"></i>
+                </a>
+              </nav>
 		
         </div>
         <!--end::Container-->

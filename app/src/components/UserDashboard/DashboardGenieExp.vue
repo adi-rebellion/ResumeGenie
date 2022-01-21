@@ -54,7 +54,7 @@
                 <div class="row gx-9 gy-6">
                      <div class="col-6">
                     <div class="card card-stretch">
-                      <a
+                      <a @click.prevent ="add_work_exp"
                         href="#add_new_work_exp"
                         class="
                           btn
@@ -124,13 +124,13 @@
                           "
                           @click.prevent="toogle_work_exp(exp.id)"
                         >
-                          <i class="fas fa-trash"></i>
+                        <img src="https://img.icons8.com/stickers/30/000000/delete-forever.png"/>
                         </button>
                         <button
                           class="btn btn-sm btn-light btn-active-light-primary"
                           @click.prevent="edit_work_exp(exp.id)"
                         >
-                          <i class="far fa-edit"></i>
+                          <img src="https://img.icons8.com/stickers/30/000000/multi-edit.png"/>
                         </button>
                       </div>
                     </div>
@@ -148,7 +148,7 @@
             <!--end::Tab content-->
           </div>
           <!--begin::Basic info-->
-          <div class="card mb-5 mb-xl-10">
+          <div    class="card mb-5 mb-xl-10">
             <!--begin::Card header-->
             <div
               id="add_new_work_exp"
@@ -412,6 +412,16 @@
             <!--end::Content-->
           </div>
           <!--end::Basic info-->
+           <nav class="d-flex justify-content-between align-items-center push">
+                <a class="btn btn-light-danger" @click.prevent="$router.push('genie-social')">
+                  <i class="fa fa-arrow-left opacity-50 me-1"></i>
+                  <span>Prev</span>
+                </a>
+                <a class="btn btn-light-success" @click.prevent="$router.push('genie-skill')">
+                  <span>Next</span>
+                  <i class="fa fa-arrow-right opacity-50 ms-1"></i>
+                </a>
+              </nav>
         </div>
         <!--end::Container-->
       </div>
@@ -436,6 +446,8 @@ export default {
             // users: null,
             // urlInputs: null,
             // domainInputs: null,
+            add_work: false,
+            
       add_new_work_exp:true,
 
 			 all_work_exp: [],
@@ -486,10 +498,6 @@ export default {
 
 
       },
-
-
-
-
        async submitButton() {
 
                  if(this.genie_work.position == "")
@@ -594,6 +602,10 @@ export default {
 
 
         },
+      async add_work_exp()
+      {
+        this.add_work = true;
+      }
 
 
     },

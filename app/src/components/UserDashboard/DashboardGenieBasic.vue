@@ -47,7 +47,7 @@
                         class="image-input image-input-outline"
                         data-kt-image-input="true"
                         style="
-                          background-image: url(https://img.icons8.com/external-color-for-better-life-royyan-wijaya/64/000000/external-avatar-avatar-i-color-for-better-life-royyan-wijaya-4.png);
+                          background-image: url(https://img.icons8.com/stickers/80/000000/gender-neutral-user-skin-type-1.png);
                         "
                       >
                         <!--begin::Preview existing avatar-->
@@ -55,7 +55,7 @@
                         <div
                           class="image-input-wrapper w-125px h-125px"
                           style="
-                            background-image: url(https://img.icons8.com/external-color-for-better-life-royyan-wijaya/64/000000/external-avatar-avatar-i-color-for-better-life-royyan-wijaya-4.png);
+                            background-image: url(https://img.icons8.com/stickers/80/000000/gender-neutral-user-skin-type-1.png);
                           "
                         ></div>
                         <!--end::Preview existing avatar-->
@@ -269,10 +269,22 @@
             </div>
             <!--end::Content-->
           </div>
+          <nav class="d-flex justify-content-between align-items-center push">
+                <!-- <a class="btn btn-secondary" href="javascript:void(0)">
+                  <i class="fa fa-arrow-left opacity-50 me-1"></i>
+                  <span>Prev</span>
+                </a> -->
+                <a class="btn btn-light-success" @click.prevent="$router.push('genie-contact')">
+                  <span>Next</span>
+                  <i class="fa fa-arrow-right opacity-50 ms-1"></i>
+                </a>
+              </nav>
           <!--end::Basic info-->
         </div>
+        
         <!--end::Container-->
       </div>
+      
     </template>
   </DashboardLayout>
 </template>

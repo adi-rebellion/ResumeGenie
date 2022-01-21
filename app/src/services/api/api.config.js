@@ -49,6 +49,13 @@ const apiConfig = {
     },
 
     'GENIE': {
+        'USER_DETAILS': {
+            "METHOD": "get",
+            "URL": "/api/get/user/details",
+            validateParams() {
+                return true
+            }
+        },
         'BASIC': {
             "METHOD": "post",
             "URL": "/api/insert/genie/basic",
@@ -463,6 +470,20 @@ const apiConfig = {
                 return true
             }
         },
+        'GET_ALL_THEMES':{
+            "METHOD": "get",
+            "URL": "/api/get/themes",
+            validateParams() {
+                return true
+            }
+        },
+        'RENDER_RESUME':{
+            "METHOD": "get",
+            "URL": "/api/render/resume",
+            validateParams() {
+                return true
+            }
+        }
         
 
 

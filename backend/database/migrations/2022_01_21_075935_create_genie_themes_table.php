@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGenieResumesTable extends Migration
+class CreateGenieThemesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateGenieResumesTable extends Migration
      */
     public function up()
     {
-        Schema::create('genie_resumes', function (Blueprint $table) {
+        Schema::create('genie_themes', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
             $table->String('name');
-            $table->integer('theme_id')->nullable();
-            $table->enum('status',['0','1','2']);
-            $table->String('content')->nullable();
+            $table->String('image_url');
+            $table->enum('status',['active','inactive']);
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateGenieResumesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('genie_resumes');
+        Schema::dropIfExists('genie_themes');
     }
 }

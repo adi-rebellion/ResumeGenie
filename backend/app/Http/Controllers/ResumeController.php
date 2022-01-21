@@ -15,6 +15,7 @@ use App\GenieResumeComponent;
 use App\GenieSill;
 use App\GenieSkill;
 use App\GenieSocial;
+use App\GenieTheme;
 use App\GenieVolunteer;
 use App\GenieWorkExp;
 use App\JobSkill;
@@ -29,6 +30,7 @@ use Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use stdClass;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class ResumeController extends Controller
 {
@@ -98,6 +100,40 @@ class ResumeController extends Controller
 
 
 
+    }
+
+    public function get_all_user_details(Request $request)
+    {
+        $genie_basic = GenieBasic::where('user_id',auth()->user()->id)->first();
+        $genie_contact = GenieContact::where('user_id',auth()->user()->id)->first();
+        $genie_work = GenieWorkExp::where('user_id',auth()->user()->id)->count();
+        $genie_education = GenieEducation::where('user_id',auth()->user()->id)->count();
+        $genie_language = GenieLanguage::where('user_id',auth()->user()->id)->count();
+        $genie_social = GenieSocial::where('user_id',auth()->user()->id)->count();
+        $genie_skill = GenieSkill::where('user_id',auth()->user()->id)->count();
+        $genie_interest = GenieInterest::where('user_id',auth()->user()->id)->count();
+        $genie_project = GenieProject::where('user_id',auth()->user()->id)->count();
+        $genie_award = GenieAward::where('user_id',auth()->user()->id)->count();
+        $genie_reference = GenieReference::where('user_id',auth()->user()->id)->count();
+        $genie_volunteer = GenieVolunteer::where('user_id',auth()->user()->id)->count();
+
+        return  Response::json([
+            'status' => 200,
+            'message' => "Genie work experience added succesfully",
+            'work_experience' => $genie_work,
+            'education' => $genie_education,
+            'language' => $genie_language,
+            'social' => $genie_social,
+            'skill' => $genie_skill,
+            'interest' =>  $genie_interest,
+            'project' => $genie_project,
+            'award' => $genie_award,
+            'reference' => $genie_reference,
+            'volunteer' => $genie_volunteer,
+            'basic' => $genie_basic,
+            'contact' => $genie_contact
+
+        ], 200);
     }
 
 
@@ -2276,15 +2312,29 @@ public function toggle_resume_social(Request $request)
         //Storage::copy("resume.json", "data/1/resume.json");
 
         $path = storage_path('app/data/'.auth()->user()->id);
-        if (file_put_contents($path."/resume.json", $json_data))
+        if (file_put_contents($path."/resume".$request->resume_id.".json", $json_data))
         {
+            copy( storage_path('app/data/1/resume1.json'), storage_path('app/data/1/resume.json'));
+        //  if (file_put_contents($path."/resume.json", $json_data))
+        // {
            // echo "JSON file created successfully...";
-            exec("sh r.sh", $output);
+            // exec("sh r.sh", $output);
             
-            //exec("cd ../storage/app/data/".auth()->user()->id.";ls", $output3);
+           // exec("cd ../storage/app/data/".auth()->user()->id.";ls", $output3);
             // $html = Storage::get('data/'.auth()->user()->id.'/index.html');
             // echo($html);
-           return $output;
+          // return $output;
+
+
+         
+         
+        //   exec("cd ../storage/app/data/".auth()->user()->id.";resume export index".$request->resume_id.".html", $output3);
+         
+         
+        //   $text= file_get_contents($path."/index".$request->resume_id.".html");
+        //   $resume = GenieResume::where('id',$request->resume_id)->first();
+        //   $resume->content = $text;
+        //   $resume->save();
            
         }
              
@@ -2295,6 +2345,38 @@ public function toggle_resume_social(Request $request)
             // return $resume;
        
 
+    }
+
+    public function get_all_active_themes(Request $request)
+    {
+        $themes = GenieTheme::where('status','active')->get();
+        return $themes;
+    }
+
+
+    public function store_resume_content(Request $request)
+    {
+        $path = storage_path('app/data/'.auth()->user()->id);
+        $text= file_get_contents($path."/index1.html");
+        $resume = GenieResume::where('id',1)->first();
+        $resume->content = $text;
+        $resume->save();
+        echo $text;
+    }
+
+
+    public function render_resume(Request $request)
+    {
+        
+        $resume = GenieResume::where('id',1)->first();
+        if($resume)
+        {
+            return $resume;
+        }
+        else
+        {
+            return 'Error';
+        }
     }
 
     

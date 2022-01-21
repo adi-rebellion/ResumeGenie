@@ -15,6 +15,8 @@ use JWTAuth;
 use Tymon\JWTAuth\Facades\JWTFactory;
 use Illuminate\Support\Facades\Http;
 
+use function PHPSTORM_META\type;
+
 class LoginController extends Controller
 {
     public function login(Request $request)
@@ -35,44 +37,101 @@ class LoginController extends Controller
             $user = User::where('contact_id', $check_contact->belongs_to)->first();
             if ($user->password == $password) {
 
-                // $payload = JWTFactory::sub($user->id)
-                // ->email($request->email)
-                // ->password($request->password)
-                // ->make();
+//             //     $payload = JWTFactory::sub($user->id)
+//             //     ->email($request->email)
+//             //     ->password($request->password)
+//             //     ->make();
           
 
-       
-            //    $token = JWTAuth::encode($payload);
-            //    $decode_token = JWTAuth::decode($token);
-            //    return $decode_token;
+                
+//             //    $token = JWTAuth::encode($payload);
+               
+//             // //   $decode_token = JWTAuth::decode($token);
+//             // //    return $decode_token;
 
-            //    $data = Http::asForm()->post('https://www.thehiringco.com/api-auth/UserCredential/', [
-            //        'email' => $request->email,
-            //        'password' => $request->password,
-            //        'token' =>  $token
-            //    ]);
+//             //    $data = Http::asForm()->post('https://www.thehiringco.com/api-auth/UserCredential/', [
+//             //        'email' => $request->email,
+//             //        'password' => $request->password,
+//             //        'token' =>  $token
+//             //    ]);
               
-            //    return $data;
-       
-                auth('api')->login($user);
+//             //    return $data;
 
-                $token = auth('api')->login($user);
+//             $factory = JWTFactory::addClaims([
+              
+//                 'exp'   => JWTFactory::getTTL(),
+               
+//             ]);
+    
+//             $payload = $factory
+//             ->email($request->email)
+//             ->password($request->password)
+//             ->make();
+    
+//             $token = JWTAuth::encode($payload);
+//             // $data = Http::asForm()->post('https://www.thehiringco.com/api-auth/UserCredential/', [
+//             //            'email' => $request->email,
+//             //            'password' => $request->password,
+//             //            'token' =>  $token
+//             //        ]);
+
+// $curl = curl_init();
+
+// curl_setopt_array($curl, 
+// array(
+//   CURLOPT_URL => 'https://www.thehiringco.com/api-auth/UserCredential/',
+//   CURLOPT_RETURNTRANSFER => true,
+//   CURLOPT_ENCODING => '',
+ 
+//   CURLOPT_MAXREDIRS => 10,
+//   CURLOPT_TIMEOUT => 0,
+//   CURLOPT_FOLLOWLOCATION => true,
+//   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//   CURLOPT_CUSTOMREQUEST => 'POST',
+//   CURLOPT_POSTFIELDS => 'email=rks%40iwynoworks.com&password=1!Rakesh&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY0MjY4MzgxMywiZXhwIjoxNjQyNjg3NDEzLCJuYmYiOjE2NDI2ODM4MTMsImp0aSI6InJENHlBc2ZnbU56amczS1oiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEiLCJhZGRDbGFpbXMiOnsiZXhwIjo2MH0sImVtYWlsIjoicmtzQGl3eW5vd29ya3MuY29tIiwicGFzc3dvcmQiOiIxIVJha2VzaCJ9.P26HV3H5V7IFbFvPoXbWiOprtXYiwqKYbq3qQ79fERo',
+//   CURLOPT_HTTPHEADER => array(
+//     'Content-Type: application/x-www-form-urlencoded',
+//     'Cookie: csrftoken=9BCQmLi8QRb9nZ71rdhvf9JSWSQ5yhFz6vwRHp6BvZjn8TqNTB7TdLRkEwra2Gt3; sessionid=7z85bh6p00mngrlb2ix8e4r2nwl0cbol'
+//   ),
+// ));
+
+// $response = curl_exec($curl);
+
+// curl_close($curl);
+// $response =  json_decode($response, true);
+
+            //return $data;
+       if(true)
+       {
+        auth('api')->login($user);
+
+        $token = auth('api')->login($user);
 
 
-                $this->addJWTCookie($token);
+        $this->addJWTCookie($token);
 
-                //create a cookie http only and same site
-                return  Response::json([
-                    'status' => 200,
-                    'command' => 'success',
-                    'code' => 'LOGIN-SUCCESS',
-                    'message' => "Successfully logged-in.",
-                    'data' => [
-                        'token' => $token,
-                        'user' => $this->getParseAuthUser(),
-                        'domain' => env('APP_HOST')
-                    ]
-                ], 200);
+        //create a cookie http only and same site
+        return  Response::json([
+            'status' => 200,
+            'command' => 'success',
+            'code' => 'LOGIN-SUCCESS',
+            'message' => "Successfully logged-in.",
+            'data' => [
+                'token' => $token,
+                'user' => $this->getParseAuthUser(),
+                'domain' => env('APP_HOST')
+            ]
+        ], 200);
+       }
+       else
+       {
+        return Response::json([
+            'status' => 403,
+            'command' => 'error',
+            'message' => "Incorrect username or password."
+        ], 200);
+       }
+               
             }
         }
 
